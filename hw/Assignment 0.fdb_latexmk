@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1705352477 "Assignment 0.tex" "Assignment 0.pdf" "Assignment 0" 1705352478 0
+["pdflatex"] 1705352636 "Assignment 0.tex" "Assignment 0.pdf" "Assignment 0" 1705352636 0
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -105,9 +105,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1705343924 39447 2134d78a2da0cee52270db0ec417a200 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1705343929 325248 c8a9df9adcc9022e87786d2e308b30eb ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1705343926 1329901 0fbd34f8b97aff11ca0f6c862b07ba0b ""
-  "Assignment 0.aux" 1705352478 983 fbd0233021c3c31f0d50c2967df58de7 "pdflatex"
-  "Assignment 0.out" 1705352477 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Assignment 0.tex" 1705352477 10496 a5587fe3b6ce9cb1b3ab8503eace6f88 ""
+  "Assignment 0.aux" 1705352636 983 fbd0233021c3c31f0d50c2967df58de7 "pdflatex"
+  "Assignment 0.out" 1705352636 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Assignment 0.tex" 1705352635 10496 6ab65acfa20bcd9af0aa8007e60536de ""
   "exam.cls" 1688934215 292471 cf61070d137ac4d18fa1ab3aa514381e ""
   (generated)
   "Assignment 0.aux"
