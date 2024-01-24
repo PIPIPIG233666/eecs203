@@ -173,8 +173,12 @@ Given that the following statements are \textbf{true}:
 \[ (p \land r) \rightarrow q\hspace{0.5in}\: \neg q  \hspace{0.5in} \: r \lor s \hspace{0.5in} \: q \lor r \]
 For each of the propositions, $p,\ q,\ r,$ and $s$, state its truth value and explain. If it cannot be found, briefly explain why. 
 \begin{solution}
-$\neg q$ is True, thus q is False.
-\\ $q \lor r$ is True, thus r has to be True.
+p is False, q is False, r is True, and s cannot be determined.
+\\ $\neg q$ is True, thus q is False.
+\\ $q \lor r$ is True, meaning that one of q and r is True, since q is already False, r has to be True.
+\\ $r \lor s$ is True, meaning that at least one of r and s is True, but s cannot be determined because it can be either True or False.
+\\ $(p \land r) \rightarrow q$ is True, for q is False, $(p \land r)$ has to be False. Since r is true, p has to be False.
+\\Thus, p is False, q is False, r is True, and s cannot be determined.
 \end{solution}
 
 \subsection*{\probnum Preposterous Propositions [18 points]}
