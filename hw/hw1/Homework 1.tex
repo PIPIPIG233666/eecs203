@@ -166,12 +166,11 @@ Is the city mayor a knight or a knave? As part of your solution, determine every
 Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\neg(b \lor c) \lor a$.  If you use a truth table, be sure to state why the table tells you what you claim.  If you use logical equivalences, be sure to cite each law you use.
 
 \begin{solution}
-$(b \rightarrow a) \land (c \rightarrow a) \equiv \neg(b \lor c) \lor a$.
 \begin{tabular}{ll}
 $(b \rightarrow a) \land (c \rightarrow a)$\\
 $\equiv (\neg b \lor a) \land (\neg c \lor a)$ &implication breakout rule\\
-$\neg(b \lor c) \land a  \equiv (\neg b \land \neg c) \lor a$ &DeMorgan's Laws\\
 $\equiv (\neg b \lor a) \land (\neg c \lor a)$ &Distributibe Laws\\
+$\equiv \neg (b \lor c) \lor a$ &DeMorgan's Laws\\
 \end{tabular}
 \\\\ The two are the same, thus are logically equivlent to each other.
 \end{solution}
