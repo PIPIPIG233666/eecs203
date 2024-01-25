@@ -166,13 +166,12 @@ Is the city mayor a knight or a knave? As part of your solution, determine every
 Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\neg(b \lor c) \lor a$.  If you use a truth table, be sure to state why the table tells you what you claim.  If you use logical equivalences, be sure to cite each law you use.
 
 \begin{solution}
-$(b \rightarrow a) \land (c \rightarrow a) \equiv \neg(b \lor c) \lor a$.
 \begin{tabular}{ll}
 $(b \rightarrow a) \land (c \rightarrow a)$\\
 $\equiv (\neg b \lor a) \land (\neg c \lor a)$ &Implication Breakout Rule\\
 $\equiv (\neg b \land \neg c) \lor a$ &Distributive Laws\\
 $\equiv \neg (b \lor c) \lor a$ &DeMorgan's Laws\\
-\\\\ The two are the same, thus are $\equiv$ to each other.
+Thus, $(b \rightarrow a) \land (c \rightarrow a) \equiv \neg(b \lor c) \lor a$.
 \end{tabular}
 \end{solution}
 
@@ -220,8 +219,10 @@ Use the above truth table to answer the following questions. For each unknown pr
 \begin{solution}
 $s = (p \land q) \land \neg r$\\ t = $\neg q \lor r$\\ w = $\neg (p \land q) \land r$.
 \\ For s:
+\\ As it is mostly False, it can be concluded that it should be an $\land$
 \\ Since the only time it is True is when p and q are True and r is False, we can say that s is True when p and q are True and r is False.
 \\ For t:
+\\ As it is mostly True, it can be concluded that it should be an $\lor$
 \\ it looks very similar to r, except that it is True when q is False and r is True, so we can say that t is True when q is False or r is True.
 \\ For w:
 \\ it also looks like r, except that it is False when p and q are True and r is True, so we can say that w is False when (p and q) are false and r is True.
@@ -244,7 +245,9 @@ Four friends have been identified as suspects for a recent hack. They have made 
 \end{qparts}
 
 \begin{solution}
-
+\\ a) Violet is the hacker. Blu and Grey's propositions contradict each other, thus one of them is lying for sure. Since the authorities know exactly one of them is lying, it has to be either Blu or Grey.
+Thus Redd and Violet are lying. Blu, therefore, did not do it. Violet is the one that did it. Regardless of whether Blu or Grey is lying.
+\\ b) Blu is the hacker. Same idea as a), but this time Redd and Violet are telling the truth. Therefore, Blu has to be the hacker.
 \end{solution}
 
 
