@@ -154,7 +154,7 @@ Is the city mayor a knight or a knave? As part of your solution, determine every
 
 \begin{solution}
  The mayor has to be a knave, either A or C.
- C's proposition is the first one to eliminate here. It can only be False, making C a knave. This is because if C is knight telling the truth then A will be the mayor but B's claim contradicts with that. 
+\\ C's proposition is the first one to eliminate here. It can only be False, making C a knave. This is because if C is knight telling the truth then A will be the mayor but B's claim contradicts with that. 
 \\ That leaves A's and B's to be either True or False. Suppose both A's and B's are True, then A is not the mayor, the mayor is a knave, which is C.
 \\ If A's is True and B's is not, then they contradict each other.
 \\ If A's is False and B's is True, then A is the mayor.
@@ -166,9 +166,9 @@ Is the city mayor a knight or a knave? As part of your solution, determine every
 Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\neg(b \lor c) \lor a$.  If you use a truth table, be sure to state why the table tells you what you claim.  If you use logical equivalences, be sure to cite each law you use.
 
 \begin{solution}
-$(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\neg(b \lor c) \lor a$.
-\\\\ $\neg(b \lor c) \land a $ = $(\neg b \land \neg c) \lor a$ (DeMorgan's Laws) = $(\neg b \lor a) \land (\neg c \lor a)$ (Distributibe Laws).
-\\ $(b \rightarrow a) \land (c \rightarrow a)$ = $(\neg b \lor a) \land (\neg c \lor a)$ (implication breakout rule).
+$(b \rightarrow a) \land (c \rightarrow a) \equiv \neg(b \lor c) \lor a$.
+\\ $(b \rightarrow a) \land (c \rightarrow a) \equiv (\neg b \lor a) \land (\neg c \lor a)$ (implication breakout rule). 
+$\neg(b \lor c) \land a  \equiv (\neg b \land \neg c) \lor a$ (DeMorgan's Laws) $\equiv (\neg b \lor a) \land (\neg c \lor a)$ (Distributibe Laws).
 \\\\ The two are the same, thus are logically equivlent to each other.
 \end{solution}
 
