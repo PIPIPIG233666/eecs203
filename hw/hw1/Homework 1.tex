@@ -167,8 +167,12 @@ Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to
 
 \begin{solution}
 $(b \rightarrow a) \land (c \rightarrow a) \equiv \neg(b \lor c) \lor a$.
-\\ $(b \rightarrow a) \land (c \rightarrow a) \equiv (\neg b \lor a) \land (\neg c \lor a)$ (implication breakout rule). 
-$\neg(b \lor c) \land a  \equiv (\neg b \land \neg c) \lor a$ (DeMorgan's Laws) $\equiv (\neg b \lor a) \land (\neg c \lor a)$ (Distributibe Laws).
+\begin{tabular}{ll}
+$(b \rightarrow a) \land (c \rightarrow a)$\\
+$\equiv (\neg b \lor a) \land (\neg c \lor a)$ &implication breakout rule\\
+$\neg(b \lor c) \land a  \equiv (\neg b \land \neg c) \lor a$ &DeMorgan's Laws\\
+$\equiv (\neg b \lor a) \land (\neg c \lor a)$ &Distributibe Laws\\
+\end{tabular}
 \\\\ The two are the same, thus are logically equivlent to each other.
 \end{solution}
 
