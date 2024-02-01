@@ -127,7 +127,14 @@ Negate the following statements so that all negation symbols immediately precede
     $\equiv \exists y[\forall x \lnot P(x,y)\land \exists x\lnot Q(x,y)]$ &Demorgan's Laws\\
 		Thus, $\exists y[\forall x \lnot P(x,y)\land \exists x\lnot Q(x,y)]$\\
 	\end{tabular}
- b) $\forall x \exists y[\lnot R(x,y)\land \lnot R(y,x)]$
+  
+ 	\begin{tabular}{ll}
+    b)
+    $\neg [\exists x \forall y [ R(x,y) \rightarrow R(y, x) ]]$\\
+    $\equiv \forall x [ \exists y  \lnot[R(x,y) \rightarrow R(y, x) ]]$ &Demorgan's Laws\\
+    $\forall x \exists y[\lnot R(x,y)\land \lnot R(y,x)]$ &Implication Breakout Rule\\
+		Thus, $\forall x \exists y[\lnot R(x,y)\land \lnot R(y,x)]$\\
+	\end{tabular}
 \end{solution}
 
 
