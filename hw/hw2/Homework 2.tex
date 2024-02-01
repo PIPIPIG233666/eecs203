@@ -11,7 +11,7 @@
 % sometimes needed packages
 \usepackage{hyperref} % hyperlinks
 % \hypersetup{colorlinks=true, urlcolor=blue}
-% \usepackage{logicproof} % natural deduction
+\usepackage{logicproof} % natural deduction
 % \usepackage{tikz} % drawing graphs
 % \usetikzlibrary{positioning}
 % \usepackage{multicol}
@@ -192,7 +192,7 @@ For each of the propositions below, write the negation, and determine whether th
  a) negation: $\forall x(x^3 \neq -1)$ consider $x =-1$, the negation is false, therefore the original proposition is true.
  \\ b) negation: $\exists x(2x < x)$ consider $x$ to be any negative real numbers, the original proposition is false, therefore the negation is true.
  \\ c) negation: $\forall x \exists y (x+y \neq 0)$ the original proposition means that there is only one $x$ for all $y$ that will make $x+y=0$ true. Consider $x=0, y=1,2,100$, the original proposition is false, and the original proposition is true.
- \\ d) negation: $\exists x \forall y (x+y \neq 0)$ same idea as c), however, 
+ \\ d) negation: $\exists x \forall y (x+y \neq 0)$ same idea as c), however, consider $x=0,y=0$, the negation is false, therefore the original is true.
 \end{solution}
 
 \subsection*{\probnum Even Stevens [8 points]}
@@ -200,7 +200,13 @@ For each of the propositions below, write the negation, and determine whether th
 Prove that if $n$ is an even integer, then $\frac{n^2}{2}$ is also an even integer.
 
 \begin{solution}
-
+\begin{logicproof}{2}
+  Assume $n$ is an even integer &premise
+  Thus, $n = 2k$, $k$ is an integer &definition of even
+  Therefore, $n^2/2 = (2k)^2/2=4k^2/2=2(k^2)$
+  Since $k$ is integer, $k^2$ is also integer, $2(k^2)$ is 2 times an integer
+  Thus, $n^2/2$ is also an even integer
+\end{logicproof}
 \end{solution}
 
 \subsection*{\probnum To Prove or Not To Prove [16 points]}
