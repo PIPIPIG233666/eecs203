@@ -221,8 +221,13 @@ Prove that if $n$ is an even integer, then $\frac{n^2}{2}$ is also an even integ
 
 \begin{solution}
  \begin{tabular}{ll}
-   a) $\forall x x^2>0$ \\
-   Proof: Let $x$ be an arbitary real number &premise\\
+   a) Disproof: consider $x=0$, $x^2=0$, therefore, the proposition is false\\
+   b) Proof: $\lnot [\exists x (x \leq 0 \land 2x > x)]=\forall x (x > 0 \lor 2x \leq x)$\\
+   Case 1: if x > 0 is true, the negation is true. \\
+   Case 2: if $x \leq 0$ is true\\
+   $2x \leq x$ is true, the negation is true. Thus, the original proposition is false.\\
+   c) Proof: Let $x=0$, y be an arbitary number.\\
+   $y^2 > 203$ is true. Therefore $\exists x \forall y (x^2+y^2>203)$.\\
  
  \end{tabular}
 
