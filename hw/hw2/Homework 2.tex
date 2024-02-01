@@ -121,8 +121,13 @@ Negate the following statements so that all negation symbols immediately precede
 \end{qparts}
 
 \begin{solution}
- a) $\exists y[\forall x \lnot P(x,y)\land \exists x\lnot Q(x,y)]$\\
- b) $\forall x \exists x[\lnot R(x,y)\land \lnot R(y,x)]$
+ 	\begin{tabular}{ll}
+    a)
+    $\neg [\forall y [ \exists x P(x,y) \vee \forall x Q(x, y) ]]$\\
+    $\equiv \exists y[\forall x \lnot P(x,y)\land \exists x\lnot Q(x,y)]$ &Demorgan's Laws\\
+		Thus, $\exists y[\forall x \lnot P(x,y)\land \exists x\lnot Q(x,y)]$\\
+	\end{tabular}
+ b) $\forall x \exists y[\lnot R(x,y)\land \lnot R(y,x)]$
 \end{solution}
 
 
