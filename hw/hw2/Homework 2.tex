@@ -105,8 +105,8 @@ Your answer should not contain the original proposition. That is, you shouldn't 
 	a) Some student in this course
 	is not enrolled in exactly one Discussion section.\\
 	b) Every student in this class is on Gradescope and on Piazza.\\
-	c) There exists an integer $a$ and $b$, if $a - b > 0$, then $a + b < 0$.\\
-	d) This propsition translates to $\forall x \exists y ({x^y}\in \mathbb{Q})$, thus, to negate this, we flip everything. $\exists x \forall y ({x^y}\in \mathbb{I}).$ Therefore, there exists irrational number x, for all y, such that ${x^y}$ is irrational.
+  c) This propsition translates to $\forall a \forall b [(a+b>0)\rightarrow (a+b<0)]$. There exists an integer $a$ and $b$, if $a + b > 0$ and  $a - b \leq 0$.\\
+	d) This propsition translates to $\forall x \exists y ({x^y}\in \mathbb{Q})$ Negation: $\exists x \forall y ({x^y}\in \mathbb{I}).$ Therefore, there exists irrational number x, for all y, such that ${x^y}$ is irrational.
 \end{solution}
 
 
@@ -191,7 +191,7 @@ For each of the propositions below, write the negation, and determine whether th
 \begin{solution}
  a) negation: $\forall x(x^3 \neq -1)$ consider $x =-1$, the negation is false, therefore the original proposition is true.
  \\ b) negation: $\exists x(2x < x)$ consider $x$ to be any negative real numbers, the original proposition is false, therefore the negation is true.
- \\ c) negation: $\forall x \exists y (x+y \neq 0)$ the original proposition means that there is only one $x$ for all $y$ that will make $x+y=0$ true. Consider $x=0, y=1,2,100$, the original proposition is false, and the original proposition is true.
+ \\ c) negation: $\forall x \exists y (x+y \neq 0)$ the original proposition means that there is only one $x$ for all $y$ that will make $x+y=0$ true. Consider $x=0, y=1,2,100$, the original proposition is false, thus the negation is true.
  \\ d) negation: $\exists x \forall y (x+y \neq 0)$ same idea as c), however, consider $x=0,y=0$, the negation is false, therefore the original is true.
 \end{solution}
 
@@ -333,8 +333,8 @@ Translate each of the following English statements into logic. You may define pr
 
 \begin{solution}
  a) Let F(x) be UMich students who are friends
- \\$\forall x \forall y [x \neq y \neq w \rightarrow \exists z \exists w[z \neq w \land F(x)] ]$\\
- \\b) Let A(x) be is administrator, P(x) be knows everyone's password\\
+ \\$\forall x \forall y [x \neq y \rightarrow \exists z \exists w[z \neq w \land F(x)] ]$\\
+ \\b) Let A(x) be is administrator, P(x) be knows someone's password\\
  $\forall x(A(x)\iff P(x))$
 \end{solution}
 
