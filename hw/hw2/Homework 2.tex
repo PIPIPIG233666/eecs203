@@ -307,11 +307,13 @@ In number theory, there's a simple yet powerful theorem called Bézout's identit
   $gcd(a,b)=d(kr+js)$ &factoring \\
   Since $kr+js$ is also an integer, thus $d \mid gcd(a,b)$ &definition of divide\\
   Thus, $d \mid gcd(a,b)$.\\
-  b) Assume $d \mid bc \land gcd(a,b)=1$ &premise
+  \\b) Assume $d \mid bc \land gcd(a,b)=1$ &premise
   \\$bc=ka$ &definition of divide
   \\$ar+bs=1$ &Bezout's Identity\\
-  $a=\frac {1-bs}{r}, b=\frac {1-ar}{s}$&subsitution\\
-  $\frac {1-ar}{s} c = k \frac {1-bs}{r}$ &subsitution\\
+  Since c is an non-zero integer, $arc+bsc=c$ &equation\\
+  $arc+kac=c$ &subsitution\\
+  $a(rc+kc)=c$ &factoring\\
+  Thus, $a\mid c$\\
 
 \end{tabular}
 \end{solution}
