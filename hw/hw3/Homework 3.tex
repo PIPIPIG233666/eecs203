@@ -216,7 +216,8 @@ Consider a centipede game, where there are two players: Ka-chun and Zyaire. The 
 a) Zyaire takes \$20 and wins.\\
 This is because the game ends after 20 rounds, if Z does not take, Z wins nothing when the game is over.\\
 b) Ka-Chun takes \$19 and wins.\\
-This is because if Z does not take before the 19th round, it is the only chance for K to win.
+This is because if Z does not take before the 19th round, it is the only chance for K to win.\\
+c) Ka-Chun has to take the \$1 in order to win something for sure, otherwise Z will win it all.
 \end{solution}
 
 
@@ -232,7 +233,15 @@ Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\
 \end{itemize}
 
 \begin{solution}
-
+  \begin{tabular}{ll}
+    Proof:\\
+    To prove by contradiction, assume the negation $\max\left \{a^2(b-c), -a\right \} \ge 0 \land (a \ge 0 \land b \le c)$ &premise\\
+    Since $a \ge 0$, $-a \le 0$\\
+    Since $\max\left \{a^2(b-c), -a\right\} \ge 0 \land -a \le 0$, $a^2(b-c) \ge 0$\\
+    Since $a^2 > 0 \land b - c < 0$, $a^2(b-c) < 0$ &fact 2\\
+    This contradicts with $a^2(b-c) \ge 0$\\
+    Thus, the original proposition is true by contradiction.
+  \end{tabular}
 \end{solution}
 
 
