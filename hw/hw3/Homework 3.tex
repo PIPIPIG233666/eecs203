@@ -288,8 +288,8 @@ Prove or disprove that the product of a nonzero rational number and an irrationa
 \begin{solution}
   \begin{tabular}{ll}
 Proof:\\
-To prove by contradiction, assume the negation.
-Let $x \dot y = z, x \notin \mathbb{Q}, y \in \mathbb{Q}, z \in \mathbb{Q}$. &premise\\
+To prove by contradiction, assume the negation.\\
+Let $x \times y = z, x \notin \mathbb{Q}, y \in \mathbb{Q}, z \in \mathbb{Q}$. &premise\\
 Since $y$ and $z$ are rational, $y=\frac {a}{b}, z=\frac{c}{d},$\\
 $a \in \mathbb{Z}, b \in \mathbb{Z}, c \in \mathbb{Z}, d \in \mathbb{Z}$ &definion of rational\\
 $x \times {\frac {a}{b}}={\frac {c}{d}}$ &substitution\\
@@ -339,6 +339,13 @@ Let $P(x)$ and $Q(x)$ be arbitrary predicates.
 \end{qparts}
 
 \begin{solution}
-
+\begin{tabular}{ll}
+ a) Disproof:\\
+ To disprove $\forall x(P(x) \leftrightarrow Q(x)) \equiv \forall x P(x) \leftrightarrow \forall x Q(x)$, $P(x)$ has to be sometimes true but not always, and $Q(x)$ has to be always false.\\
+ Let $P(x)$ be $2 \mid x$ and $Q(x)$ be $3 \mid x$.\\
+ The left proposition will be false because there exists an $x$ that will only satisfy either proposition but not both (e.g. $x=4$ or $x=9$).\\
+ The right, however, will be always true because not all $x$ satisfies both propositions.\\
+ Thus, $F \not \equiv T$, therefore it is disproved.\\
+\end{tabular}
 \end{solution}
 \end{document}
