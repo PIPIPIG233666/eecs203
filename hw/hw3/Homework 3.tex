@@ -235,7 +235,8 @@ Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\
 \begin{solution}
   \begin{tabular}{ll}
     Proof:\\
-    To prove by contradiction, assume the negation $\max\left \{a^2(b-c), -a\right \} \ge 0 \land (a \ge 0 \land b \le c)$ &premise\\
+    To prove by contradiction,\\
+    assume the negation $\max\left \{a^2(b-c), -a\right \} \ge 0 \land (a \ge 0 \land b \le c)$ &premise\\
     Since $a \ge 0$, $-a \le 0$\\
     Since $\max\left \{a^2(b-c), -a\right\} \ge 0 \land -a \le 0$, $a^2(b-c) \ge 0$\\
     Since $a^2 > 0 \land b - c < 0$, $a^2(b-c) < 0$ &fact 2\\
@@ -257,7 +258,14 @@ Show that these statements about a real number $x$ are equivalent to each other:
 \textbf{Hint:} One way to prove statements (i), (ii) and (iii) are equivalent is by proving (i) $\rightarrow$ (ii), (ii) $\rightarrow$ (iii), and (iii) $\rightarrow$ (i).
 
 \begin{solution}
+  \begin{tabular}{ll}
+    Proof: $(i) \rightarrow (ii)$\\
+    Assume $x$ is rational &premise\\
+    $x= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
+    $\frac {x}{2}= \frac {a}{2b}$, which is also an $\frac {integer}{integer}$. &subsitution\\
+    Thus, $x \in \mathbb{Q} \rightarrow \frac {x}{2} \in \mathbb{Q}$. &definition of rational\\
 
+  \end{tabular}
 \end{solution}
 
 
