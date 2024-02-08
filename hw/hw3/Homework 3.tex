@@ -260,10 +260,22 @@ Show that these statements about a real number $x$ are equivalent to each other:
 \begin{solution}
   \begin{tabular}{ll}
     Proof: $(i) \rightarrow (ii)$\\
-    Assume $x$ is rational &premise\\
+    Assume $x \in \mathbb{Q} $ &premise\\
     $x= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
     $\frac {x}{2}= \frac {a}{2b}$, which is also an $\frac {integer}{integer}$. &subsitution\\
-    Thus, $x \in \mathbb{Q} \rightarrow \frac {x}{2} \in \mathbb{Q}$. &definition of rational\\
+    Thus, $x \in \mathbb{Q} \rightarrow \frac {x}{2} \in \mathbb{Q}$. &definition of rational\\\\
+    Proof: $(ii) \rightarrow (iii)$\\
+    Assume $\frac {x}{2} \in \mathbb{Q} $ &premise\\
+    $\frac {x}{2}= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
+    $\frac {x}= \frac {2a}{b}, 3x-1=\frac {3 \dot 2a}{b}-1=\frac {3a-b}{b}$, which is also an $\frac {integer}{integer}$. &subsitution\\
+    Thus, $\frac {x}{2} \in \mathbb{Q} \rightarrow 3x-1 \in \mathbb{Q}$. &definition of rational\\\\
+
+    Proof: $(iii) \rightarrow (i)$\\
+    Assume $3x-1 \in \mathbb{Q} $ &premise\\
+    $3x-1= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
+    $x= \frac {1+\frac {a}{b}}{3}$, which is also an $\frac {integer}{integer}$. &subsitution\\
+    Thus, $3x-1 \in \mathbb{Q} \rightarrow x \in \mathbb{Q}$. &definition of rational\\\\
+
 
   \end{tabular}
 \end{solution}
