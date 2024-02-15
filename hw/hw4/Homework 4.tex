@@ -171,8 +171,13 @@ Prove the following for all integers $x$ and $y$:
 \begin{solution}
 Disproof by contradiction:\\
 \begin{tabular}{ll}
-  Assume $\exists x \exists y 20x + 4y=1(x,y \in \mathbb{Z})$ & premise\\
-
+  Assume $\exists x \exists y such that 20x + 4y=1(x,y \in \mathbb{Z})$ & premise\\
+  $20x+4y=2(10x+2y)$ & factor\\
+  Let arbitary integer $k=10x+2y$, $20x+4y=2k$ &substitution\\
+  Thus, $20x+4y$ is even &definition of even\\
+  $1=2 \times 0 + 1$, thus $1$ is odd &definition of odd\\
+  Thus $even = odd$, which clearly contradicts\\
+  Therefore, disproved the original proposition by contradiction.
 \end{tabular}
 \end{solution}
 
