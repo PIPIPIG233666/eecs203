@@ -171,7 +171,7 @@ Prove the following for all integers $x$ and $y$:
 \begin{solution}
 Disproof by contradiction:\\
 \begin{tabular}{ll}
-  Assume $\exists x \exists y such that 20x + 4y=1(x,y \in \mathbb{Z})$ & premise\\
+  Assume $\exists x \exists y$such that $20x + 4y=1(x,y \in \mathbb{Z})$ & premise\\
   $20x+4y=2(10x+2y)$ & factor\\
   Let arbitary integer $k=10x+2y$, $20x+4y=2k$ &substitution\\
   Thus, $20x+4y$ is even &definition of even\\
@@ -185,7 +185,17 @@ Disproof by contradiction:\\
 \subsection*{\probnum What's Nunya? Nunya Products are Negative. [12 points]}
 Given any three real numbers, prove that the product of two of them will always be non-negative.
 \begin{solution}
-
+  \begin{tabular}{ll}
+    Let $x,y,z \in \mathbb{R}$ & premise\\
+    Case 1: $x \ge 0, y \ge 0, z \ge 0$\\
+    Case 2: $x \ge 0, y \ge 0, z \le 0$\\
+    Case 3: $x \ge 0, y \le 0, z \le 0$\\
+    Case 4: $x \le 0, y \le 0, z \le 0$\\
+    Case 5: $x \le 0, y \le 0, z \ge 0$\\
+    Case 6: $x \le 0, y \ge 0, z \ge 0$\\
+    Case 7: $x \le 0, y \ge 0, z \le 0$\\
+    Case 8: $x \ge 0, y \le 0, z \ge 0$\\
+  \end{tabular}
 \end{solution}
 
 
