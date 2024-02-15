@@ -95,8 +95,8 @@ Prove that if $n^3 + 4$ is even or $3n + 3$ is odd, then $n$ is even.
 
 \begin{solution}
     Contraposition of original is if $n$ is odd, then $n^3+4$ is odd and $3n+3$ is even.\\
-  \begin{tabular}{ll}
     Prove by contrapositive:\\
+  \begin{tabular}{ll}
     Assume $n$ is odd & premise\\
     Let $n=2k+1$, $k$ is an arbitary integer & definition of odd\\
     $n^3+4=(2k+1)^3+4=8k^3+12k^2+6k+4+1$\\
@@ -120,7 +120,25 @@ Prove the following for all integers $x$ and $y$:
 \end{qparts}
 
 \begin{solution}
-
+  a) Proof by cases:\\
+\begin{tabular}{ll}
+  Assume arbitary integers $x$ and $y$ & premise\\
+  Case 1: $x$ is even, $y$ is even\\
+  $x=2k$, $y=2j$, $k,j$ be arbitary integers &definition of even\\
+  $x+y=2k+2j=2(k+j)$ & substitution\\
+  Thus, $x+y$ is even. & definition of even\\
+  Case 2: $x$ is odd, $y$ is odd\\
+  $x=2k+1$,$y=2j+1$ & definition of odd\\
+  $x+y=2(k+j+1)$ & substitution\\
+  Thus, $x+y$ is even. & definition of even\\
+  Case 3: $x$ is even, $y$ is odd\\
+  $x=2k$, $y=2j+1$, $k,j$ be arbitary integers &definition of even and odd\\
+  $x+y=2(k+j)+1$ &substitution\\
+  Thus, $x+y$ is odd.\\
+  Case 4: $x$ is odd, $y$ is even\\
+  This would be the same as Case 3 but with $x$ and $y$ swapped.\\
+  Therefore, the original proposition holds by proof by cases.\\
+\end{tabular}
 \end{solution}
 
 
