@@ -283,7 +283,9 @@ Out of the 40 EECS 203 staff members, 21 like vanilla ice cream, 18 like chocola
 
 \begin{solution}
   Let $V, C, S$ be the population that likes the types of ice cream\\
-\\a) $|V \cap C \cap S| = $ 
+  \\a) According to the inclusion-exclusion principle, $|V \cup C \cup S| = |V|+|C|+|S|-|V\cap C|-|V\cap S|-|C\cap S|+|V\cap C\cap S|$  \\
+  $=40-21-18-24+13+7+9=6$\\
+  \\b) Similarly, $|\overline V\cap \overline C\cap \overline S|=40-|V \cup C \cup S|=40-21-18-24+13+7+14-3=8$
  
 \end{solution}
 
@@ -305,13 +307,46 @@ Using the solutions and Grading Guidelines, grade your Groupwork 3 Problems:
 \hline
  & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
 \hline
-Problem 1 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/30\\
+Problem 1 &+9 &+6 & +2& +2&\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}19/30\\
 \hline
 \Xhline{1.25pt}
-Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
+Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}19/30\\
 \hline
 \end{tabular}}
 \end{center}
+
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork 3 Problems}
+
+\subsection*{\probnum $\forall$re These $\exists$quiv$\diamondsuit$lent? [30 points]}
+Let $P(x)$ and $Q(x)$ be arbitrary predicates.
+\begin{qparts}
+    \item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
+    \item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
+    \item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
+\end{qparts}
+
+\begin{solution}
+\begin{tabular}{ll}
+ a) Disproof:\\
+ To disprove $\forall x(P(x) \leftrightarrow Q(x)) \equiv \forall x P(x) \leftrightarrow \forall x Q(x)$,\\
+ $P(x)$ and $Q(x)$ has to be sometimes, but not always, true.\\
+ Let $P(x)$ be $2 \mid x$ and $Q(x)$ be $3 \mid x$.\\
+ The left proposition will be false.\\
+ It is because there exists an $x$ such that either proposition but not both is true.\\
+ (e.g. $x=4$ or $x=9$ will make it false).\\
+ The right, however, will be always true because not all $x$ satisfies both propositions.\\
+ Thus, $F \not \equiv T$, it is disproved.\\
+ b) Disproof:\\
+ Same idea as a),\\
+ except for that in the right proposition, $x$ does not have to be the same.\\
+ c) Disproof:\\
+ Same as a) and b),\\
+ but with counter examples showing that the proposition does not stand.
+\end{tabular}
+\end{solution}
 
 \pagebreak
 \setcounter{probnumcount}{1}
@@ -322,7 +357,8 @@ Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{
 Show that if $r$ is an irrational number, there is a unique integer $n$ such that the distance between $r$ and $n$ is \textit{strictly} less than $\frac 12.$
 
 \begin{solution}
-
+Disproof:\\
+Assume $r\notin \mathbb{Q} \exists n [|r-n|<\frac {1}{2}]$\\
 \end{solution}
 
 
