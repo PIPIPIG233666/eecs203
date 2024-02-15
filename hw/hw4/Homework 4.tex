@@ -120,7 +120,7 @@ Prove the following for all integers $x$ and $y$:
 \end{qparts}
 
 \begin{solution}
-  a) Proof by cases with contrapostives\\
+  a) Proof by contrapositive with cases\\
   First, the contraposition is:\\
   ($x$ is odd $\lor$ $y$ is odd)$\land$ ($x$ is even $\lor$ $y$ is even) $\rightarrow$ $x+y$ is odd.\\
 \begin{tabular}{ll}
@@ -141,7 +141,25 @@ Prove the following for all integers $x$ and $y$:
   Case 4: $x$ is odd, $y$ is even\\
   This would be the same as Case 3 but with $x$ and $y$ swapped.\\
 \end{tabular}
-  Therefore, the original proposition holds by proof by cases with contrapostives.\\
+  Therefore, the original proposition holds by proof by contrapositive with cases.\\
+  b) Similarly, proof by contrapositive with cases:\\
+  The contrapositive is ($x+y$ is even $\rightarrow (x-y)^2$ is even\\
+
+  \begin{tabular}{ll}
+  a) concludes that ($x$ is even $\land y$ is even) or ($x$ is odd $\land y$ is odd) & premise\\
+  Thus, there are two cases to consider\\
+  Case 1:$x$ is even $\land y$ is even\\
+  Let $x=2k, y=2j,k,j$ be arbitary integers &definition of even\\
+  $(x-y)^2=(2k-2j)^2=(2(k-j))^2=2(2k^2-4kj+2j^2)$ &substitution\\
+  Let integer $l$ be $2k^2-4kj+2j^2$ \\
+  $(x-y)^2=2l$ &substitution\\
+  Thus, $(x-y)^2$ is even. & definition of even\\
+  Case 2:$x$ is odd $\land y$ is odd\\
+  Similar to Case 1, let $x=2k+1, y=2j+1, k,j$ be arbitary integers &definition of odd\\
+  $(x-y)^2=(2k+1-2j-1)^2=(2k-2j)^2=(2(k-j))^2=2(2k^2-4kj+2j^2)$ &substitution\\
+  Thus, $(x-y)^2$ is even. & definition of even\\
+  \end{tabular}
+  Therefore, the original proposition holds by proof by contrapositive with cases.\\
 \end{solution}
 
 
