@@ -245,7 +245,11 @@ Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute th
   \\c) $A \times B=\{(1,2),(1,3),(2,2),(2,3)\}$ \\
   $S \times B=\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}$\\
   $\{A \times B\} \cap \{S \times B\}=$
-  $\{\{(1,2),(1,3),(2,2),(2,3)\}\} \cap \{\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}\}$
+  $\{\{(1,2),(1,3),(2,2),(2,3)\}\}$\\
+  $ \cap \{\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}\}$\\
+  $= \{\emptyset\}$\\
+  \\d)$(A \times B) \cap (S \times B)=\{(1,2),(1,3),(2,2),(2,3)\}$
+
 
   
 
@@ -258,7 +262,14 @@ Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute th
 Prove that if $A$ and $B$ are sets, then $A\cup (A\cap B) =A$ by proving each side is a subset of the other. This set identity is known as an absorption law. Your answer should be a word proof, and not use any set equivalence laws.
 
 \begin{solution}
-
+Proof:\\
+We will show that these two sets are equal by showing that each is a subset of the other.\\
+Suppose $x \in A \cup (A \cap B)$. Then $x \in A \lor x \in A \cap B$ by the definition of union.\\
+In the former case, we have $x \in A$, and in the latter case we have $x \in A \land x \in B$ by the definition of intersection.\\
+Thus in any event, $x \in A$, so we have proved that the left-hand side is a subset of the right-hand side.\\
+Conversely, let $x \in A$. Then by the definition of union, $x \in A \lor (A \cap B)$ as well.\\
+Thus we have shown that the right-hand side is a subset of the left-hand side.\\
+Therefore, proved.
 \end{solution}
 
 
