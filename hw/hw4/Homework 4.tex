@@ -362,8 +362,9 @@ Proof by contradiction:\\
   Assume $r\notin \mathbb{Q}, \exists n_1\exists n_2 [|r-n_1|<\frac {1}{2} \land |r-n_2|<\frac {1}{2}](n_1,n_2 \in \mathbb{Z})$ &premise\\
   $|n_1-n_2|\le |r-n_1|+|r-n_2|$&triangle inequality\\
   $|n_1-n_2|\le \frac{1}{2} + \frac{1}{2} = 1$&substitution\\
-  Since $n_1,n_2\in \mathbb{Z}$, they cannot have a distance $< 1$,this contradicts with the premise&contradiction\\
-
+  Since $n_1,n_2\in \mathbb{Z}$,\\
+  they cannot have a distance $< 1$,\\
+  this contradicts with the premise&contradiction\\
 \end{tabular}
 \\Therefore, the original proposition holds by proof by contradiction.
 \end{solution}
@@ -375,6 +376,11 @@ $$(A \cap C) - (B \cap A) = (C - B) \cap A$$
 for any three sets $A,\ B$ and $C.$
 
 \begin{solution}
+  \begin{tabular}{ll}
+    Let $x\in (A \cap C) - (B \cap A)$ &premise\\
+    $\equiv x\in (A \cap C) \land x\notin (B \cap A)$ &definition of minus\\
+    $\equiv x\in A \land x\in C \land (x\notin B \lor x\notin A)$ &DeMorgan's Laws\\
 
+  \end{tabular}
 \end{solution}
 \end{document}
