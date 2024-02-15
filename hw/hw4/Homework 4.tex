@@ -1,0 +1,223 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{3}
+\newcommand{\hwnum}{4}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework 4}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, Feb. 15th}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $8 + 2$
+\hspace{3cm}
+Total Points: $100+20$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Even Just One [12 points]}
+
+Prove that if $n^3 + 4$ is even or $3n + 3$ is odd, then $n$ is even.
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum $\text{Odd}^2$ [20 points]}
+
+Prove the following for all integers $x$ and $y$:
+\begin{qparts}
+    \item If $x + y$ is even, then ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
+    \item Using your answer from part (a), show that if $(x-y)^2$ is odd, then $x + y$ is odd.
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum Do you $\exists$xist...? [8 points]}
+\textbf{Prove or disprove} the following: There exist integers $x$ and $y$ so that $20x + 4y = 1$.
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum What's Nunya? Nunya Products are Negative. [12 points]}
+Given any three real numbers, prove that the product of two of them will always be non-negative.
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum Element or Subset? [8 points]}
+Let $A = \{1,2,\text{``a"}\}$. State whether each statement is true or false. Give a brief explanation if false (you do not need to justify why a statement is true).
+\begin{qparts}
+    \item $\text{``a"}\in A$ 
+    \item $\text{``a"}\subseteq A$ 
+    \item $\{1,2\} \in A$ 
+    \item $\{1,2\} \subseteq A$
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Ready, $\{s,e,t\}$, go! [12 points]}
+Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute the following, where complements are taken within $S.$ Show intermediate steps as part of your justification.
+
+\begin{qparts}
+    \item $\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)$ 
+    \item $\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)$  
+    \item $\{A \times B\} \cap \{S \times B\}$
+    \item $(A \times B) \cap (S \times B)$
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum Subset Proofs [16 points]}
+Prove that if $A$ and $B$ are sets, then $A\cup (A\cap B) =A$ by proving each side is a subset of the other. This set identity is known as an absorption law. Your answer should be a word proof, and not use any set equivalence laws.
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum IceCream-Exclusion [12 points]}
+Out of the 40 EECS 203 staff members, 21 like vanilla ice cream, 18 like chocolate ice cream, and 24 like strawberry ice cream. In addition, 13 like both strawberry and vanilla, and 7 like chocolate and vanilla.
+\begin{parts}
+    \item How many staff members like all three ice cream flavors if 9 staff members like both strawberry and chocolate ice cream, assuming everyone likes at least one type of ice cream?
+    \item How many staff members don't like any of the ice cream flavors if 14 staff members like both strawberry and chocolate ice cream and 3 staff members like all three ice cream flavors?
+\end{parts}
+
+\begin{solution}
+ 
+\end{solution}
+
+
+\pagebreak
+\section*{Grading of Groupwork 3}
+Using the solutions and Grading Guidelines, grade your Groupwork 3 Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/30\\
+\hline
+\Xhline{1.25pt}
+Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+
+\subsection*{\probnum Mostly Rational [12 points]}
+Show that if $r$ is an irrational number, there is a unique integer $n$ such that the distance between $r$ and $n$ is \textit{strictly} less than $\frac 12.$
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum Set in Stone [8 points]}
+Prove using set identities that
+$$(A \cap C) - (B \cap A) = (C - B) \cap A$$ 
+for any three sets $A,\ B$ and $C.$
+
+\begin{solution}
+
+\end{solution}
+\end{document}
