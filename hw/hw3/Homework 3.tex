@@ -62,27 +62,27 @@
 \begin{document}
 %%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
 \title{EECS 203: Discrete Mathematics\\
-  Winter 2024\\
-  Homework \hwnum{}}
+	Winter 2024\\
+	Homework \hwnum{}}
 \date{}
 \author{}
 \maketitle
 \vspace{-50pt}
 \begin{center}
-  \huge Due \textbf{Thursday, Feb. 8}, 10:00 pm\\
-\Large No late homework accepted past midnight.\\
-\vspace{10pt}
-\large Number of Problems: $7+1$
-\hspace{3cm}
-Total Points: $100+30$
+	\huge Due \textbf{Thursday, Feb. 8}, 10:00 pm\\
+	\Large No late homework accepted past midnight.\\
+	\vspace{10pt}
+	\large Number of Problems: $7+1$
+	\hspace{3cm}
+	Total Points: $100+30$
 \end{center}
 \vspace{25pt}
 \begin{itemize}
-    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
-    \item Submit this assignment (and any regrade requests later) on Gradescope. 
-    \item Justify your answers and show your work (unless a question says otherwise).
-    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
-    \item Check the syllabus for full details.
+	\item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+	\item Submit this assignment (and any regrade requests later) on Gradescope.
+	\item Justify your answers and show your work (unless a question says otherwise).
+	\item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+	\item Check the syllabus for full details.
 \end{itemize}
 \newpage
 %%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
@@ -90,93 +90,93 @@ Total Points: $100+30$
 \subsection*{\probnum On the Contrary [12 points]}
 Let $n$ be an integer. Prove that if $4\,|\,(n^2-1),$ then $n$ is odd using
 \begin{qparts}
-    \item a proof by contraposition, and
-    \item a proof by contradiction.
+	\item a proof by contraposition, and
+	\item a proof by contradiction.
 \end{qparts}
 Then,
 \begin{qparts}[resume]
-    \item compare your answers to parts (a) and (b). What is different? What is the same?
+	\item compare your answers to parts (a) and (b). What is different? What is the same?
 \end{qparts}
 
 
 \begin{solution}
-Let $p$ be $4 \mid (n^2 - 1)$, $q$ be $n$ is odd.
-\\The original proposition can therefore be expressed as $\forall n (p \rightarrow q)$.
+	Let $p$ be $4 \mid (n^2 - 1)$, $q$ be $n$ is odd.
+	\\The original proposition can therefore be expressed as $\forall n (p \rightarrow q)$.
 
-\begin{tabular}{ll}
-  \\a) Proof:
-  \\To prove by contraposition,
-  \\the contrapositive is $\forall n (\lnot q \rightarrow \lnot p)$. &contraposition\\
-  Assume n is an even integer.\\
-  $n = 2k$, $k$ is a random integer. &definition of even\\
-  $n^2 - 1 \equiv 4k^2 -1$ &substitution\\
-  It does not divide $4$. &definition of divide\\
-  Thus, the original proposition is true by contraposition.\\
-  \\b) Proof:
-  \\To prove by contradiction,
-  \\the negation is $\exists n (p \land \lnot q)$. &Implication Breakout Rule\\
-  Assume n is an even integer, $n^2 - 1$ divides 4.\\
-  $n = 2k$, $k$ is a random integer. &definition of even\\
-  $n^2 - 1 \equiv 4k^2 -1$ &substitution\\
-  It does not divide $4$. &definition of divide\\
-  Thus, the original proposition is true by contradiction.\\
-\end{tabular}
-  \\ c) \\ The math is the same, but the logic is different (premise is different due to the difference between contradiction and contrapostion).
+	\begin{tabular}{ll}
+		\\a) Proof:
+		\\To prove by contraposition,
+		\\the contrapositive is $\forall n (\lnot q \rightarrow \lnot p)$. &contraposition\\
+		Assume n is an even integer.                              \\
+		$n = 2k$, $k$ is a random integer. & definition of even   \\
+		$n^2 - 1 \equiv 4k^2 -1$           & substitution         \\
+		It does not divide $4$.            & definition of divide \\
+		Thus, the original proposition is true by contraposition. \\
+		\\b) Proof:
+		\\To prove by contradiction,
+		\\the negation is $\exists n (p \land \lnot q)$. &Implication Breakout Rule\\
+		Assume n is an even integer, $n^2 - 1$ divides 4.         \\
+		$n = 2k$, $k$ is a random integer. & definition of even   \\
+		$n^2 - 1 \equiv 4k^2 -1$           & substitution         \\
+		It does not divide $4$.            & definition of divide \\
+		Thus, the original proposition is true by contradiction.  \\
+	\end{tabular}
+	\\ c) \\ The math is the same, but the logic is different (premise is different due to the difference between contradiction and contrapostion).
 \end{solution}
 
 
-\subsection*{\probnum An Even-Numbered Question about Even Numbers [16 points]} 
+\subsection*{\probnum An Even-Numbered Question about Even Numbers [16 points]}
 
 \textbf{Prove or disprove} the following statements:
 
 \begin{qparts}
-    \item For all integers $x$, if $x$ is even, then $x^2$ is even.
-    \item For all integers $x$, if $x^2$ is even, then $x$ is even.
-    \item For all integers $x$, if $x$ is even, then $2x$ is even.
-    \item For all integers $x$, if $2x$ is even, then $x$ is even.
+	\item For all integers $x$, if $x$ is even, then $x^2$ is even.
+	\item For all integers $x$, if $x^2$ is even, then $x$ is even.
+	\item For all integers $x$, if $x$ is even, then $2x$ is even.
+	\item For all integers $x$, if $2x$ is even, then $x$ is even.
 \end{qparts}
 
 \begin{solution}
-\begin{tabular}{ll}
-a) Proof: \\
-Assume $x$ is a random even integer. &premise\\
-Since $x$ is even,\\
-$x=2k$, $k$ is a random integer. &definition of even\\
-$x^2= 4k^2 = 2(2k^2)$. &subsitution\\
-Since $2k^2$ is also an integer,\\
-let $2j=2k^2$, $j$ also a random integer.\\
-Thus, $x^2$ is also even. &definition of even\\
-\\
-b) Proof:\\
-To prove by contrapositive, assume $x$ is a random odd integer. &premise\\
-Since $x$ is odd,\\
-let $x=2k+1$, $k$ is a random integer &definition of odd\\
-$x^2=(2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1$ & substitution\\
-Since $2k^2+2k$ is also an integer,\\
-let $2j=2k^2+2k$, $j$ also a random integer.\\
-Thus, $x^2$ is, $2j+1$, also odd. &definition of odd\\
-Thus the original proposition is true by contraposition.\\
-\\
-c) Proof:\\
-Assume $x$ is a random even integer. &premise\\
-Since $x$ is even,\\
-$x=2k$, $k$ is a random integer. &definition of even\\
-$2x=2(2k)$ &substitution\\
-Since $k$ is also an integer,\\
-let $j=2k$, $j$ also a random integer.\\
-Thus, $2x$ is also even. &definition of even\\
-Thus the original proposition is true by direct proof.\\
-\\
-d) Disproof:\\
-To disprove by contrapositive, assume $x$ is odd.&premise\\
-Since $x$ is odd,\\
-let $x=2k+1$, $k$ is a random integer &definition of even\\
-$2x=4k+2=2(2k+1)$ &substitution\\
-Since $k$ is also an integer,\\
-let $j=2k+1$, $j$ also a random integer.\\
-Thus, $x$, is $2j$, even. &definition of even\\
-Thus the original proposition is false. &contraposition is false\\
-\end{tabular}
+	\begin{tabular}{ll}
+		a) Proof:                                                                                 \\
+		Assume $x$ is a random even integer.                            & premise                 \\
+		Since $x$ is even,                                                                        \\
+		$x=2k$, $k$ is a random integer.                                & definition of even      \\
+		$x^2= 4k^2 = 2(2k^2)$.                                          & subsitution             \\
+		Since $2k^2$ is also an integer,                                                          \\
+		let $2j=2k^2$, $j$ also a random integer.                                                 \\
+		Thus, $x^2$ is also even.                                       & definition of even      \\
+		\\
+		b) Proof:                                                                                 \\
+		To prove by contrapositive, assume $x$ is a random odd integer. & premise                 \\
+		Since $x$ is odd,                                                                         \\
+		let $x=2k+1$, $k$ is a random integer                           & definition of odd       \\
+		$x^2=(2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1$                           & substitution            \\
+		Since $2k^2+2k$ is also an integer,                                                       \\
+		let $2j=2k^2+2k$, $j$ also a random integer.                                              \\
+		Thus, $x^2$ is, $2j+1$, also odd.                               & definition of odd       \\
+		Thus the original proposition is true by contraposition.                                  \\
+		\\
+		c) Proof:                                                                                 \\
+		Assume $x$ is a random even integer.                            & premise                 \\
+		Since $x$ is even,                                                                        \\
+		$x=2k$, $k$ is a random integer.                                & definition of even      \\
+		$2x=2(2k)$                                                      & substitution            \\
+		Since $k$ is also an integer,                                                             \\
+		let $j=2k$, $j$ also a random integer.                                                    \\
+		Thus, $2x$ is also even.                                        & definition of even      \\
+		Thus the original proposition is true by direct proof.                                    \\
+		\\
+		d) Disproof:                                                                              \\
+		To disprove by contrapositive, assume $x$ is odd.               & premise                 \\
+		Since $x$ is odd,                                                                         \\
+		let $x=2k+1$, $k$ is a random integer                           & definition of even      \\
+		$2x=4k+2=2(2k+1)$                                               & substitution            \\
+		Since $k$ is also an integer,                                                             \\
+		let $j=2k+1$, $j$ also a random integer.                                                  \\
+		Thus, $x$, is $2j$, even.                                       & definition of even      \\
+		Thus the original proposition is false.                         & contraposition is false \\
+	\end{tabular}
 \end{solution}
 
 
@@ -184,16 +184,16 @@ Thus the original proposition is false. &contraposition is false\\
 \textbf{Prove or disprove} the following statement: ``There is a finite amount of even numbers."
 
 \begin{solution}
-  \begin{tabular}{ll}
-Disproof:\\
-Assume there is a set of finite amount of even numbers $n = {a,b,c,d}$,\\
-with a domain of even numbers\\
-and $d$ being the largest possible even number &premise\\
-Let $e$ be a random even number that is twice $d$.\\
-Since $e$ is $2d$, an even number greater than the assumed $d$,\\
-the proposition is false.\\
-Thus, disproved there is a set of finite amount of even numbers.
-\end{tabular}
+	\begin{tabular}{ll}
+		Disproof:                                                               \\
+		Assume there is a set of finite amount of even numbers $n = {a,b,c,d}$, \\
+		with a domain of even numbers                                           \\
+		and $d$ being the largest possible even number & premise                \\
+		Let $e$ be a random even number that is twice $d$.                      \\
+		Since $e$ is $2d$, an even number greater than the assumed $d$,         \\
+		the proposition is false.                                               \\
+		Thus, disproved there is a set of finite amount of even numbers.
+	\end{tabular}
 \end{solution}
 
 
@@ -201,23 +201,23 @@ Thus, disproved there is a set of finite amount of even numbers.
 Consider a centipede game, where there are two players: Ka-chun and Zyaire. The game starts by Ka-chun's decision of take or wait.
 
 \begin{itemize}
-    \item If Ka-chun takes, Ka-chun earns \$1 while Zyaire earns nothing, and the game ends.
-    \item If Ka-chun waits, then Zyaire can choose between take or wait. If Zyaire takes, Zyaire earns \$2 while Ka-chun earns nothing and the game ends. If Zyaire waits it becomes Ka-chun's turn to choose again.
-    \item If they keep waiting the reward grows by \$1 each round, until Zyaire's choice of taking \$20 or waiting, when the game will end no matter what.
+	\item If Ka-chun takes, Ka-chun earns \$1 while Zyaire earns nothing, and the game ends.
+	\item If Ka-chun waits, then Zyaire can choose between take or wait. If Zyaire takes, Zyaire earns \$2 while Ka-chun earns nothing and the game ends. If Zyaire waits it becomes Ka-chun's turn to choose again.
+	\item If they keep waiting the reward grows by \$1 each round, until Zyaire's choice of taking \$20 or waiting, when the game will end no matter what.
 \end{itemize} Both of Ka-chun and Zyaire want to maximize their rewards, and behave as perfect logicians.
 
 \begin{qparts}
-    \item Suppose Ka-chun and Zyaire made it to round 20. What happens in round 20? 
-    \item Using your answer to (a), what would happen if they made it to round 19?
-    \item Building off of parts (a) and (b), argue that Ka-chun should take \$1 in the very first round.
+	\item Suppose Ka-chun and Zyaire made it to round 20. What happens in round 20?
+	\item Using your answer to (a), what would happen if they made it to round 19?
+	\item Building off of parts (a) and (b), argue that Ka-chun should take \$1 in the very first round.
 \end{qparts}
 
 \begin{solution}
-a) Zyaire takes \$20 and wins.\\
-This is because the game ends after 20 rounds, if Z does not take, Z wins nothing when the game is over.\\
-b) Ka-Chun takes \$19 and wins.\\
-This is because if Z does not take before the 19th round, it is the only chance for K to win.\\
-c) Ka-Chun has to take the \$1 in order to win something for sure, otherwise Z will win it all.
+	a) Zyaire takes \$20 and wins.\\
+	This is because the game ends after 20 rounds, if Z does not take, Z wins nothing when the game is over.\\
+	b) Ka-Chun takes \$19 and wins.\\
+	This is because if Z does not take before the 19th round, it is the only chance for K to win.\\
+	c) Ka-Chun has to take the \$1 in order to win something for sure, otherwise Z will win it all.
 \end{solution}
 
 
@@ -227,22 +227,22 @@ Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\
 
 \textbf{Note:} You can use the following facts in your proof:
 \begin{itemize}
-    \item If $x$ and $y$ are positive, then $x\cdot y$ is positive.
-    \item If $x$ is positive and $y$ is negative, then $x\cdot y$ is negative.
-    \item If $x$ and $y$ are negative, then $x\cdot y$ is positive.
+	\item If $x$ and $y$ are positive, then $x\cdot y$ is positive.
+	\item If $x$ is positive and $y$ is negative, then $x\cdot y$ is negative.
+	\item If $x$ and $y$ are negative, then $x\cdot y$ is positive.
 \end{itemize}
 
 \begin{solution}
-  \begin{tabular}{ll}
-    Proof:\\
-    To prove by contradiction,\\
-    assume the negation $\max\left \{a^2(b-c), -a\right \} \ge 0 \land (a \ge 0 \land b \le c)$ &premise\\
-    Since $a \ge 0$, $-a \le 0$\\
-    Since $\max\left \{a^2(b-c), -a\right\} \ge 0 \land -a \le 0$, $a^2(b-c) \ge 0$\\
-    Since $a^2 > 0 \land b - c < 0$, $a^2(b-c) < 0$ &fact 2\\
-    This contradicts with $a^2(b-c) \ge 0$\\
-    Thus, the original proposition is true by contradiction.
-  \end{tabular}
+	\begin{tabular}{ll}
+		Proof:                                                                                                \\
+		To prove by contradiction,                                                                            \\
+		assume the negation $\max\left \{a^2(b-c), -a\right \} \ge 0 \land (a \ge 0 \land b \le c)$ & premise \\
+		Since $a \ge 0$, $-a \le 0$                                                                           \\
+		Since $\max\left \{a^2(b-c), -a\right\} \ge 0 \land -a \le 0$, $a^2(b-c) \ge 0$                       \\
+		Since $a^2 > 0 \land b - c < 0$, $a^2(b-c) < 0$                                             & fact 2  \\
+		This contradicts with $a^2(b-c) \ge 0$                                                                \\
+		Thus, the original proposition is true by contradiction.
+	\end{tabular}
 \end{solution}
 
 
@@ -250,35 +250,35 @@ Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\
 
 Show that these statements about a real number $x$ are equivalent to each other:
 \begin{stmts}
-    \item $x$ is rational
-    \item $\frac{x}{2}$ is rational
-    \item $3x-1$ is rational.
+	\item $x$ is rational
+	\item $\frac{x}{2}$ is rational
+	\item $3x-1$ is rational.
 \end{stmts}
 
 \textbf{Hint:} One way to prove statements (i), (ii) and (iii) are equivalent is by proving (i) $\rightarrow$ (ii), (ii) $\rightarrow$ (iii), and (iii) $\rightarrow$ (i).
 
 \begin{solution}
-  \begin{tabular}{ll}
-    Proof: $(i) \rightarrow (ii)$\\
-    Assume $x \in \mathbb{Q} $ &premise\\
-    $x= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
-    $\frac {x}{2}= \frac {a}{2b}$, which is also an $\frac {integer}{integer}$. &subsitution\\
-    Thus, $x \in \mathbb{Q} \rightarrow \frac {x}{2} \in \mathbb{Q}$. &definition of rational\\\\
-    Proof: $(ii) \rightarrow (iii)$\\
-    Assume $\frac {x}{2} \in \mathbb{Q} $ &premise\\
-    $\frac {x}{2}= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
-    $\frac {x}= \frac {2a}{b}, 3x-1=\frac {3 \dot 2a}{b}-1=\frac {3a-b}{b}$, which is also an $\frac {integer}{integer}$. &subsitution\\
-    Thus, $\frac {x}{2} \in \mathbb{Q} \rightarrow 3x-1 \in \mathbb{Q}$. &definition of rational\\\\
+	\begin{tabular}{ll}
+		Proof: $(i) \rightarrow (ii)$                                                                                                                  \\
+		Assume $x \in \mathbb{Q} $                                                                                            & premise                \\
+		$x= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$                                              & definition of rational \\
+		$\frac {x}{2}= \frac {a}{2b}$, which is also an $\frac {integer}{integer}$.                                           & subsitution            \\
+		Thus, $x \in \mathbb{Q} \rightarrow \frac {x}{2} \in \mathbb{Q}$.                                                     & definition of rational \\\\
+		Proof: $(ii) \rightarrow (iii)$                                                                                                                \\
+		Assume $\frac {x}{2} \in \mathbb{Q} $                                                                                 & premise                \\
+		$\frac {x}{2}= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$                                   & definition of rational \\
+		$\frac {x}= \frac {2a}{b}, 3x-1=\frac {3 \dot 2a}{b}-1=\frac {3a-b}{b}$, which is also an $\frac {integer}{integer}$. & subsitution            \\
+		Thus, $\frac {x}{2} \in \mathbb{Q} \rightarrow 3x-1 \in \mathbb{Q}$.                                                  & definition of rational \\\\
 
-    Proof: $(iii) \rightarrow (i)$\\
-    Assume $3x-1 \in \mathbb{Q} $ &premise\\
-    $3x-1= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$ &definition of rational\\
-    $x= \frac {1+\frac {a}{b}}{3}$, which is also an $\frac {integer}{integer}$. &subsitution\\
-    Thus, $3x-1 \in \mathbb{Q} \rightarrow x \in \mathbb{Q}$. &definition of rational\\\\
+		Proof: $(iii) \rightarrow (i)$                                                                                                                 \\
+		Assume $3x-1 \in \mathbb{Q} $                                                                                         & premise                \\
+		$3x-1= \frac{a}{b}, a \in \mathbb{Z} \land b \in \mathbb{Z} \land b \neq 0$                                           & definition of rational \\
+		$x= \frac {1+\frac {a}{b}}{3}$, which is also an $\frac {integer}{integer}$.                                          & subsitution            \\
+		Thus, $3x-1 \in \mathbb{Q} \rightarrow x \in \mathbb{Q}$.                                                             & definition of rational \\\\
 
 
-    Thus, the three statements are equivlent to each other.
-  \end{tabular}
+		Thus, the three statements are equivlent to each other.
+	\end{tabular}
 \end{solution}
 
 
@@ -286,44 +286,43 @@ Show that these statements about a real number $x$ are equivalent to each other:
 Prove or disprove that the product of a nonzero rational number and an irrational number is irrational.
 
 \begin{solution}
-  \begin{tabular}{ll}
-Proof:\\
-To prove by contradiction, assume the negation.\\
-Let $x \times y = z, x \notin \mathbb{Q}, y \in \mathbb{Q}, z \in \mathbb{Q}$. &premise\\
-Since $y$ and $z$ are rational, $y=\frac {a}{b}, z=\frac{c}{d},$\\
-$a \in \mathbb{Z}, b \in \mathbb{Z}, c \in \mathbb{Z}, d \in \mathbb{Z} \land b \times d \neq 0$ &definion of rational\\
-$x \times {\frac {a}{b}}={\frac {c}{d}}$ &substitution\\
-$x=\frac{cb}{ad}$, which is also $\frac {integer}{interger}$, therefore $x \in \mathbb{Q}$.\\
-It contradicts with the premise $x \notin \mathbb{Q}$.\\
-Thus, the original proposition holds.
-
-\end{tabular}
+	\begin{tabular}{ll}
+		Proof:                                                                                                                  \\
+		To prove by contradiction, assume the negation.                                                                         \\
+		Let $x \times y = z, x \notin \mathbb{Q}, y \in \mathbb{Q}, z \in \mathbb{Q}$.                   & premise              \\
+		Since $y$ and $z$ are rational, $y=\frac {a}{b}, z=\frac{c}{d},$                                                        \\
+		$a \in \mathbb{Z}, b \in \mathbb{Z}, c \in \mathbb{Z}, d \in \mathbb{Z} \land b \times d \neq 0$ & definion of rational \\
+		$x \times {\frac {a}{b}}={\frac {c}{d}}$                                                         & substitution         \\
+		$x=\frac{cb}{ad}$, which is also $\frac {integer}{interger}$, therefore $x \in \mathbb{Q}$.                             \\
+		It contradicts with the premise $x \notin \mathbb{Q}$.                                                                  \\
+		Thus, the original proposition holds.
+	\end{tabular}
 \end{solution}
 
 \pagebreak
 \section*{Grading of Groupwork 2}
 Using the solutions and Grading Guidelines, grade your Groupwork 2 Problems:
 \begin{itemize}
-    \item Use the table below to grade your past groupwork submission and calculate scores.
-    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
-    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
-    \item For extra credit, write positive comment(s) about your work.
-    \item You don't have to redo problems correctly, but it is recommended!
-    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+	\item Use the table below to grade your past groupwork submission and calculate scores.
+	\item While grading, mark up your past submission. Include this with the table when you submit your grading.
+	\item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+	\item For extra credit, write positive comment(s) about your work.
+	\item You don't have to redo problems correctly, but it is recommended!
+	\item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
 \end{itemize}
 
 \begin{center}
-\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
-\hline
- & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
-\hline
-Problem 1 & & & & & & & &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
-\hline 
-Problem 2 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
-\Xhline{1.25pt}
-Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/40\\
-\hline
-\end{tabular}}
+	\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+			\hline
+			          & (i)    & (ii)   & (iii)  & (iv)   & (v)    & (vi)   & (vii)  & (viii) & (ix)   & (x)    & (xi)   & Total:          \\
+			\hline
+			Problem 1 &        &        &        &        &        &        &        & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}/20 \\
+			\hline
+			Problem 2 &        &        &        &        & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}/20 \\
+			\Xhline{1.25pt}
+			Total:    & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}/40 \\
+			\hline
+		\end{tabular}}
 \end{center}
 
 \pagebreak
@@ -333,28 +332,28 @@ Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl&
 \subsection*{\probnum $\forall$re These $\exists$quiv$\diamondsuit$lent? [30 points]}
 Let $P(x)$ and $Q(x)$ be arbitrary predicates.
 \begin{qparts}
-    \item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
-    \item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
-    \item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
+	\item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
+	\item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
+	\item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
 \end{qparts}
 
 \begin{solution}
-\begin{tabular}{ll}
- a) Disproof:\\
- To disprove $\forall x(P(x) \leftrightarrow Q(x)) \equiv \forall x P(x) \leftrightarrow \forall x Q(x)$,\\
- $P(x)$ and $Q(x)$ has to be sometimes, but not always, true.\\
- Let $P(x)$ be $2 \mid x$ and $Q(x)$ be $3 \mid x$.\\
- The left proposition will be false.\\
- It is because there exists an $x$ such that either proposition but not both is true.\\
- (e.g. $x=4$ or $x=9$ will make it false).\\
- The right, however, will be always true because not all $x$ satisfies both propositions.\\
- Thus, $F \not \equiv T$, it is disproved.\\
- b) Disproof:\\
- Same idea as a),\\
- except for that in the right proposition, $x$ does not have to be the same.\\
- c) Disproof:\\
- Same as a) and b),\\
- but with counter examples showing that the proposition does not stand.
-\end{tabular}
+	\begin{tabular}{ll}
+		a) Disproof:                                                                                             \\
+		To disprove $\forall x(P(x) \leftrightarrow Q(x)) \equiv \forall x P(x) \leftrightarrow \forall x Q(x)$, \\
+		$P(x)$ and $Q(x)$ has to be sometimes, but not always, true.                                             \\
+		Let $P(x)$ be $2 \mid x$ and $Q(x)$ be $3 \mid x$.                                                       \\
+		The left proposition will be false.                                                                      \\
+		It is because there exists an $x$ such that either proposition but not both is true.                     \\
+		(e.g. $x=4$ or $x=9$ will make it false).                                                                \\
+		The right, however, will be always true because not all $x$ satisfies both propositions.                 \\
+		Thus, $F \not \equiv T$, it is disproved.                                                                \\
+		b) Disproof:                                                                                             \\
+		Same idea as a),                                                                                         \\
+		except for that in the right proposition, $x$ does not have to be the same.                              \\
+		c) Disproof:                                                                                             \\
+		Same as a) and b),                                                                                       \\
+		but with counter examples showing that the proposition does not stand.
+	\end{tabular}
 \end{solution}
 \end{document}

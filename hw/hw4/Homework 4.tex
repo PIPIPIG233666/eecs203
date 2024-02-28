@@ -62,27 +62,27 @@
 \begin{document}
 %%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
 \title{EECS 203: Discrete Mathematics\\
-  Winter 2024\\
-  Homework 4}
+	Winter 2024\\
+	Homework 4}
 \date{}
 \author{}
 \maketitle
 \vspace{-50pt}
 \begin{center}
-  \huge Due \textbf{Thursday, Feb. 15th}, 10:00 pm\\
-\Large No late homework accepted past midnight.\\
-\vspace{10pt}
-\large Number of Problems: $8 + 2$
-\hspace{3cm}
-Total Points: $100+20$
+	\huge Due \textbf{Thursday, Feb. 15th}, 10:00 pm\\
+	\Large No late homework accepted past midnight.\\
+	\vspace{10pt}
+	\large Number of Problems: $8 + 2$
+	\hspace{3cm}
+	Total Points: $100+20$
 \end{center}
 \vspace{25pt}
 \begin{itemize}
-    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
-    \item Submit this assignment (and any regrade requests later) on Gradescope. 
-    \item Justify your answers and show your work (unless a question says otherwise).
-    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
-    \item Check the syllabus for full details.
+	\item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+	\item Submit this assignment (and any regrade requests later) on Gradescope.
+	\item Justify your answers and show your work (unless a question says otherwise).
+	\item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+	\item Check the syllabus for full details.
 \end{itemize}
 \newpage
 %%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
@@ -94,20 +94,20 @@ Total Points: $100+20$
 Prove that if $n^3 + 4$ is even or $3n + 3$ is odd, then $n$ is even.
 
 \begin{solution}
-    Contraposition of original is if $n$ is odd, then $n^3+4$ is odd and $3n+3$ is even.\\
-    Prove by contrapositive:\\
-  \begin{tabular}{ll}
-    Assume $n$ is odd & premise\\
-    Let $n=2k+1$, $k$ is an arbitary integer & definition of odd\\
-    $n^3+4=(2k+1)^3+4=8k^3+12k^2+6k+4+1$\\
-    $=2(4k^3+6k^2+3k+2)+1$&substitution \\
-    Let arbitary integer $j=4k^3+6k^2+3k+2$, $n^3+4=2j+1$ \\
-    Therefore, $n^3+4$ is also odd & definition of odd\\
-    Similarly, $3n+3=3(2k+1)+3$\\
-    $=6k+6=2(k+3)$ & substitution \\
-    Therefore, $3n+3$ is even & definition of even\\
-    Thus, the original proposition is true by contraposition.
-  \end{tabular}
+	Contraposition of original is if $n$ is odd, then $n^3+4$ is odd and $3n+3$ is even.\\
+	Prove by contrapositive:\\
+	\begin{tabular}{ll}
+		Assume $n$ is odd                        & premise            \\
+		Let $n=2k+1$, $k$ is an arbitary integer & definition of odd  \\
+		$n^3+4=(2k+1)^3+4=8k^3+12k^2+6k+4+1$                          \\
+		$=2(4k^3+6k^2+3k+2)+1$                   & substitution       \\
+		Let arbitary integer $j=4k^3+6k^2+3k+2$, $n^3+4=2j+1$         \\
+		Therefore, $n^3+4$ is also odd           & definition of odd  \\
+		Similarly, $3n+3=3(2k+1)+3$                                   \\
+		$=6k+6=2(k+3)$                           & substitution       \\
+		Therefore, $3n+3$ is even                & definition of even \\
+		Thus, the original proposition is true by contraposition.
+	\end{tabular}
 \end{solution}
 
 
@@ -115,53 +115,53 @@ Prove that if $n^3 + 4$ is even or $3n + 3$ is odd, then $n$ is even.
 
 Prove the following for all integers $x$ and $y$:
 \begin{qparts}
-    \item If $x + y$ is even, then ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
-    \item Using your answer from part (a), show that if $(x-y)^2$ is odd, then $x + y$ is odd.
+	\item If $x + y$ is even, then ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
+	\item Using your answer from part (a), show that if $(x-y)^2$ is odd, then $x + y$ is odd.
 \end{qparts}
 
 \begin{solution}
-  a) Proof by contrapositive with cases\\
-  First, the contraposition is:\\
-  ($x$ is odd $\lor$ $y$ is odd)$\land$ ($x$ is even $\lor$ $y$ is even) $\rightarrow$ $x+y$ is odd.\\
-\begin{tabular}{ll}
-  Assume arbitary integers $x$ and $y$ & premise\\
-  Case 1: $x$ is even, $y$ is even\\
-  $x=2k$, $y=2j$, $k,j$ be arbitary integers &definition of even\\
-  $x+y=2k+2j=2(k+j)$ & substitution\\
-  Thus, $x+y$ is even. & definition of even\\
-  Case 2: $x$ is odd, $y$ is odd\\
-  $x=2k+1$,$y=2j+1$ & definition of odd\\
-  $x+y=2(k+j+1)$ & substitution\\
-  Thus, $x+y$ is even. & definition of even\\
-  Case 3: $x$ is even, $y$ is odd\\
-  $x=2k$\\
-  $y=2j+1$, $k,j$ be arbitary integers &definition of even / odd\\
-  $x+y=2(k+j)+1$ &substitution\\
-  Thus, $x+y$ is odd, the contrapositive holds. & definition of odd\\
-  Case 4: $x$ is odd, $y$ is even\\
-  This would be the same as Case 3 but with $x$ and $y$ swapped.\\
-\end{tabular}
-  Therefore, the original proposition holds by proof by contrapositive with cases.\\
-  b) Similarly, proof by contrapositive with cases:\\
-  The contrapositive is ($x+y$ is even $\rightarrow (x-y)^2$ is even\\
+	a) Proof by contrapositive with cases\\
+	First, the contraposition is:\\
+	($x$ is odd $\lor$ $y$ is odd)$\land$ ($x$ is even $\lor$ $y$ is even) $\rightarrow$ $x+y$ is odd.\\
+	\begin{tabular}{ll}
+		Assume arbitary integers $x$ and $y$          & premise                  \\
+		Case 1: $x$ is even, $y$ is even                                         \\
+		$x=2k$, $y=2j$, $k,j$ be arbitary integers    & definition of even       \\
+		$x+y=2k+2j=2(k+j)$                            & substitution             \\
+		Thus, $x+y$ is even.                          & definition of even       \\
+		Case 2: $x$ is odd, $y$ is odd                                           \\
+		$x=2k+1$,$y=2j+1$                             & definition of odd        \\
+		$x+y=2(k+j+1)$                                & substitution             \\
+		Thus, $x+y$ is even.                          & definition of even       \\
+		Case 3: $x$ is even, $y$ is odd                                          \\
+		$x=2k$                                                                   \\
+		$y=2j+1$, $k,j$ be arbitary integers          & definition of even / odd \\
+		$x+y=2(k+j)+1$                                & substitution             \\
+		Thus, $x+y$ is odd, the contrapositive holds. & definition of odd        \\
+		Case 4: $x$ is odd, $y$ is even                                          \\
+		This would be the same as Case 3 but with $x$ and $y$ swapped.           \\
+	\end{tabular}
+	Therefore, the original proposition holds by proof by contrapositive with cases.\\
+	b) Similarly, proof by contrapositive with cases:\\
+	The contrapositive is ($x+y$ is even $\rightarrow (x-y)^2$ is even\\
 
-  \begin{tabular}{ll}
-  a) concludes that ($x$ is even $\land y$ is even) or ($x$ is odd $\land y$ is odd) & premise\\
-  Thus, there are two cases to consider\\
-  Case 1:$x$ is even $\land y$ is even\\
-  Let $x=2k, y=2j,k,j$ be arbitary integers &definition of even\\
-  $(x-y)^2=(2k-2j)^2=(2(k-j))^2=2(2k^2-4kj+2j^2)$ &substitution\\
-  Let integer $l$ be $2k^2-4kj+2j^2$ \\
-  $(x-y)^2=2l$ &substitution\\
-  Thus, $(x-y)^2$ is even. & definition of even\\
-  Case 2:$x$ is odd $\land y$ is odd\\
-  Similar to Case 1,\\
-  Let $x=2k+1, y=2j+1, k,j$ be arbitary integers &definition of odd\\
-  $(x-y)^2=(2k+1-2j-1)^2=(2k-2j)^2=$\\
-  $(2(k-j))^2=2(2k^2-4kj+2j^2)$ &substitution\\
-  Thus, $(x-y)^2$ is even. & definition of even\\
-  \end{tabular}
-  \\Therefore, the original proposition holds by proof by contrapositive with cases.\\
+	\begin{tabular}{ll}
+		a) concludes that ($x$ is even $\land y$ is even) or ($x$ is odd $\land y$ is odd) & premise            \\
+		Thus, there are two cases to consider                                                                   \\
+		Case 1:$x$ is even $\land y$ is even                                                                    \\
+		Let $x=2k, y=2j,k,j$ be arbitary integers                                          & definition of even \\
+		$(x-y)^2=(2k-2j)^2=(2(k-j))^2=2(2k^2-4kj+2j^2)$                                    & substitution       \\
+		Let integer $l$ be $2k^2-4kj+2j^2$                                                                      \\
+		$(x-y)^2=2l$                                                                       & substitution       \\
+		Thus, $(x-y)^2$ is even.                                                           & definition of even \\
+		Case 2:$x$ is odd $\land y$ is odd                                                                      \\
+		Similar to Case 1,                                                                                      \\
+		Let $x=2k+1, y=2j+1, k,j$ be arbitary integers                                     & definition of odd  \\
+		$(x-y)^2=(2k+1-2j-1)^2=(2k-2j)^2=$                                                                      \\
+		$(2(k-j))^2=2(2k^2-4kj+2j^2)$                                                      & substitution       \\
+		Thus, $(x-y)^2$ is even.                                                           & definition of even \\
+	\end{tabular}
+	\\Therefore, the original proposition holds by proof by contrapositive with cases.\\
 \end{solution}
 
 
@@ -169,89 +169,89 @@ Prove the following for all integers $x$ and $y$:
 \textbf{Prove or disprove} the following: There exist integers $x$ and $y$ so that $20x + 4y = 1$.
 
 \begin{solution}
-Disproof by contradiction:\\
-\begin{tabular}{ll}
-  Assume $\exists x \exists y$such that $20x + 4y=1(x,y \in \mathbb{Z})$ & premise\\
-  $20x+4y=2(10x+2y)$ & factor\\
-  Let arbitary integer $k=10x+2y$, $20x+4y=2k$ &substitution\\
-  Thus, $20x+4y$ is even &definition of even\\
-  $1=2 \times 0 + 1$, thus $1$ is odd &definition of odd\\
-  Thus $even = odd$, which clearly contradicts\\
-  Therefore, disproved the original proposition by contradiction.
-\end{tabular}
+	Disproof by contradiction:\\
+	\begin{tabular}{ll}
+		Assume $\exists x \exists y$such that $20x + 4y=1(x,y \in \mathbb{Z})$ & premise            \\
+		$20x+4y=2(10x+2y)$                                                     & factor             \\
+		Let arbitary integer $k=10x+2y$, $20x+4y=2k$                           & substitution       \\
+		Thus, $20x+4y$ is even                                                 & definition of even \\
+		$1=2 \times 0 + 1$, thus $1$ is odd                                    & definition of odd  \\
+		Thus $even = odd$, which clearly contradicts                                                \\
+		Therefore, disproved the original proposition by contradiction.
+	\end{tabular}
 \end{solution}
 
 
 \subsection*{\probnum What's Nunya? Nunya Products are Negative. [12 points]}
 Given any three real numbers, prove that the product of two of them will always be non-negative.
 \begin{solution}
-  Proof by cases:\\
-  \begin{tabular}{ll}
-    Let $x,y,z \in \mathbb{R}$ & premise\\
-    Case 1: $x \ge 0, y \ge 0, z \ge 0$\\
-    $xy \ge 0$\\
-    Case 2: $x \ge 0, y \ge 0, z \le 0$\\
-    $xy \ge 0$\\
-    Case 3: $x \ge 0, y \le 0, z \le 0$\\
-    $yz \ge 0$\\
-    Case 4: $x \le 0, y \le 0, z \le 0$\\
-    $xy \ge 0$\\
-    Case 5: $x \le 0, y \le 0, z \ge 0$\\
-    $xy \ge 0$\\
-    Case 6: $x \le 0, y \ge 0, z \ge 0$\\
-    $yz \ge 0$\\
-    Case 7: $x \le 0, y \ge 0, z \le 0$\\
-    $xz \ge 0$\\
-    Case 8: $x \ge 0, y \le 0, z \ge 0$\\
-    $xz \ge 0$\\
-  \end{tabular}
-    \\WLOG, the product of two of the three real numbers will always be non-negative.
+	Proof by cases:\\
+	\begin{tabular}{ll}
+		Let $x,y,z \in \mathbb{R}$ & premise \\
+		Case 1: $x \ge 0, y \ge 0, z \ge 0$  \\
+		$xy \ge 0$                           \\
+		Case 2: $x \ge 0, y \ge 0, z \le 0$  \\
+		$xy \ge 0$                           \\
+		Case 3: $x \ge 0, y \le 0, z \le 0$  \\
+		$yz \ge 0$                           \\
+		Case 4: $x \le 0, y \le 0, z \le 0$  \\
+		$xy \ge 0$                           \\
+		Case 5: $x \le 0, y \le 0, z \ge 0$  \\
+		$xy \ge 0$                           \\
+		Case 6: $x \le 0, y \ge 0, z \ge 0$  \\
+		$yz \ge 0$                           \\
+		Case 7: $x \le 0, y \ge 0, z \le 0$  \\
+		$xz \ge 0$                           \\
+		Case 8: $x \ge 0, y \le 0, z \ge 0$  \\
+		$xz \ge 0$                           \\
+	\end{tabular}
+	\\WLOG, the product of two of the three real numbers will always be non-negative.
 \end{solution}
 
 
 \subsection*{\probnum Element or Subset? [8 points]}
 Let $A = \{1,2,\text{``a"}\}$. State whether each statement is true or false. Give a brief explanation if false (you do not need to justify why a statement is true).
 \begin{qparts}
-    \item $\text{``a"}\in A$ 
-    \item $\text{``a"}\subseteq A$ 
-    \item $\{1,2\} \in A$ 
-    \item $\{1,2\} \subseteq A$
+	\item $\text{``a"}\in A$
+	\item $\text{``a"}\subseteq A$
+	\item $\{1,2\} \in A$
+	\item $\{1,2\} \subseteq A$
 \end{qparts}
 
 \begin{solution}
-a) T\\
-b) F This is because for $\text{``a"}$ to be a set, it needs brackets\\
-c) F This is because for $\{1,2\}$ is not an element in the set\\
-d) T\\
+	a) T\\
+	b) F This is because for $\text{``a"}$ to be a set, it needs brackets\\
+	c) F This is because for $\{1,2\}$ is not an element in the set\\
+	d) T\\
 \end{solution}
 
 \subsection*{\probnum Ready, $\{s,e,t\}$, go! [12 points]}
 Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute the following, where complements are taken within $S.$ Show intermediate steps as part of your justification.
 
 \begin{qparts}
-    \item $\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)$ 
-    \item $\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)$  
-    \item $\{A \times B\} \cap \{S \times B\}$
-    \item $(A \times B) \cap (S \times B)$
+	\item $\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)$
+	\item $\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)$
+	\item $\{A \times B\} \cap \{S \times B\}$
+	\item $(A \times B) \cap (S \times B)$
 \end{qparts}
 
 \begin{solution}
-  a) $A \cap B = \{2\}, \overline C = \{1,2,3\}$\\
-  $(A \cap B) \cap \overline C$ = \{2\}\\
-  $\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)= \{\emptyset, 2\} $\\
-  \\b)$\overline{C} - B = \{1\}$\\
-  $( \overline{C} - B ) \cap A = \{1\}$\\
-  $\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)=\{\emptyset, 1\} $\\
-  \\c) $A \times B=\{(1,2),(1,3),(2,2),(2,3)\}$ \\
-  $S \times B=\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}$\\
-  $\{A \times B\} \cap \{S \times B\}=$
-  $\{\{(1,2),(1,3),(2,2),(2,3)\}\}$\\
-  $ \cap \{\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}\}$\\
-  $= \{\emptyset\}$\\
-  \\d)$(A \times B) \cap (S \times B)=\{(1,2),(1,3),(2,2),(2,3)\}$
+	a) $A \cap B = \{2\}, \overline C = \{1,2,3\}$\\
+	$(A \cap B) \cap \overline C$ = \{2\}\\
+	$\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)= \{\emptyset, 2\} $\\
+	\\b)$\overline{C} - B = \{1\}$\\
+	$( \overline{C} - B ) \cap A = \{1\}$\\
+	$\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)=\{\emptyset, 1\} $\\
+	\\c) $A \times B=\{(1,2),(1,3),(2,2),(2,3)\}$ \\
+	$S \times B=\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}$\\
+	$\{A \times B\} \cap \{S \times B\}=$
+	$\{\{(1,2),(1,3),(2,2),(2,3)\}\}$\\
+	$ \cap \{\{(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3))\}\}$\\
+	$= \{\emptyset\}$\\
+	\\d)$(A \times B) \cap (S \times B)=\{(1,2),(1,3),(2,2),(2,3)\}$
 
 
-  
+
 
 
 
@@ -262,30 +262,30 @@ Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute th
 Prove that if $A$ and $B$ are sets, then $A\cup (A\cap B) =A$ by proving each side is a subset of the other. This set identity is known as an absorption law. Your answer should be a word proof, and not use any set equivalence laws.
 
 \begin{solution}
-Proof:\\
-We will show that these two sets are equal by showing that each is a subset of the other.\\
-Suppose $x \in A \cup (A \cap B)$. Then $x \in A \lor x \in A \cap B$ by the definition of union.\\
-In the former case, we have $x \in A$, and in the latter case we have $x \in A \land x \in B$ by the definition of intersection.\\
-Thus in any event, $x \in A$, so we have proved that the left-hand side is a subset of the right-hand side.\\
-Conversely, let $x \in A$. Then by the definition of union, $x \in A \cup (A \cap B)$ as well.\\
-Thus we have shown that the right-hand side is a subset of the left-hand side.\\
-Therefore, proved.\\
+	Proof:\\
+	We will show that these two sets are equal by showing that each is a subset of the other.\\
+	Suppose $x \in A \cup (A \cap B)$. Then $x \in A \lor x \in A \cap B$ by the definition of union.\\
+	In the former case, we have $x \in A$, and in the latter case we have $x \in A \land x \in B$ by the definition of intersection.\\
+	Thus in any event, $x \in A$, so we have proved that the left-hand side is a subset of the right-hand side.\\
+	Conversely, let $x \in A$. Then by the definition of union, $x \in A \cup (A \cap B)$ as well.\\
+	Thus we have shown that the right-hand side is a subset of the left-hand side.\\
+	Therefore, proved.\\
 \end{solution}
 
 
 \subsection*{\probnum IceCream-Exclusion [12 points]}
 Out of the 40 EECS 203 staff members, 21 like vanilla ice cream, 18 like chocolate ice cream, and 24 like strawberry ice cream. In addition, 13 like both strawberry and vanilla, and 7 like chocolate and vanilla.
 \begin{parts}
-    \item How many staff members like all three ice cream flavors if 9 staff members like both strawberry and chocolate ice cream, assuming everyone likes at least one type of ice cream?
-    \item How many staff members don't like any of the ice cream flavors if 14 staff members like both strawberry and chocolate ice cream and 3 staff members like all three ice cream flavors?
+	\item How many staff members like all three ice cream flavors if 9 staff members like both strawberry and chocolate ice cream, assuming everyone likes at least one type of ice cream?
+	\item How many staff members don't like any of the ice cream flavors if 14 staff members like both strawberry and chocolate ice cream and 3 staff members like all three ice cream flavors?
 \end{parts}
 
 \begin{solution}
-  Let $V, C, S$ be the population that likes the types of ice cream\\
-  \\a) According to the inclusion-exclusion principle, $|V \cup C \cup S| = |V|+|C|+|S|-|V\cap C|-|V\cap S|-|C\cap S|+|V\cap C\cap S|$  \\
-  $=40-21-18-24+13+7+9=6$\\
-  \\b) Similarly, $|\overline V\cap \overline C\cap \overline S|=40-|V \cup C \cup S|=40-21-18-24+13+7+14-3=8$
- 
+	Let $V, C, S$ be the population that likes the types of ice cream\\
+	\\a) According to the inclusion-exclusion principle, $|V \cup C \cup S| = |V|+|C|+|S|-|V\cap C|-|V\cap S|-|C\cap S|+|V\cap C\cap S|$  \\
+	$=40-21-18-24+13+7+9=6$\\
+	\\b) Similarly, $|\overline V\cap \overline C\cap \overline S|=40-|V \cup C \cup S|=40-21-18-24+13+7+14-3=8$
+
 \end{solution}
 
 
@@ -293,25 +293,25 @@ Out of the 40 EECS 203 staff members, 21 like vanilla ice cream, 18 like chocola
 \section*{Grading of Groupwork 3}
 Using the solutions and Grading Guidelines, grade your Groupwork 3 Problems:
 \begin{itemize}
-    \item Use the table below to grade your past groupwork submission and calculate scores.
-    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
-    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
-    \item For extra credit, write positive comment(s) about your work.
-    \item You don't have to redo problems correctly, but it is recommended!
-    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+	\item Use the table below to grade your past groupwork submission and calculate scores.
+	\item While grading, mark up your past submission. Include this with the table when you submit your grading.
+	\item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+	\item For extra credit, write positive comment(s) about your work.
+	\item You don't have to redo problems correctly, but it is recommended!
+	\item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
 \end{itemize}
 
 \begin{center}
-\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
-\hline
- & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
-\hline
-Problem 1 &+9 &+6 & +2& +2&\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}19/30\\
-\hline
-\Xhline{1.25pt}
-Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}19/30\\
-\hline
-\end{tabular}}
+	\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+			\hline
+			          & (i) & (ii) & (iii) & (iv) & (v)    & (vi)   & (vii)  & (viii) & (ix)   & (x)    & (xi)   & Total:            \\
+			\hline
+			Problem 1 & +9  & +6   & +2    & +2   & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}19/30 \\
+			\hline
+			\Xhline{1.25pt}
+			Total:    &     &      &       &      & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}19/30 \\
+			\hline
+		\end{tabular}}
 \end{center}
 
 
@@ -322,33 +322,33 @@ Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{
 \subsection*{\probnum $\forall$re These $\exists$quiv$\diamondsuit$lent? [30 points]}
 Let $P(x)$ and $Q(x)$ be arbitrary predicates.
 \begin{qparts}
-    \item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
-    \item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
-    \item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
+	\item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
+	\item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
+	\item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
 \end{qparts}
 
 \begin{solution}
-\begin{tabular}{ll}
- a) Disproof:\\
- To disprove $\forall x(P(x) \leftrightarrow Q(x)) \equiv \forall x P(x) \leftrightarrow \forall x Q(x)$,\\
- $P(x)$ and $Q(x)$ has to be sometimes, but not always, true.\\
- Let $P(x)$ be $2 \mid x$ and $Q(x)$ be $3 \mid x$.\\
- The left proposition will be false.\\
- It is because there exists an $x$ such that either proposition but not both is true.\\
- (e.g. $x=4$ or $x=9$ will make it false).\\
- The right, however, will be always true because not all $x$ satisfies both propositions.\\
- Thus, $F \not \equiv T$, it is disproved.\\
- b) Disproof:\\
- Same idea as a),\\
- except for that in the right proposition, $x$ does not have to be the same.\\
- \textcolor{red}{a concrete example?}\\
- c) Disproof:\\
- Same as a) and b),\\
- but with counter examples showing that the proposition does not stand.\\
- \textcolor{red}{a concrete example?}\\
-\end{tabular}
-\\Comments:\\
-Need a specific (counter)example for each.
+	\begin{tabular}{ll}
+		a) Disproof:                                                                                             \\
+		To disprove $\forall x(P(x) \leftrightarrow Q(x)) \equiv \forall x P(x) \leftrightarrow \forall x Q(x)$, \\
+		$P(x)$ and $Q(x)$ has to be sometimes, but not always, true.                                             \\
+		Let $P(x)$ be $2 \mid x$ and $Q(x)$ be $3 \mid x$.                                                       \\
+		The left proposition will be false.                                                                      \\
+		It is because there exists an $x$ such that either proposition but not both is true.                     \\
+		(e.g. $x=4$ or $x=9$ will make it false).                                                                \\
+		The right, however, will be always true because not all $x$ satisfies both propositions.                 \\
+		Thus, $F \not \equiv T$, it is disproved.                                                                \\
+		b) Disproof:                                                                                             \\
+		Same idea as a),                                                                                         \\
+		except for that in the right proposition, $x$ does not have to be the same.                              \\
+		\textcolor{red}{a concrete example?}                                                                     \\
+		c) Disproof:                                                                                             \\
+		Same as a) and b),                                                                                       \\
+		but with counter examples showing that the proposition does not stand.                                   \\
+		\textcolor{red}{a concrete example?}                                                                     \\
+	\end{tabular}
+	\\Comments:\\
+	Need a specific (counter)example for each.
 \end{solution}
 
 \pagebreak
@@ -360,44 +360,42 @@ Need a specific (counter)example for each.
 Show that if $r$ is an irrational number, there is a unique integer $n$ such that the distance between $r$ and $n$ is \textit{strictly} less than $\frac 12.$
 
 \begin{solution}
-Proof by contradiction:\\
-\begin{tabular}{ll}
-  Assume $r\notin \mathbb{Q}, \exists n_1\exists n_2 [|r-n_1|<\frac {1}{2} \land |r-n_2|<\frac {1}{2}](n_1,n_2 \in \mathbb{Z})$ &premise\\
-  $|n_1-n_2|\le |r-n_1|+|r-n_2|$&triangle inequality\\
-  $|n_1-n_2|\le \frac{1}{2} + \frac{1}{2} = 1$&substitution\\
-  Since $n_1,n_2\in \mathbb{Z}$,\\
-  they cannot have a distance $< 1$,\\
-  this contradicts with the premise&contradiction\\
-\end{tabular}
-\\Therefore, the original proposition holds by proof by contradiction.
+	Proof by contradiction:\\
+	\begin{tabular}{ll}
+		Assume $r\notin \mathbb{Q}, \exists n_1\exists n_2 [|r-n_1|<\frac {1}{2} \land |r-n_2|<\frac {1}{2}](n_1,n_2 \in \mathbb{Z})$ & premise             \\
+		$|n_1-n_2|\le |r-n_1|+|r-n_2|$                                                                                                & triangle inequality \\
+		$|n_1-n_2|\le \frac{1}{2} + \frac{1}{2} = 1$                                                                                  & substitution        \\
+		Since $n_1,n_2\in \mathbb{Z}$,                                                                                                                      \\
+		they cannot have a distance $< 1$,                                                                                                                  \\
+		this contradicts with the premise                                                                                             & contradiction       \\
+	\end{tabular}
+	\\Therefore, the original proposition holds by proof by contradiction.
 \end{solution}
 
 
 \subsection*{\probnum Set in Stone [8 points]}
 Prove using set identities that
-$$(A \cap C) - (B \cap A) = (C - B) \cap A$$ 
+$$(A \cap C) - (B \cap A) = (C - B) \cap A$$
 for any three sets $A,\ B$ and $C.$
 
 \begin{solution}
-  \begin{tabular}{ll}
-    Let $x\in (A \cap C) - (B \cap A)$ &premise\\
-    $x\in (A \cap C) \land x\notin (B \cap A)$ &definition of minus\\
-    $x\in A \land x\in C \land (x\notin B \lor x\notin A)$ &DeMorgan's Laws\\
-    $(x\in A \land x\in C \land x\notin B) \lor (x\in A \land x\in C \land x\notin A)$ &distributive\\
-    $(x\in A \land x\in C \land x\notin B) \lor F$ &\\
-    $x\in (C-B)\cap A$ &definition of minus / intersect\\
+	\begin{tabular}{ll}
+		Let $x\in (A \cap C) - (B \cap A)$                                                 & premise                         \\
+		$x\in (A \cap C) \land x\notin (B \cap A)$                                         & definition of minus             \\
+		$x\in A \land x\in C \land (x\notin B \lor x\notin A)$                             & DeMorgan's Laws                 \\
+		$(x\in A \land x\in C \land x\notin B) \lor (x\in A \land x\in C \land x\notin A)$ & distributive                    \\
+		$(x\in A \land x\in C \land x\notin B) \lor F$                                     &                                 \\
+		$x\in (C-B)\cap A$                                                                 & definition of minus / intersect \\
 
-    \\Conversely,\\
-    Let $x\in (C-B)\cap A$&premise\\
-    $(x\in C \land x\notin B)\cap A$&definition of minus\\
-    $(x\in C \cap x \in A) \land (x\notin B \cap A) $&distributive\\
-    $x\in (A \cap C) \land x\notin (B \cap A)$ &definition of minus\\
-    $x\in (A \cap C) - (B \cap A)$\\
-
-
-    \\Thus, proved that each side is a subset of the other.
+		\\Conversely,\\
+		Let $x\in (C-B)\cap A$                                                             & premise                         \\
+		$(x\in C \land x\notin B)\cap A$                                                   & definition of minus             \\
+		$(x\in C \cap x \in A) \land (x\notin B \cap A) $                                  & distributive                    \\
+		$x\in (A \cap C) \land x\notin (B \cap A)$                                         & definition of minus             \\
+		$x\in (A \cap C) - (B \cap A)$                                                                                       \\
 
 
-  \end{tabular}
+		\\Thus, proved that each side is a subset of the other.
+	\end{tabular}
 \end{solution}
 \end{document}
