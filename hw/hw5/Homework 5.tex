@@ -106,8 +106,8 @@ Let $P(n)$ be the statement that $3 + 3 \cdot 5 + 3 \cdot 5^2 + ... + 3 \cdot 5^
 	a) $P(0)$ is the statement that $3 + 3 \cdot 5 + 3 \cdot 5^2 + ... + 3 \cdot 5^0 = \frac{3 (5^{0+1} - 1)}{4}$.\\
 	Base case: $P(0)$, LHS$=3 \cdot 5^0=3$, RHS$=\frac{3(5-1)}{4}=\frac{3(4)}{4}=3$\\
 	Since LHS=RHS, the base case holds.\\
-	\textcolor{red}{ (do i have to write out the statement?)
-	}\\ b) Let $k$ be arbitary $ k \in \mathbb{Z}^+$ , want to show $P(k) \rightarrow P(k+1)$\\
+	\textcolor{red}{ (do i have to write out the statement?)}
+	\\ b) Let $k$ be arbitary $ k \in \mathbb{Z}^+$ , want to show $P(k) \rightarrow P(k+1)$\\
 	c) The inductive hypothesis is assume that $P(k)$ is true.\\
 	d)\\
 	\begin{tabular}{ll}
@@ -136,14 +136,57 @@ Let $P(n)$ be the following inequality: \(2^n > n\). Use weak induction to prove
 	\item Conclude your proof by explaining why the above shows $P(n)$ is true for all positive integers $n$.
 \end{parts}
 \begin{solution}
-
+	a) $P(1)$ is the statement that $2^1>1$.\\
+	Base case: $P(1)$, LHS$=2$, RHS$=1$. Since LHS$>$RHS, the base case holds.\\
+	b) Want to show $P(k) \rightarrow P(k+1)$\\
+	c) The inductive hypothesis is assume that $P(k)$ is true.\\
+	d)\\
+	\begin{tabular}{ll}
+		Assume $P(k)$. \\
+		LHS:           \\
+		$=2^{k+1}$     \\
+		$=2\cdot 2^k$  \\
+		$=k+k$ & I.H.  \\
+		RHS:           \\
+		$=k+1$         \\
+		Since $k>1, k+k>k+1$, LHS$>$RHS, $P(k+1)$ holds.
+	\end{tabular}
+	\\e) This proof shows $P(n)$ is true by proof by weak induction.
 \end{solution}
 
 \subsection*{\probnum Divisible Induction [16 points]}
 Prove by induction that 5 divides $3^{4n}+4$ whenever $n$ is a positive integer
 
 \begin{solution}
+	Proof:\\
+	Proof by weak induction.\\
+	\begin{tabular}{ll}
+		Let $P(n)$ be the statement $\forall n, 5\mid 3^{4n}+4, n\in \mathbb{Z}^+$                         \\
+		In other words, $\forall n, \exists m$ such that $3^{4n}+4=5m, m\in \mathbb{Z}, n\in \mathbb{Z}^+$ \\
+		Want to show: $P(k)\rightarrow P(k+1)$                                                             \\
+		Inductive step:                                                                                    \\
+		Assume $P(k)$.                                                                                     \\
+		LHS:                                                                                               \\
+		$3^{4(n+1)}+4$                                                                                     \\
+		$=3^{4n+4}+4$                                                                                      \\
+		$=3^{4n}\cdot 3^4+4$                                                                               \\
+		$=(5m-4)\cdot 3^4+4$                                                                               \\
+		$=81\cdot 5m-4\cdot 3^4+4$                                                                         \\
+		$=3^4\cdot 5m -4\cdot (3^4-1)$                                                                     \\
+		$=3^4\cdot 5m -4\cdot 80$                                                                          \\
+		$=5(3^4m-64)$                                                                                      \\
+		Let  $j=3^4m-64$                                                                                   \\
+		$=5j$                                                                                              \\
+		Since $j$ is an integer, $P(k+1)$ holds.      & definition of divide                               \\
 
+
+		Base case:                                                                                         \\
+		$P(1)=3^4+4=85$                                                                                    \\
+		Let $j$ be a number, $5j=85, j=17$                                                                 \\
+		Since $j$ is an integer, the base case holds. & definition of divide                               \\
+
+		By weak induction, $P(n)$ is true for all positive integers $n$.
+	\end{tabular}
 \end{solution}
 
 
@@ -155,7 +198,25 @@ Let $P(n)$ be the predicate ``$n$ cents can be formed using $3$ and $7$ cent sta
 \end{qparts}
 
 \begin{solution}
+	a) Consider $c=10=3+7$ whereas $c=11$ does not work. Thus, the smallest $c\in \mathbb N$ so that $\forall n\ge c,\ P(n)$ is $c=12$.\\
+	b)\\
+	Proof:                                                                                  \\
+	Proof by strong induction.                                                              \\
+	Let $P(n)$ be the statement that $n$ cents can be formed using $3$ and $7$ cent stamps. \\
+	Let $k\in \mathbb{Z}^+, k\ge 14, k$ be arbitary                                         \\
+	\begin{tabular}{ll}
+		Inductive step:                                          \\
+		Assume $P(j), \forall j(12\le j\le k-1)$                 \\
+		Want to show: $P(j)\rightarrow P(j+3)$                   \\
+		$j=3a+7b$ for some $a,b\in \mathbb{Z}^+$, $a+b=j$ & I.H. \\
+		Then $j+3=3(a+1)+7b$                                     \\
+		Since $a+1\in \mathbb{Z}^+$, $P(j+3)$ holds.             \\
 
+		Base case:                                               \\
+		$P(12)$: $12=3\cdot 4$                                   \\
+		$P(13)$: $13=3\cdot 2+7$                                 \\
+		$P(14)$: $14=7\cdot 2$                                   \\
+	\end{tabular}
 \end{solution}
 
 
@@ -163,6 +224,34 @@ Let $P(n)$ be the predicate ``$n$ cents can be formed using $3$ and $7$ cent sta
 Assume that a chocolate bar consists of $n\geq 1$ squares arranged in a rectangular pattern. Any rectangular piece of the bar including the entire bar can be broken along a vertical or a horizontal line separating the squares. Assuming you can only break the bar along one axis at a time, determine how many breaks you must successively make to break the bar into $n$ separate squares. Use \textbf{strong induction} to prove your answer.
 
 \begin{solution}
+	Proof: \\
+	Proof by strong induction. \\
+	% red text here, i have a question about writing out the P(n)
+	\textcolor {red}{question} \\
+	Let $P(n)$ be the statement that $n-1$ breaks are needed to break the bar into $n$ separate squares. \\
+	Let $k\in \mathbb{Z}^+, k\ge 2, k$ be arbitary \\
+	\begin{tabular}{ll}
+		Inductive step:                                                                      \\
+		Assume $P(j), \forall j(1\le j\le k-1)$                                              \\
+		Want to show: $P(k)$                                                                 \\
+		\textcolor {red}{question: do i need to write out what i is}                         \\
+		Take a chocolate bar with $k$ squares.                                               \\
+		Break the bar into two pieces, one with $i$ squares and the other with $k-i$ square. \\
+
+		Since it always starts with breaking chocolate into two separate pieces,             \\
+		$P(k)=P(i)+P(k-i)+1=j-1$                                                             \\
+		LHS:                                                                                 \\
+		$=i-1+k-i-1+1$ & I.H.                                                                \\
+		$=k-1$                                                                               \\
+	\end{tabular}
+	\begin{tabular}{ll}
+		RHS:                         \\
+		$P(k)=k-1$                   \\
+		Since LHS=RHS, $P(k)$ holds. \\
+		Base case:                   \\
+		$P(1)=1-1=0$                 \\
+	\end{tabular}
+	\\	Thus, by strong induction, $P(n)$ is true for all positive integers $n$.
 
 \end{solution}
 
@@ -175,7 +264,21 @@ We are sending messages made up of the characters ``a'', ``b'', and ``c''. An ``
 	\item Give the initial conditions for your recurrence. Include only the minimum necessary conditions.
 \end{qparts}
 
+% template to phrase the a)
+% If the lastpastrydecoratedwas acookie, thentherearean−2 possibleways to
+% decorate. If the lastpastrydecoratedwasacupcake, therearean−3ways. If the
+% lastpastrydecoratedwasapie, therearean−3ways. Therefore,ourrecurrenceis
+% an=an−2+an−3+an−3=an−2+2an−3.
 \begin{solution}
+	a) Walking Backwards:\\
+	If the last character is ``a'', then there are $M(n-1)$ possible ways to send the message.\\
+	If the last character is ``b'' or ``c'', then there are $M(n-2)$ possible ways to send the message.\\
+	Therefore, the recurrence relation is
+	$M(n)=M(n-1)+M(n-2)+M(n-2)$
+	$=M(n-1)+2M(n-2)$\\
+	b) There is one message that can be sent in 0 microseconds, and that is the empty message.\\
+	There is one message that can be sent in 1 microsecond, and that is the message ``a''.\\
+	$M(0)=1, M(1)=1$
 
 \end{solution}
 
@@ -193,6 +296,20 @@ Let $L(n)$ be the number of possible sequences of locations for $n$ naps, where 
 \end{qparts}
 
 \begin{solution}
+	a) On nap 1, Carrot can sleep in one of the 3 locations, i.e. the rug, the bed, or the sink.\\
+	Case 1: Rug\\
+	For the next nap, no restrictions, plus Carrot can also sleep on the ledge.\\
+	Thus, the number of possible sequences of locations for $n$ naps is $L(n-1)$.\\
+	Case 2: Bed\\
+	For the next nap, Carrot cannot sleep on the ledge.\\
+	Thus, the number of possible sequences of locations for $n$ naps is $L(n-1)$.\\
+	Case 3: Sink\\
+	For the next nap, Carrot cannot sleep in the sink twice in a row or on the ledge.\\
+	Thus, the number of possible sequences of locations for $n$ naps is $L(n-2)$.\\
+	Therefore, the recurrence relation is $L(n)=2L(n-1)+L(n-2)$.\\
+	b) If Carrot does not take naps, there are zero locations.\\
+	There are 3 locations that can be slept in 1 nap, i.e. rug, bed, or the sink.\\
+	$L(0)=1, L(1)=3$
 
 \end{solution}
 
