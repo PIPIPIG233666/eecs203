@@ -296,7 +296,29 @@ Let $L(n)$ be the number of possible sequences of locations for $n$ naps, where 
 If $n$ lines are drawn on a plane, no two lines are parallel, and all pairs of lines intersect at different points, how many sections do they separate the plane into? Assume that no more than two lines intersect at any one point.  Prove your result using weak induction. Don't include unneeded base cases.
 
 \begin{solution}
-
+	\begin{tabular}{ll}
+		Proof:                                                                                       \\
+		Proof by weak induction.                                                                     \\
+		Let $P(n)$ be the statement that $n$ lines drawn on a plane separate the plane               \\
+		into $\frac{n(n+1)}{2}+1$ sections.                                                          \\
+		Let $k\in \mathbb{Z}^+, k\ge 1, k$ be arbitary                                               \\
+		Inductive step:                                                                              \\
+		Assume $P(k)$.                                                                               \\
+		Want to show: $P(k+1)$                                                                       \\
+		Take a plane with $k$ lines.                                                                 \\
+		Add a new line.                                                                              \\
+		This new line intersects the $k$ lines at $k$ different points.                              \\
+		This new line separates the plane into $k+1$ new sections.                                   \\
+		Thus, the total number of sections is:                                                       \\
+		$\frac{k(k+1)}{2}+1+k+1=\frac{k^2+k+2k+2}{2}+1=\frac{k^2+3k+2}{2}+1=\frac{(k+1)(k+2)}{2}+1$. \\
+		Since $P(k+1)$ holds, $P(n)$ is true for all positive integers $n$.                          \\
+		Base case:                                                                                   \\
+		LHS:                                                                                         \\
+		$P(1)=\frac{1(1+1)}{2}+1=2$                                                                  \\
+		RHS:                                                                                         \\
+		$P(1)=P(0)+1=1+1=2$                                                                          \\
+	\end{tabular}
+	\\Thus, by weak induction, $P(n)$ is true for all positive integers $n$.
 \end{solution}
 
 \subsection*{\probnum Splitting Stones [18 points]}
@@ -312,7 +334,27 @@ Prove using strong induction that no matter how you split the piles, the overall
 
 \begin{solution}
 
+	\begin{tabular}{ll}
+		Proof:                                                                                   \\
+		Proof by strong induction.                                                               \\
+		Let $P(n)$ be the statement that the overall product is less than or equal to $n^n$.     \\
+		Let $k\in \mathbb{Z}^+, k\ge 1, k$ be arbitary                                           \\
+		Inductive step:                                                                          \\
+		Assume $P(j), \forall j(1\le j\le k-1)$                                                  \\
+		Want to show: $P(k)$                                                                     \\
+		Take a pile of $k$ stones.                                                               \\
+		Split the pile into two smaller piles.                                                   \\
+		Let $i$ be the number of stones in the smaller pile.                                     \\
+		Since $i\le k-1$, by I.H., the overall product of the smaller pile is $\le (k-1)^{k-1}$. \\
+		The overall product of the larger pile is $\le (k-i)^{k-i}$.                             \\
+		The overall product of the pile of $k$ stones is $\le i^{i}\cdot (k-i)^{k-i}$.           \\
+		Since $i\le k-1$, $i^{i}\le (k-1)^{k-1}$.                                                \\
+		Thus, the overall product of the pile of $k$ stones is:                                  \\
+		$\le (k-1)^{k-1}\cdot (k-1)^{k-1}=(k-1)^{k-1}\cdot (k-1)^{k-1}=(k-1)^{k}$.               \\
+		Since $P(k)$ holds, $P(n)$ is true for all positive integers $n$.                        \\
+		Base case:                                                                               \\
+		$P(1)=1^1=1$                                                                             \\
+		Thus, by strong induction, $P(n)$ is true for all positive integers $n$.
+	\end{tabular}
 \end{solution}
-
-
 \end{document}
