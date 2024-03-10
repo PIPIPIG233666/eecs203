@@ -79,26 +79,26 @@
 \section*{Grading of Groupwork \prevhwnum{}}
 Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
 \begin{itemize}
-    \item Use the table below to grade your past groupwork submission and calculate scores.
-    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
-    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
-    \item For extra credit, write positive comment(s) about your work.
-    \item You don't have to redo problems correctly, but it is recommended!
-    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+	\item Use the table below to grade your past groupwork submission and calculate scores.
+	\item While grading, mark up your past submission. Include this with the table when you submit your grading.
+	\item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+	\item For extra credit, write positive comment(s) about your work.
+	\item You don't have to redo problems correctly, but it is recommended!
+	\item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
 \end{itemize}
 
 \begin{center}
-\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
-\hline
- & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
-\hline
-Problem 1 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/12\\
-\hline 
-Problem 2 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/18\\
-\Xhline{1.25pt}
-Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
-\hline
-\end{tabular}}
+	\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+			\hline
+			          & (i)    & (ii)   & (iii)  & (iv)   & (v)    & (vi)   & (vii)  & (viii) & (ix)   & (x)    & (xi)   & Total:            \\
+			\hline
+			Problem 1 & 2      & 2      & 2      & 2      & 2      & 2      & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}12/12 \\
+			\hline
+			Problem 2 & 0      & 3      & 3      & 0      & 0      & 3      & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}12/18 \\
+			\Xhline{1.25pt}
+			Total:    & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}24/30 \\
+			\hline
+		\end{tabular}}
 \end{center}
 \section*{Comments}
 
@@ -166,10 +166,20 @@ Prove using strong induction that no matter how you split the piles, the overall
 		Since $i\le k-1$, $i^{i}\le (k-1)^{k-1}$.                                                \\
 		Thus, the overall product of the pile of $k$ stones is:                                  \\
 		$\le (k-1)^{k-1}\cdot (k-1)^{k-1}=(k-1)^{k-1}\cdot (k-1)^{k-1}=(k-1)^{k}$.               \\
+
 		Since $P(k)$ holds, $P(n)$ is true for all positive integers $n$.                        \\
 		Base case:                                                                               \\
 		$P(1)=1^1=1$                                                                             \\
 		Thus, by strong induction, $P(n)$ is true for all positive integers $n$.
 	\end{tabular}
+
+	% red text since this is the mark up
+	\begin{align*}
+		\color{red}{Mark-up}                                                     \\
+		\text{product} & \leq 2^j\cdot j^j\cdot (k-j)^{k-j} \tag{IH}             \\
+		               & =(2j)^j \cdot (k-j)^{k-j} \tag{$a^c\cdot b^c=(ab)^c$}   \\
+		               & \leq k^j \cdot k^{k-j} \tag{$j\leq k-j,$ so $2j\leq k$} \\
+		               & =k^k.
+	\end{align*}
 \end{solution}
 \end{document}
