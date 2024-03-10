@@ -1,0 +1,155 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+
+\newcommand{\commentsection}[1]{
+  \begin{mdframed}[roundcorner=10pt,leftmargin=1cm,%
+                     rightmargin=1cm,backgroundcolor=SkyBlue!20,%
+                     innertopmargin=\baselineskip,%
+                     skipabove=\baselineskip,%
+                     skipbelow=\baselineskip]
+  #1
+  \end{mdframed}
+}
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{4}
+\newcommand{\hwnum}{4}
+
+\begin{document}
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+	\item Use the table below to grade your past groupwork submission and calculate scores.
+	\item While grading, mark up your past submission. Include this with the table when you submit your grading.
+	\item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+	\item For extra credit, write positive comment(s) about your work.
+	\item You don't have to redo problems correctly, but it is recommended!
+	\item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+	\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+			\hline
+			          & (i)    & (ii)   & (iii)  & (iv)   & (v)    & (vi)   & (vii)  & (viii) & (ix)   & (x)    & (xi)   & Total:           \\
+			\hline
+			Problem 1 & 0      & 0      & 0      & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}0/12 \\
+			\hline
+			Problem 2 & 1      & 1      & 0      & 1      & 0      & 0      & 1      & 0      & \filcl & \filcl & \filcl & \hspace{1cm}5/8  \\
+			\Xhline{1.25pt}
+			Total:    & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}5/20 \\
+			\hline
+		\end{tabular}}
+\end{center}
+
+\section*{Comments}
+
+
+\commentsection{I went to OH and tried. Good effort although the solutions were different from the answer key.}
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+
+\subsection*{\probnum Mostly Rational [12 points]}
+Show that if $r$ is an irrational number, there is a unique integer $n$ such that the distance between $r$ and $n$ is \textit{strictly} less than $\frac 12.$
+
+\begin{solution}
+	\textcolor{red}{Different from the answer key, but still correct?}\\
+	Proof by contradiction:\\
+	\begin{tabular}{ll}
+		Assume $r\notin \mathbb{Q}, \exists n_1\exists n_2 [|r-n_1|<\frac {1}{2} \land |r-n_2|<\frac {1}{2}](n_1,n_2 \in \mathbb{Z})$ & premise             \\
+		$|n_1-n_2|\le |r-n_1|+|r-n_2|$                                                                                                & triangle inequality \\
+		$|n_1-n_2|\le \frac{1}{2} + \frac{1}{2} = 1$                                                                                  & substitution        \\
+		Since $n_1,n_2\in \mathbb{Z}$,                                                                                                                      \\
+		they cannot have a distance $< 1$,                                                                                                                  \\
+		this contradicts with the premise                                                                                             & contradiction       \\
+	\end{tabular}
+	\\Therefore, the original proposition holds by proof by contradiction.
+\end{solution}
+
+
+\subsection*{\probnum Set in Stone [8 points]}
+Prove using set identities that
+$$(A \cap C) - (B \cap A) = (C - B) \cap A$$
+for any three sets $A,\ B$ and $C.$
+
+\begin{solution}
+	\textcolor{red}{Different from the answer key, but still correct?}\\
+	\begin{tabular}{ll}
+		Let $x\in (A \cap C) - (B \cap A)$                                                 & premise                         \\
+		$x\in (A \cap C) \land x\notin (B \cap A)$                                         & definition of minus             \\
+		$x\in A \land x\in C \land (x\notin B \lor x\notin A)$                             & DeMorgan's Laws                 \\
+		$(x\in A \land x\in C \land x\notin B) \lor (x\in A \land x\in C \land x\notin A)$ & distributive                    \\
+		$(x\in A \land x\in C \land x\notin B) \lor F$                                     &                                 \\
+		$x\in (C-B)\cap A$                                                                 & definition of minus / intersect \\
+
+		\\Conversely,\\
+		Let $x\in (C-B)\cap A$                                                             & premise                         \\
+		$(x\in C \land x\notin B)\cap A$                                                   & definition of minus             \\
+		$(x\in C \cap x \in A) \land (x\notin B \cap A) $                                  & distributive                    \\
+		$x\in (A \cap C) \land x\notin (B \cap A)$                                         & definition of minus             \\
+		$x\in (A \cap C) - (B \cap A)$                                                                                       \\
+
+
+		\\Thus, proved that each side is a subset of the other.
+	\end{tabular}
+\end{solution}
+\end{document}
