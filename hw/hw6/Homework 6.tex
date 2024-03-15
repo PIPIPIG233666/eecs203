@@ -102,9 +102,15 @@ Show your intermediate steps or briefly explain your process to justify your wor
 
 \begin{solution}
 	a) $58\pmod{18} = 4$, so $a=4$.\\
+	This is because $58=18\cdot 3+4$.\\
 	b) $-142\pmod{7} = -2$, so $a=-2+7=5$.\\
+	This is because $-142=7\cdot (-21)+5$.\\
 	c) $17\pmod{29} = 17$, so $a=17-29=-12$.\\
-	d) $-11\pmod{21} = -11$, so $a=-11+21\cdot 6=115$.
+	This is because $17=29\cdot 0+17$.\\
+	To make $-14\leq a\leq 14$, we subtract $29$ from $17$.\\
+	d) $-11\pmod{21} = -11$, so $a=-11+21\cdot 6=115$.\\
+	This is because $-11=21\cdot (-1)+10$.\\
+	To make $110\leq a\leq 130$, we add $21\cdot 6$ to $-11$.
 \end{solution}
 
 \subsection*{\probnum Multiple Modular Madness [14 points]}
@@ -194,7 +200,7 @@ Prove that if $n$ is an odd integer, then $n^2 \equiv 1 \pmod 8.$
 		$n^2=4(4m^2+6m+2)+1=16m^2+24m+9$.                 & substitution             \\
 		$n^2\equiv 9\pmod 8\equiv 1\pmod 8$.              & Definition of congruence \\
 		WLOG, all cases have been exhausted.              &                          \\
-		Therefore, $n^2\equiv 1\pmod 8$.                  &                          \\
+		Therefore, $n^2\equiv 1\pmod 8$.                  &
 	\end{tabular}
 
 \end{solution}
