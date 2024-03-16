@@ -1,0 +1,614 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{5}
+\newcommand{\hwnum}{6}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, Mar. 14th}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $7+2$
+\hspace{3cm}
+Total Points: $100+30$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Mod Warm-up [12 points]}
+
+Find the integer $a$ such that
+\begin{qparts}
+\item $a\equiv 58 \pmod{18}$ and $0 \leq a\leq 17$;
+\item $a \equiv -142 \pmod{7}$ and $0 \leq a \leq 6$;
+\item $a \equiv 17 \pmod{29}$ and $-14 \leq a \leq 14$;
+\item $a \equiv -11 \pmod{21}$ and $110 \leq a \leq 130$.
+\end{qparts}
+Show your intermediate steps or briefly explain your process to justify your work.
+
+\begin{solution}
+\begin{qparts}
+    \item We can get into the desired range and stay within the same modular equivalence class by subtracting $3\cdot 18 = 54$, so the answer is $a = 58 - 54 = 4$.
+    \item We can get into the desired range and stay within the same modular equivalence class by adding $21\cdot 7$, so the answer is $a = -142 + 147 = 5$.
+    \item $17 - 29 = -12$, so $a = -12$.
+    \item $a = -11 + 6 \cdot 21 = 115$.
+\end{qparts}
+
+\textbf{Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1.5 applies correct process/work shown
+    \item +1.5 correct answer
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Multiple Modular Madness [14 points]}
+For each of the questions below, answer ``always," ``sometimes," or ``never," then explain your answer. Your explanation should justify why you chose the answer you did, but does not have to be a rigorous proof.
+
+\textbf{Hint:} Recall that if $a\equiv b\pmod{m}$ then there exists an integer $k$ such that $a=b+mk.$
+\begin{qparts}
+    \item Suppose $a \equiv 2 \pmod{21}$. When is $a \equiv 2 \pmod{7}$?
+    \item Suppose $b \equiv 2 \pmod{7}$. When is $b \equiv 2 \pmod{21}$?
+    \item Suppose $c \equiv 5 \pmod{8}$. When is $c \equiv 4 \pmod{16}$?
+    \item Suppose $d \equiv 3 \pmod{21}$. When is $d \equiv 0 \pmod{6}$?
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item \textbf{Always.} By definition, $a = 2 + 21k$ for some integer $k$. So,
+    \[ a = 2 + 21k = 2 + 7(3k). \]
+    Since $3k$ is an integer, $a$ is 2 plus 7 times an integer. So, $a \equiv 2 \pmod{7}$.
+    \item \textbf{Sometimes.} If we use the definition, we can see that $b = 2 + 7k$ for some integer $k$. However, there isn't an obvious way to rewrite $b$ so that we can think about it (mod 21). It turns out that it's not always true.
+    \begin{align*}
+        2 &\equiv 2 \pmod{7}\\
+        9 &\equiv 2 \pmod{7}
+    \end{align*}
+    However,
+    \begin{align*}
+        2 &\equiv 2 \pmod{21}\\
+        9 \equiv 9 &\not\equiv 2 \pmod{21}
+    \end{align*}
+    So, just knowing that something is congruent to 2 mod 7 doesn't tell us what it will be congruent to mod 21.
+    \item \textbf{Never.} If we use the definition, we can see that $c=5+8k$ for some integer $k$. However, there isn't an obvious way to rewrite $c$ so that we can think about it (mod 16). From here, there are a few ways to make a good guess (or prove) that this will never be congruent mod 16 to 4.
+    \begin{itemize}
+        \item Plugging things in. If we try many integers, we'll see that none of them are both congruent mod 8 to 5 and congruent mod 16 to 4. This does not prove that it will never happen, but it makes us think it might not. If we notice a pattern, we might also figure out if that pattern always happens. A proof is just the idea of convincing ourselves that pattern is always true, but formalized.
+        \item Even and odd. We might notice that everything congruent mod 16 to 4 is even, since it will be an even number, 4, plus an even number, $16k$. However, everything congruent mod 8 to 5 is odd, since it will be an odd number, 5, plus an even number, $8k'$.
+        \item Even and odd $k$. We can think about when $k$ is even and when it is odd. This ``splits" the definition into two equations, $c=5+16n$ and $c=5+8+16m$. This way, we can see that $c$ can only be congruent mod 16 to $5$ and $5+8=13$.
+    \end{itemize}
+    \item \textbf{Sometimes.} It's not congruent if $d = 3$, but it is if $d = 24$.
+    \begin{align*}
+        3 &\equiv 3 \pmod{21} & 3 &\not\equiv 0 \pmod{6}\\
+        24 &\equiv 3 \pmod{21} & 24 &\equiv 0 \pmod{6}
+    \end{align*}
+\end{qparts}
+
+\smallskip
+\textbf{Grading Guidelines [14 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +2 correct always/sometime/never
+    \item +1.5 gives some reasonable explanation, including one of an incorrect answer if it was due to small errors. We don't need a proof; anything like the examples given, including observing a pattern, is sufficient here.
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum How low can you go? [12 points]}
+Suppose $a\equiv 3\pmod{10}$ and $b\equiv 8\pmod{10}$. In each part, find $c$ such that $0\leq c\leq 9$ and
+\begin{qparts}
+    \item $c \equiv 14a^2 - b^3 \pmod{10}$
+    \item $c \equiv b^{15} - 99 \pmod{10}$
+    \item $c\equiv a^{97} \pmod{10}$
+\end{qparts}
+Show your work! You should be doing the arithmetic/making substitutions \textbf{without using a calculator}. Your work must \textbf{not} include numbers above 100.
+
+\begin{solution}
+\begin{qparts}
+    \item $c=4$.
+    \begin{align*}
+        c &\equiv 14a^2 - b^3\\
+        &\equiv 14(3)^2 - (8)^3\\
+        &\equiv 14(9) - (8)^3\\
+        &\equiv 4(-1) - (-2)^3\\
+        &\equiv 4(-1) - (-8)\\
+        &\equiv -4 + 8 \equiv 4 \pmod{10}
+    \end{align*}
+    
+    \item $c=3$. There are many correct ways to reach this answer. Here are two possible approaches (all calculations are in mod 10):
+    \begin{align*}
+        c &\equiv b^{15} - 99\\
+        &\equiv (8)^{15}  - 99\\
+        &\equiv (-2)^{15}  + 1\\
+        &\equiv ((-2)^3)^5 + 1\\
+        &\equiv (-8)^5 + 1 \\
+        &\equiv (2)^5 + 1 \\
+        &\equiv 32 + 1 \equiv 33 \equiv 3 \pmod{10}
+    \end{align*}
+    Alternatively, note that $b \equiv -2 \pmod{10}$. Then $b^2 \equiv 4 \pmod{10}$, $b^4 \equiv 16 \equiv -4 \pmod{10}$, and $b^8 \equiv 16 \equiv -4 \pmod{10}$. Then
+    \begin{align*}
+        c &\equiv b^{15} - 99\\
+        &\equiv b^{15} + 1\\
+        &\equiv b^{8} b^{4} b^{2} b^{1} + 1\\
+        &\equiv (-4)(-4)(4)(-2) + 1 \\
+        &\equiv (-4)(-4)(-8) + 1 \\
+        &\equiv (-4)(-4)(2) + 1 \\
+        &\equiv (-4)(-8) + 1 \\
+        &\equiv (-4)(2) + 1 \\
+        &\equiv -8 + 1 \equiv -7 \equiv 3 \pmod{10}
+    \end{align*}
+    
+    \item $c=3$.
+    \begin{align*}
+        c &\equiv a^{97}\\
+        &\equiv 3^{97}\\
+        &\equiv 3 \cdot 3^{96} \\
+        &\equiv 3 \cdot (3^2)^{48} \\
+        &\equiv 3 \cdot 9^{48} \\
+        &\equiv 3 \cdot (-1)^{48} \\
+        &\equiv 3 \cdot 1 \equiv 3\pmod{10}
+    \end{align*}
+\end{qparts}
+
+\smallskip
+\textbf{Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +2 correct final solution
+    \item +2 shows work with valid modular substitutions (can receive this point even if there's an arithmetic error that leads to an incorrect solution)
+    \item $-1$ uses number(s) greater than 100 in their work
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Be There or Be Square [16 points]}
+
+Prove that if $n$ is an odd integer, then $n^2 \equiv 1 \pmod 8.$
+
+\textbf{Note:} You \textbf{cannot} use the fact that all integers are equivalent to one of 0-7 (mod 8) without proof.
+
+\begin{solution}
+If $n$ is an odd integer, then $n = 2k+1$ for some integer $k$. Then:
+\begin{align*}
+    n^2 &= (2k+1)^2\\
+        &= 4k^2+ 4k + 1\\
+        &= 4(k^2 + k) + 1
+\end{align*}
+
+If the quantity $4(k^2 + k)$ is a multiple of $8$, then our original claim will be proven. We can use proof by cases to show that $4(k^2 + k)$ is a multiple of $8$ by showing that $k^2 + k$ is even regardless of whether $k$ is even or odd.
+
+\textbf{Case 1:} $k$ is even. If $k$ is even, then $k = 2c$ for some non-negative integer $c$. Then $k^2 + k = (2c)^2 + 2c = 4c^2 + 2c = 2(2c^2 + 1)$. Therefore, $k^2 + k$ is even.
+
+\textbf{Case 2:} $k$ is odd. If $k$ is odd, then $k = 2c + 1$ for some non-negative integer $c$. Then $k^2 + k = (2c + 1)^2 + (2c + 1) = 4c^2 + 4c + 1 + 2c + 1 = 4c^2 + 6c + 2 = 2(2c^2 + 3c + 1)$. Therefore, $k^2 + k$ is even.
+
+\textbf{Alternately}, we know that $k^2 + k = k(k+1)$, where $k$ and $k+1$ are two consecutive integers. Hence, either $k$ or $k+1$ has to be even. Since one of them is even, their product must be even as well. Therefore, $k^2 + k$ is even.
+
+Since $k^2 + k$ is even, then $k^2 + k = 2d$ for some non-negative integer $d$. Multiplying both sides by 4, we get $4(k^2 + k) = 8d$.
+\begin{align*}
+    4(k^2 + k) + 1 &\equiv 8d + 1 \pmod 8\\
+        &\equiv 0 + 1 \pmod 8 \\
+        &\equiv 1 \pmod 8
+\end{align*}
+Therefore, if $n$ is an odd integer, then $n^2 \equiv 1 \pmod 8.$
+
+\textbf{Alternate Solution:}
+
+Note that $n^2\equiv 1\pmod{8}$ if and only if $n^2=1+8k$ for some $k\in\mathbb{Z},$ which is equivalent to saying $8\,|\,(n^2-1).$ So it suffices to show that if $n$ is odd then $8\,|\,(n^2-1).$
+
+By factoring we have $n^2-1=(n-1)(n+1).$ Among the four consecutive integers $n-1,$ $n,$ $n+1,$ and $n+2,$ 4 must divide exactly one of them. It cannot divide $n$ or $n+2$ since these integers are odd, so WoLoG assume $4\,|\,(n-1).$ Then we know $2\,|\,(n+1)$ since $n+1$ is even. Thus $4\cdot 2 \,|\, (n-1)(n+1)$ which implies $8\,|\,(n^2-1)$ as desired.
+
+\textbf{Grading Guidelines [16 points]}
+
+\textbf{Primary Solution:}
+\begin{guidelines}
+    \item +2 applies definition of odd to $n$
+    \item +2 applies definition of congruence correctly at least once
+    \item +4 manipulates the expression to $f(k)+1$ for some correct $f(k)$ (in the solution $f(k)=4(k^2+k)$)
+    \item +4 proves that $f(k)$ is always a multiple of 8
+    \item +4 applies definition of mod to reach desired conclusion
+\end{guidelines}
+\textbf{Alternate Solution:}
+\begin{guidelines}
+    \item +2 uses that $n$ is odd productively at least once
+    \item +2 applies definition of congruence correctly at least once
+    \item +2 factors $n^2-1$
+    \item +2 identifies appropriate consecutive integers
+    \item +4 correctly argues that 4 divides $n-1$ or $n+1$
+    \item +4 correctly argues that 8 divides $(n-1)(n+1)$
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Functions and Fakers [16 points]}
+Determine if each of the examples below are functions or not.
+\begin{itemize}
+    \item If it is not a function, explain why not.
+    \item If it is a function, state whether or not it is bijective, and briefly justify your answer.
+\end{itemize}
+All domains and codomains are given as intended.
+
+\begin{qparts}
+    \item $f \colon \mathbb{R}^{\times} \to \mathbb{R}^{\times}$ such that $f(x) = x^{-1}.$
+
+    \textbf{Note:} The set $\mathbb{R}^{\times}$ is the set $\mathbb{R}-\{0\}.$ Additionally, recall that $x^{-1}=\frac 1x.$
+    
+    \item $g \colon \mathbb{R} \to \mathbb{R}$ such that $g(x) = y$ iff $y \leq x.$
+    \item $h \colon \textbf{U-M Courses} \to \{ \text{EECS}, \text{MATH} \}$ which maps each class to its department.
+    \item $k \colon \textbf{U-M Courses} \to \mathbb{N}$ which maps each class to its course number
+\end{qparts}
+For example, $h(\text{EECS 203}) = \text{EECS}$ and $k(\text{EECS 203}) = 203.$
+
+\textbf{Note:} For the purpose of parts (c) and (d), two courses are considered ``equal" if and only if they have the same department and course number. In particular, cross-listed courses are treated as distinct elements of $\textbf{U-M Courses}.$
+
+\begin{solution}
+\begin{qparts}
+    \item Is a function. Moreover $f$ is bijective since it is its own inverse.
+    \item Not a function; for example, $1\leq 2$ and $2 \leq 2$, so the input 2 has more than one output.
+    \item Not a function; for example ROB 101 (or any other course outside of the MATH or EECS department) will map to a value not in the codomain.
+    \item Is a function. $k$ is not bijective; in particular there are only a finite number of courses offered at UMich, so $k$ cannot be onto.
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [16 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +2 correct answer (is/is not a function)
+    \item +2 correct justification (why it's not a function, or why it is/is not bijective)
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Fantastic Functions [18 points]}
+For each of the functions below, determine whether it is (i) one-to-one, (ii) onto. Prove your answers.
+\begin{qparts}
+    \item $f \colon \mathbb{R} \to \mathbb R - \mathbb R^-,\ f(x) = e^{2x + 1}.$
+
+    \item $g \colon \mathbb{R} - \left\{-\frac{2}{5}\right\} \to \mathbb{R} - \left\{\frac{3}{5}\right\},\ g(x) = \frac{3x - 1}{5x + 2}.$
+
+    \item$h \colon \mathbb{Z} \times \mathbb {Z} \to \mathbb{Z},\ h(m, n) = |m|-|n|$
+\end{qparts}
+
+
+\begin{solution}
+\begin{qparts}
+    \item $f$ is one-to-one but not onto.
+    \begin{qsubparts}
+        \item $f$ is one-to-one (prove)
+
+        To prove this is one-to-one we need to show that for any $a_1, a_2 \in \mathbb{R}$, if $f(a_1) = f(a_2)$, then $a_1 = a_2$. Let $a_1, a_2 \in \mathbb{R}$, and let $f(a_1) = f(a_2)$. Then 
+        \begin{align*}
+            f(a_1) &= f(a_2) \tag{assumption} \\
+            e^{2a_1 + 1} &= e^{2a_2 + 1} \tag{definition of $f$}\\
+            2a_1 + 1 &= 2a_2 + 1 \tag{take the log of both sides}\\
+            2a_1 &= 2a_2 \tag{subtract 1 from each side}\\
+            a_1 &= a_2 \tag{divide both sides by 2}
+        \end{align*}
+
+        \item $f$ is not onto (disprove)
+
+        Disproof of onto-ness: take $b = 0$. Since $e^x$ as a real-valued function is positive on its entire domain, $f(x)$ is also positive on its entire domain, so $f(a)\ne b$ for all $a\in\mathbb{R}.$
+    \end{qsubparts}
+    \item $g$ is one-to-one and onto (and thus bijective).
+    \begin{qsubparts}
+        \item $g$ is one-to-one (prove)
+
+        Suppose we have some $a_1, a_2$ in the domain such that $g(a_1) = g(a_2)$. Then, 
+        \begin{align*}
+            g(a_1) &= g(a_2) \tag{assumption} \\
+            \frac{3a_1 - 1}{5a_1 + 2} &= \frac{3a_2 - 1}{5a_2 + 2} \tag{definition of $g$}\\
+            (3a_1 - 1)(5a_2 + 2) &= (3a_2 - 1)(5a_1 + 2) \tag{cross-multiply}\\
+            15a_1 a_2 + 6a_1 - 5a_2 - 2 &= 15a_1 a_2 + 6a_2 - 5a_1 - 2 \tag{distribute}\\
+            6a_1 - 5a_2 &= 6a_2 - 5a_1 \tag{subtract like terms}\\
+            11a_1 &= 11a_2 \tag{combine like terms}\\
+            a_1 &= a_2. \tag{divide both sides by 11}
+        \end{align*}
+
+        \item $g$ is onto (prove)
+
+        Take any $b \in \mathbb R$ such that $b \neq \frac 35$. Let $a = \frac{2b + 1}{3 - 5b}$. This is well-defined by domain restriction on $b$. Then $g(a) = b$, because in the numerator,
+        \begin{align*}
+            3a - 1 
+            &= 3 \cdot \frac{2b + 1}{3 - 5b} - 1 \tag{substitution} \\
+            &= \frac{6b + 3 - (3 - 5b)}{3 - 5b} \tag{distribute} \\
+            &= \frac{6b + 3 - 3 + 5b}{3 - 5b} \tag{distribute} \\
+            &= \frac{11b}{3 - 5b} \tag{simplify}
+        \end{align*}
+        and in the denominator, 
+        \begin{align*}
+            5a + 2
+            &= 5 \frac{2b + 1}{3 - 5b} + 2 \tag{substitution} \\
+            &= \frac{10b + 5 + 2(3 - 5b)}{3 - 5b} \tag{distribute} \\
+            &= \frac{10b + 5 + 6 - 10b)}{3 - 5b} \tag{distribute} \\
+            &= \frac{11}{3 - 5b} \tag{simplify}
+        \end{align*}
+        So altogether, 
+        \begin{align*}
+            g(a)
+            &= \frac{3a - 1}{5a + 2} \tag{definition of $g$} \\
+            &= \frac{11b}{3 - 5b} \left(\frac{11}{3 - 5b}\right)^{-1} \tag{substitution} \\
+            &= \frac{11b}{3 - 5b} \cdot \frac{3 - 5b}{11} \tag{distribute} \\
+            &= \frac{11b}{11} = b. \tag{simplify}
+        \end{align*}
+        Sample side work:
+        \begin{align*}
+            b &= \frac{3a - 1}{5a + 2} \\
+            5ba + 2b &= 3a - 1 \\
+            a(5b - 3) &= -2b - 1 \\
+            a &= \frac{-2b - 1}{5b - 3} = \frac{2b + 1}{3 - 5b}
+        \end{align*}
+    \end{qsubparts}
+
+    \item $h$ is onto but not one-to-one.
+    \begin{qsubparts}
+        \item $h$ is not one-to-one (disprove)
+
+        Consider $y = 2$. Let $(m_1, n_1) = (y, 0) = (2, 0)$ and let $(m_2, n_2) = (-y, 0) = (-2, 0)$. Then $h(m_1, n_1) = |y| - |0| = y = 2$ and $h(m_2, n_2) = |-y| - |0| = y = 2$. So $h(m_1, n_1) = h(m_2, n_2)$; however, $(m_1, n_1) \neq (m_2, n_2)$. So $h$ is not one-to-one.
+        
+        \item $h$ is onto (prove)
+        
+        Let $y \in \mathbb Z$ be arbitrary. We first take the case where $y$ is non-negative. Let $m_0 = y$ and $n_0 = 0$. Then
+        \begin{align*}
+            h(m_0, n_0) 
+            &= |m_0| - |n_0| \\
+            &= |y| - |0| \\
+            &= y
+        \end{align*}
+        Now we take the case when $y$ is negative. Let $m_0 = 0$ and $n_0 = y$. Then
+        \begin{align*}
+            h(m_0, n_0)
+            &= |m_0| - |n_0| \\
+            &= |0| - |y| \\
+            &= y
+        \end{align*}
+        Thus we have proved that $h(m, n)$ is onto.
+    \end{qsubparts}
+\end{qparts}
+
+
+\textbf{Draft Grading Guidelines [18 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1 correctly states is/is not one-to-one
+    \item +2 correctly proves/disproves one-to-one
+    \item +1 correctly states is/is not onto
+    \item +2 correctly proves/disproves onto (\textbf{note to graders:} be lenient on justification for (a.ii))
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Comp$\circ$sition$($Functions$)$ [12 points]}
+For each of the following pairs of functions $f$ and $g$, find $f \circ g$ and $g \circ f$. Make sure to include the domain and codomain of each composed function you give. If either can't be computed, explain why.
+\begin{qparts}
+    \item $f\colon \mathbb{N} \to \mathbb{Z}^{+},\; f(x) = x + 1$
+    
+    $g\colon\mathbb{Z}^{+}\to\mathbb{N},\; g(x) = x^2 - 1$
+    
+    \item $f\colon\mathbb{Z}\to\mathbb{R},\; f(x) = \left(\frac{3}{2} x + 3\right)^{3}$
+    
+    $g\colon\mathbb{R} \rightarrow \mathbb{R}_{\geq 0},\; g(x) = |x|$
+
+    \textbf{Note:} $\mathbb{R}_{\geq 0}$ is the set of real numbers greater than or equal to 0.
+\end{qparts}
+
+
+\begin{solution}
+\begin{qparts}
+    \item $f \circ g\colon\mathbb{Z}^+\to\mathbb{Z}^+,\; (f \circ g)(x) = f(g(x)) = f(x^2-1) = (x^2-1)+1 = x^2.$
+    
+    $g \circ f\colon\mathbb{N}\to\mathbb{N},\; (g \circ f)(x) = g(f(x)) = g(x+1) = (x+1)^2-1 = (x^2 + 2x + 1) - 1 = x^2 + 2x.$
+    
+    \item $f \circ g$ cannot be computed because the codomain of $g$ ($\mathbb{R}_{\geq 0}$) is not a subset of the domain of $f$ ($\mathbb Z$). For example, $g(0.5)=0.5$ but 0.5 is not in the domain of $f$ and thus can't be sent through that function.
+
+    $g\circ f\colon \mathbb{Z}\to\mathbb{R}_{\geq 0},\; (g\circ f)(x) = g(f(x)) = g((\frac 32 x + 3)^3) = |(\frac 32 x + 3)^3|$
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each possible composition (both in part a and $g\circ f$ in part b):}
+\begin{guidelines}
+    \item +2 correct expression for the composition
+    \item +1 correct domain and codomain
+\end{guidelines}
+
+\textbf{For part b, $f \circ g$:}
+\begin{guidelines}
+    \item +1 stating not possible
+    \item +2 some explanation of impossibility
+\end{guidelines}
+
+\end{solution}
+
+
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/12\\
+\hline 
+Problem 2 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/18\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+
+\subsection*{\probnum Multiple Multiples [12 points]}
+Let $a,b\in \mathbb{Z}$. Show that $7a - 8b$ is a multiple of 5 if and only if $19a - 21b$ is a multiple of 5.
+
+\begin{solution}
+We have to prove both directions of the if and only if.
+
+\textbf{Proof (forward direction):} If $7a - 8b$ is a multiple of 5, then $7a - 8b \equiv 0 \pmod{5}$. Therefore $7a - 8b \equiv 2a - 3b \equiv 0 \pmod{5}.$ Multiplying both sides by 7, we get $14 a - 21 b \equiv 0 \pmod{5}$. As $14 a \equiv 19 a \pmod{5}$, we have $14 a - 21 b \equiv 19 a - 21 b \equiv 0 \pmod{5}$, showing that $19a - 21 b$ is a multiple of 5.
+
+\textbf{Proof (backward direction):} If $19a - 21b$ is a multiple of 5, then $19a - 21b  \equiv 0 \pmod{5}$. Therefore $19a - 21b  \equiv 4a - b \equiv 0 \pmod{5}$. If we multiply both sides by 3, we get $12a - 3b \equiv 2a - 3b \equiv 0\pmod{5}$. We can thus note that, since $2 \equiv 7 \pmod{5}$, and $-3 \equiv -8 \pmod{5}$, this statement is equivalent to $7a - 8b \equiv 0 \pmod{5}$. Thus, if we have that $19a - 21b$ is a multiple of 5, then $7a - 8b$ is a multiple of 5.
+
+\textbf{Interesting note:} In the first part we multiplied by 7, and in the second part we multiplied by $3,$ but $7\cdot 3=21\equiv 1\pmod{5},$ so $7$ and $3$ are inverses mod 5. Is it a coincidence that this showed up in our proof?
+
+\textbf{Grading Guidelines [12 points]}
+\begin{gwguidelines}
+    \item +4 applies modular arithmetic to assist the proof
+    \item +4 shows that if $7a - 8b$ is a multiple of 5 then $19 a - 21 b$ is a multiple of 5
+    \item +4 shows that if $19 a - 21 b$ is a multiple of 5 then $7a - 8b$ is a multiple of 5
+\end{gwguidelines}
+\end{solution}
+
+\subsection*{\probnum Rapidly Rising [18 points]}
+For this problem, we will say a function $f\colon \mathbb{Z}^+ \to \mathbb{Z}^+$ is ``rapidly rising'' if:
+$$ \forall x_1, x_2 \in \mathbb{Z}^+ \ [x_1 < x_2 \to 2f(x_1) < f(x_2)] $$
+
+\begin{qparts}
+    \item Prove that $f(x) = 3^x$ is rapidly rising.
+
+    \textbf{Hint:} It may be easier to show $f(x_2) > 2f(x_1)$ than the other way around.
+    
+    \item Is a rapidly rising function always one-to-one? Is a one-to-one function from $\mathbb{Z}^+\to\mathbb{Z}^+$ always rapidly rising? Is a one-to-one function (again from $\mathbb{Z}^+\to\mathbb{Z}^+$) always strictly increasing? Briefly explain your answer; a formal proof is not necessary but is encouraged.
+
+    \textbf{Note:} $f\colon\mathbb{N}\to\mathbb{N}$ is strictly increasing if $f(x_1)<f(x_2)$ whenever $x_1<x_2.$
+    \item Prove that, for any rapidly rising function $f$, it must \textbf{not} be onto.
+\end{qparts}
+
+
+\begin{solution}
+\begin{qparts}
+    \item Let $x_1, x_2 \in \mathbb{N}$ be arbitrary and assume $x_1 < x_2$. 
+    Then we have:
+    \begin{align*}
+        f(x_2) &= 3^{x_2} \\
+        &= 3^{x_1 + (x_2 - x_1)} \\
+        &= 3^{x_2 - x_1} \cdot 3^{x_1} \\
+        &\ge 3^1 \cdot 3^{x_1} \tag{$x_1 < x_2$, so $x_2 - x_1 \ge 1$} \\
+        &> 2 \cdot 3^{x_1} = 2f(x_1).
+    \end{align*}
+
+    \item Yes, a rapidly rising function is always one-to-one. We will prove this by contrapositive. Suppose $x_1 \neq x_2$. Then either $x_1 < x_2$ or $x_2 < x_1$. WLOG, assume it is the first. Then by definition, we have $2f(x_1) < f(x_2)$. Then since $f(x_1)$ is positive, we have $f(x_1) < 2f(x_1)$, so $f(x_1) < f(x_2)$,
+    so $f(x_1) \neq f(x_2)$.
+
+    A one-to-one function is not always rapidly rising. For instance, consider $g\colon\mathbb{Z}^+\to\mathbb{Z}^+$ where $g(x)=x.$ $1<2$ but $2g(1)=2=g(2).$
+
+    A one-to-one function is not always strictly increasing. Consider the function $h\colon\mathbb{Z}^+\to\mathbb{Z}^+$ where
+    $$h(x)=\begin{cases}
+        2 & x = 1 \\
+        1 & x = 2 \\
+        x & \text{otherwise.}
+    \end{cases}$$
+    One can check that $h$ is one-to-one, but $h(1)>h(2).$
+
+    \item  $f(1) + 1$ isn't mapped to. We show $f(n)\ne f(1)+1$ for all $n.$ We can't have $n=1,$ since by definition $f(1)\ne f(1)+1.$ If $n\ne 1,$ then $n>1,$ so $2f(1)<f(n).$ But since $f(1)>0,$ $f(1)<2f(1),$ so $f(1)<f(n).$ Thus $f(n)\ne f(1).$ So $f$ is not onto.
+\end{qparts}
+
+\textbf{Grading Guidelines [18 points]}
+
+\textbf{Part a:}
+\begin{gwguidelines}
+    \item +2 correct assumption for proof
+    \item +2 attempts to use chain of equalities/inequalities
+    \item +2 correct proof
+\end{gwguidelines}
+\textbf{Part b:}
+\begin{gwguidelines}[resume]
+    \item +2 states rapidly rising function is one-to-one with some explanation
+    \item +2 states one-to-one function is not necessarily rapidly rising with some explanation
+    \item +2 states one-to-one function is not necessarily strictly increasing with some explanation
+\end{gwguidelines}
+\textbf{Part c:}
+\begin{gwguidelines}[resume]
+    \item +3 identifies element that is not mapped to
+    \item +3 correct proof that $f$ is not onto
+\end{gwguidelines}
+\end{solution}
+
+
+\end{document}
