@@ -1,0 +1,153 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{5}
+\newcommand{\hwnum}{6}
+
+\begin{document}
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+
+\subsection*{\probnum Multiple Multiples [12 points]}
+Let $a,b\in \mathbb{Z}$. Show that $7a - 8b$ is a multiple of 5 if and only if $19a - 21b$ is a multiple of 5.
+
+\begin{solution}
+	Let $a,b\in \mathbb{Z}$. We want to show that $7a - 8b$ is a multiple of 5 if and only if $19a - 21b$ is a multiple of 5.\\
+	In other words, we want to show that $7a - 8b \equiv 0 \pmod{5}$ if and only if $19a - 21b \equiv 0 \pmod{5}$.\\
+	i.e. in logic notation, we want to show that $(7a - 8b \equiv 0 \pmod{5}) \iff (19a - 21b \equiv 0 \pmod{5})$.\\
+	We will show this by proving both directions of the biconditional.\\
+	\begin{tabular}{ll}
+		LHS:                                                                           \\
+		Assume $7a - 8b \equiv 0 \pmod{5}$                         &                   \\
+		$7a - 8b\pmod{5} \equiv 2a-3b\pmod{5} \equiv 0\pmod{5}$    & definition of mod \\
+		$2a-3b=5k$ for some $k\in\mathbb{Z}$                       & definition of mod \\
+		$2a=5k+3b$                                                 & algebra           \\
+		$4a=10k+6b$                                                & algebra           \\
+		$19a-21b\pmod{5} \equiv 4a-1b\pmod{5}$                     & definition of mod \\
+		$10k+6b-1b\pmod{5} \equiv 10k+5b\pmod{5} \equiv 0\pmod{5}$ & algebra           \\
+	\end{tabular}\\
+	Therefore, $19a - 21b \equiv 0 \pmod{5}$.\\
+	\begin{tabular}{ll}
+		RHS:                                                                           \\
+		Similarly, assume $19a - 21b \equiv 0 \pmod{5}$            &                   \\
+		$19a - 21b\pmod{5} \equiv 4a-1b\pmod{5} \equiv 0\pmod{5}$  & definition of mod \\
+		$4a-1b=5k$ for some $k\in\mathbb{Z}$                       & definition of mod \\
+		$b=4a-5k$                                                  & algebra           \\
+		$7a - 8b\pmod{5} \equiv 7a-8b\pmod{5}\equiv 2a-3b\pmod{5}$ & definition of mod \\
+		$2a-3b\pmod{5} \equiv 2a-3(4a-5k)\pmod{5}$                 & substitution      \\
+		$2a-3(4a-5k)\pmod{5} \equiv 2a-12a+15k\pmod{5}$            & algebra           \\
+		$2a-12a+15k\pmod{5} \equiv -10a+15k\pmod{5}$               & algebra           \\
+		$-10a+15k\pmod{5} \equiv 0\pmod{5}$                        & algebra           \\
+	\end{tabular}\\
+	Therefore, $7a - 8b \equiv 0 \pmod{5}$.\\
+	Since we have shown both directions of the biconditional, we have shown that $7a - 8b$ is a multiple of 5 if and only if $19a - 21b$ is a multiple of 5.
+\end{solution}
+
+\subsection*{\probnum Rapidly Rising [18 points]}
+For this problem, we will say a function $f\colon \mathbb{Z}^+ \to \mathbb{Z}^+$ is ``rapidly rising'' if:
+$$ \forall x_1, x_2 \in \mathbb{Z}^+ \ [x_1 < x_2 \to 2f(x_1) < f(x_2)] $$
+
+\begin{qparts}
+	\item Prove that $f(x) = 3^x$ is rapidly rising.
+
+	\textbf{Hint:} It may be easier to show $f(x_2) > 2f(x_1)$ than the other way around.
+
+	\item Is a rapidly rising function always one-to-one? Is a one-to-one function from $\mathbb{Z}^+\to\mathbb{Z}^+$ always rapidly rising? Is a one-to-one function (again from $\mathbb{Z}^+\to\mathbb{Z}^+$) always strictly increasing? Briefly explain your answer; a formal proof is not necessary but is encouraged.
+
+	\textbf{Note:} $f\colon\mathbb{N}\to\mathbb{N}$ is strictly increasing if $f(x_1)<f(x_2)$ whenever $x_1<x_2.$
+	\item Prove that, for any rapidly rising function $f$, it must \textbf{not} be onto.
+\end{qparts}
+
+
+\begin{solution}
+  a) Let $f(x) = 3^x$. We want to show that $f(x)$ is rapidly rising.\\
+  Let $x_1, x_2 \in \mathbb{Z}^+$ such that $x_1 < x_2$.\\
+  We want to show that $2f(x_1) < f(x_2)$.\\
+  We have $f(x_1) = 3^{x_1}$ and $f(x_2) = 3^{x_2}$.\\
+  We want to show that $2\cdot 3^{x_1} < 3^{x_2}$.\\
+  Since for $f(x)$, the base is 3, thus for every increase in $x$, the value of $f(x)$ is multiplied by 3.\\
+  Thus, no matter what the value of $x_1$ is, $3^{x_1}$ will always be less than $3^{x_2}$ for any $x_2 > x_1$.\\
+  Therefore, $2\cdot 3^{x_1} < 3^{x_2}$.\\
+  Since we have shown that $2f(x_1) < f(x_2)$, we have shown that $f(x) = 3^x$ is rapidly rising.\\
+  b) A rapidly rising function is not always one-to-one.\\
+  A one-to-one function from $\mathbb{Z}^+\to\mathbb{Z}^+$ is not always rapidly rising.\\
+  A one-to-one function from $\mathbb{Z}^+\to\mathbb{Z}^+$ is not always strictly increasing.\\
+  A rapidly rising function is not always one-to-one because a rapidly rising function only guarantees that $2f(x_1) < f(x_2)$ for $x_1 < x_2$. It does not guarantee that $f(x_1) \neq f(x_2)$ for $x_1 \neq x_2$.\\
+  A one-to-one function from $\mathbb{Z}^+\to\mathbb{Z}^+$ is not always rapidly rising because a one-to-one function only guarantees that $f(x_1) \neq f(x_2)$ for $x_1 \neq x_2$. It does not guarantee that $2f(x_1) < f(x_2)$ for $x_1 < x_2$.\\
+  A one-to-one function from $\mathbb{Z}^+\to\mathbb{Z}^+$ is not always strictly increasing because a one-to-one function only guarantees that $f(x_1) \neq f(x_2)$ for $x_1 \neq x_2$. It does not guarantee that $f(x_1) < f(x_2)$ for $x_1 < x_2$.\\
+  c) Let $f$ be a rapidly rising function. We want to show that $f$ must not be onto.\\
+  A function $f$ is onto if for every $y\in\mathbb{Z}^+$, there exists an $x\in\mathbb{Z}^+$ such that $f(x) = y$.\\
+  We will show that $f$ must not be onto by contradiction.\\
+  Assume for the sake of contradiction that $f$ is onto.\\
+  Since $f$ is onto, for every $y\in\mathbb{Z}^+$, there exists an $x\in\mathbb{Z}^+$ such that $f(x) = y$.\\
+  Let $x_1, x_2 \in \mathbb{Z}^+$ such that $x_1 < x_2$.\\
+  We have $f(x_1) < f(x_2)$ because $f$ is rapidly rising.\\
+  Since $f$ is onto, for every $y\in\mathbb{Z}^+$, there exists an $x\in\mathbb{Z}^+$ such that $f(x) = y$.\\
+  Let $y = f(x_2)$.\\
+  Since $f$ is onto, there exists an $x\in\mathbb{Z}^+$ such that $f(x) = f(x_2)$.\\
+  Since $f$ is one-to-one, $x = x_2$.\\
+  Since $x_1 < x_2$, $f(x_1) < f(x_2)$.\\
+  This is a contradiction because $f(x_1) < f(x_2)$ but $f(x_1) = f(x_2)$.\\
+  Therefore, $f$ must not be onto.\\
+  Since we have shown that $f$ must not be onto, we have shown that for any rapidly rising function $f$, it must not be onto.
+\end{solution}
+
+
+\end{document}
