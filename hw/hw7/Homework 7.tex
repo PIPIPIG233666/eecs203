@@ -141,7 +141,10 @@
 \end{center}
 
 \begin{solution}
-
+	I am learning to be better at Discrete Math, and I will get better with practice.\\
+	I can be good at Discrete Math if I put in the effort to learn and understand the material.\\
+	I am not smart enough to understand this material.\\
+	The content is hard but it is possible for me to understand it with practice and effort as well as learning from other people.
 \end{solution}
 
 
@@ -154,6 +157,26 @@ Consider $f \colon X \to Y $ and $g \colon Y \to X$. \textbf{Prove or disprove} 
 \end{qparts}
 
 \begin{solution}
+	a) Proof by contradiction:\\
+	\begin{tabular}{ll}
+		Seeking contradiction, assume the negation of the statement:                                        \\
+		$f \circ g$ is one-to-one $\land g$ is $\lnot$ one-to-one.                                          \\
+		$\exists x_1, x_2 \in X$ such that $x_1 \neq x_2$ and $g(x_1) = g(x_2)$ & Definition of one-to-one  \\
+		Since $x_1 \neq x_2$ $\land$ $f(g(x_1)) = f(g(x_2))$                    & Definition of $f \circ g$ \\
+		$f \circ g$ is not one-to-one                                           & Definition of one-to-one  \\
+		This contradicts the assumption that $f \circ g$ is one-to-one.                                     \\
+		Therefore, if $f \circ g$ is one-to-one, then $g$ must be one-to-one.                               \\
+		Thus, the original statement holds by proof by contradiction.                                       \\
+	\end{tabular}
+	b) Proof by contrapositive:\\
+	\begin{tabular}{ll}
+		The contropostive is $g\lnot$ one-to-one $\rightarrow g \circ f\lnot$ one-to-one.                           \\
+		Asseme $g\lnot $ one-to-one:                                                                                \\
+		$\exists y_1, y_2 \in Y [y_1 \neq y_2\land g(y_1) = g(y_2)]$                    & Definition of one-to-one  \\
+		Thus, $\exists f(y_1), f(y_2)$$[g(f(y_1)) = g(f(y_2)) \land f(y_1)\neq f(y_2)]$ & Definition of $g \circ f$ \\
+		Which means $g \circ f\lnot $ one-to-one.                                       & Definition of one-to-one  \\
+		Thus the original statement holds by contrapositive.                                                        \\
+	\end{tabular}
 
 \end{solution}
 
@@ -167,6 +190,38 @@ A function $f\colon A\to A$ is said to be \textit{flippy} if for all $a\in A,$ $
 \end{qparts}
 
 \begin{solution}
+	a) Proof by direct proof:\\
+	\begin{tabular}{ll}
+		Assume arbitary $f\colon A\to A$ is flippy.           \\
+		We need to show that $f$ is both onto and one-to-one. \\
+		Proof one-to-one:                                     \\
+		Let $a,b$ be arbitary elements $\in A$                \\
+		Assume $f(a) = f(b)$                                  \\
+		Then $f(f(a)) = f(f(b))$                              \\
+		Since $f$ is flippy, $f(f(a)) = a$ and $f(f(b)) = b$  \\
+		Thus $a = b$                                          \\
+		Therefore, $f$ is one-to-one.                         \\
+		Proof onto:                                           \\
+		Let $b$ be an arbitary element $\in A$                \\
+		Let $a = f(b)$                                        \\
+		Then $f(a) = f(f(b))$                                 \\
+		Since $f$ is flippy, $f(f(b)) = b$                    \\
+		Thus $f(a) = b$                                       \\
+		Therefore, $f$ is onto.                               \\
+		Thus, $f$ is bijective.                               \\
+	\end{tabular}
+	\\b) Disproof by counterexample:\\
+	\begin{tabular}{ll}
+		Will show $f: A\to A \land g: A\to A$ are flippy $\rightarrow f\circ g$ is not flippy for set $A = \{1,2,3,4\}$ \\
+		Consider flippy function $f: A\to A$                                                                            \\
+		Let $f(1) = 1, f(2) = 4, f(3) = 3, f(4) = 2$                                                                    \\
+		Consider flippy function $g: A\to A$                                                                            \\
+		Let $g(1) = 4, g(2) = 3, g(3) = 2, g(4) = 1$                                                                    \\
+		Consider $x=1$                                                                                                  \\
+		$f(g(f(g(1)))) = f(g(f(4))) = f(g(2)) = f(3) = 3\neq 1$                                                         \\
+		Thus $f\circ g$ is not flippy.                                                                                  \\
+		Therefore, the original statement is disproof by counterexample.                                                \\
+	\end{tabular}
 
 \end{solution}
 
@@ -177,7 +232,10 @@ Assume that nobody on Earth has more than 1,000,000 hairs on their head. Assume 
 Your explanation should use the Pigeonhole Principle. Make sure to state what the pigeons and holes are, as well as how many of each you have.
 
 \begin{solution}
-
+	By the Pigeonhole Principle, we can guarantee that at least 9 people in New York City have the same number of hairs on their heads.\\
+	Pigeons: People in New York City, 8,468,000\\
+	Holes: Number of hairs on a person's head, could be 0 to 1,000,000, thus 1,000,001\\
+	$\lceil \frac{8,468,000}{1,000,001} \rceil = 9$\\
 \end{solution}
 
 
@@ -187,7 +245,26 @@ Suppose that $52$ integers are chosen among the set of natural numbers less than
 Your proof or disproof should use the Pigeonhole Principle. Make sure to state what the pigeons and holes are, as well as how many of each you have.
 
 \begin{solution}
-
+	Proof:\\
+	Pigeons: 52 integers chosen from $\{0 , 1, 2, 3, \dots, 99\}$\\
+	Holes: \\
+	We have the following $7\cdot 7+2=51$ grid of numbers, where each row represents a set of numbers that differ by $7$: \\
+	$\{0,7\},\{1,8\},\{2,9\},\{3,10\},\{4,11\},\{5,12\},\{6,13\}$\\
+	$\{7,14\},\{8,15\},\{9,16\},\{10,17\},\{11,18\},\{12,19\},\{13,20\}$\\
+	$\{14,21\},\{15,22\},\{16,23\},\{17,24\},\{18,25\},\{19,26\},\{20,27\}$\\
+	$\{21,28\},\{22,29\},\{23,30\},\{24,31\},\{25,32\},\{26,33\},\{27,34\}$\\
+	$\{28,35\},\{29,36\},\{30,37\},\{31,38\},\{32,39\},\{33,40\},\{34,41\}$\\
+	$\{35,42\},\{36,43\},\{37,44\},\{38,45\},\{39,46\},\{40,47\},\{41,48\}$\\
+	$\{42,49\},\{43,50\},\{44,51\},\{45,52\},\{46,53\},\{47,54\},\{48,55\}$\\
+	$\{49,56\},\{50,57\},\{51,58\},\{52,59\},\{53,60\},\{54,61\},\{55,62\}$\\
+	$\{56,63\},\{57,64\},\{58,65\},\{59,66\},\{60,67\},\{61,68\},\{62,69\}$\\
+	$\{63,70\},\{64,71\},\{65,72\},\{66,73\},\{67,74\},\{68,75\},\{69,76\}$\\
+	$\{70,77\},\{71,78\},\{72,79\},\{73,80\},\{74,81\},\{75,82\},\{76,83\}$\\
+	$\{77,84\},\{78,85\},\{79,86\},\{80,87\},\{81,88\},\{82,89\},\{83,90\}$\\
+	$\{84,91\},\{85,92\},\{86,93\},\{87,94\},\{88,95\},\{89,96\},\{90,97\}$\\
+	$\{98\},\{99\}$\\
+	Since we have 52 pigeons and 51 holes, by the Pigeonhole Principle, at least one hole must contain at least two pigeons.\\
+	Thus, there must exist at least one pair of integers among those chosen whose difference is equal to 7.\\
 \end{solution}
 
 
@@ -204,6 +281,13 @@ Let $A$ be the set of prime numbers less than $203$. The universe of discourse i
 \end{qparts}
 
 \begin{solution}
+	a) Countably infinite\\  Each element in $\mathbb{Z} \times \mathbb{Z}$ can be mapped to a unique element in $\mathbb{N}$, thus $\mathbb{Z} \times \mathbb{Z}$ is countably infinite.\\
+	b) Empty\\ $\mathbb{Z} \subseteq \mathbb{Q}$, thus $\mathbb{Z} \times \mathbb{Z} \nsubseteq \mathbb{Q} \times \mathbb{Q}$, thus $(\mathbb{Z} \times \mathbb{Z}) - (\mathbb{Q} \times \mathbb{Q})$ is empty.\\
+	c) Uncountable infinite\\ $\mathbb{R} - \mathbb{Q} =$Irrational numbers, which are uncountable infinite.\\
+	, thus $\mathbb{R} - \mathbb{Q}$ is uncountable infinite.\\
+	d) Empty\\ $\mathbb{Q} \subseteq \mathbb{R}$, thus $\mathbb{Q} - \mathbb{R}$ is empty.\\
+	e) Countably infinite\\ Since $A \subseteq \mathbb{Q}$, $A \cap \mathbb{Q}= A$ is countably infinite.\\
+	f) Uncountable infinite\\ By compliment, $\overline{A} \cap \overline{\mathbb{Q}} = \mathbb{R} - A \cap \mathbb{R} - \mathbb{Q}$, which is the set of union of real numbers that are not prime numbers less than 203 and irrational numbers, which is uncountable infinite.\\
 
 \end{solution}
 
@@ -215,9 +299,13 @@ For each part, give \textit{uncountable} sets $A$ and $B$ such that $A - B$ is
 	\item countably infinite.
 	\item finite but nonempty.
 	\item empty.
-\end{qparts}
+\end{qparts}\
 
 \begin{solution}
+	a) $A=\mathbb{R}_{\ge 0}, B= [0,1]$\\ $A-B=\mathbb{R}_{>1}$\\
+	b) $A=\mathbb{R}\cup \mathbb{Z}, B=\mathbb{R}$\\ $A-B=\mathbb{Z}$\\
+	c) $A=\mathbb{R}_{\ge 0}, B=\mathbb{R}_{\le 0}$\\ $A-B=0$\\
+	d) $A=\mathbb{R}, B=\mathbb{R}$\\ $A-B=\emptyset$
 
 \end{solution}
 
@@ -226,7 +314,13 @@ For each part, give \textit{uncountable} sets $A$ and $B$ such that $A - B$ is
 Prove that $|[0,3]| = |(2, 5)\cup (6,7)|$. If you construct functions in your solution with certain properties, you may assert that they have those properties without proof.
 
 \begin{solution}
-
+	Let $A = [0,3]$ and $B = (2, 5)\cup (6,7)$.\\
+	Let $f(x)=\frac{x}{5}+2$ for $x\in A$ be one-to-one and $g(x)=\frac{x}{1000}-2.0001$ for $x\in B$ be one-to-one\\
+	Thus, $f:A\to B$ and $g:B\to A$ are both one-to-one.\\
+	Since $f$ is one-to-one, $|A|\leq |B|$.\\
+	Since $g$ is one-to-one, $|B|\leq |A|$.\\
+	Thus, $|A|=|B|$ by Schröder-Bernstein Theorem.\\
+	Therefore $|[0,3]| = |(2, 5)\cup (6,7)|$.
 \end{solution}
 
 \end{document}
