@@ -74,7 +74,17 @@ Consider the notation $f^{(n)}$ to mean $\underbrace{f \circ \dots \circ f}_{n \
 Prove by \textbf{induction} that if $f$ is a function with a fixed point, then for all positive integers $n$, $f^{(n)}$ has a fixed point.
 
 \begin{solution}
-
+	% function $f:A\rightarrow A$ has a fixed point $\iff$ there exists $a \in A$ such that $f(a) = a$.\\
+	Let P(n) be the statement that $f^{(n)}$ has a fixed point.\\
+	Inductive step: Assume P(k) is true for some $k \in \mathbb{Z^+}$. \\
+	Want to show: $P(k) \implies P(k+1)$ for all $k \in \mathbb{Z^+}$.\\
+	i.e. $\exists a \in A$ such that $f^{(k)}(a) = a \implies \exists b \in A$ such that $f^{(k+1)}(b) = b$.\\
+	$f^{(k+1)}(b) = f(f^{(k)}(b))$.\\
+	By inductive hypothesis, $f^{(k)}(b) = b$.\\
+	Then $f(f^{(k)}(b)) = f(b) = b$.\\
+	So $b$ is a fixed point of $f^{(k+1)}$.\\
+	Thus, $P(k) \implies P(k+1)$ for all $k \in \mathbb{Z^+}$.\\
+	Base case: $n=1$. Then $f^{(1)} = f$ has a fixed point by assumption.
 \end{solution}
 
 
@@ -162,7 +172,12 @@ Prove using the Pigeonhole Principle that if we choose $4n-1$ points from an $n 
 \end{center}
 
 \begin{solution}
-
+	Pigeons: the $4n-1$ points chosen from the grid.\\
+	Holes: the $n-1$ increasing diagonals of the grid.\\
+	Each point lies on exactly one increasing diagonal.\\
+	By the Pigeonhole Principle, at least one increasing diagonal contains at least $\lceil \frac{4n-1}{n-1} \rceil = 4$ points.\\
+	By the hint, there must be three chosen points $x, y, z$ such that $x$ dominates $y$ and $y$ dominates $z$.
+	Thus, if we choose $4n-1$ points from an $n \times n$ grid ($n\ge 4$), there must be three chosen points $x, y, z$ such that $x$ dominates $y$ and $y$ dominates $z$.
 \end{solution}
 
 \end{document}
