@@ -92,7 +92,29 @@ Let $G$ be a graph with $v$ vertices and $e$ edges. Let $M$ be the maximum degre
 	\item $\dfrac{2e}{v} \leq M$
 \end{qparts}
 
+
+% the formula is 2e=\sum_{v \in V} \text{deg}(v)
+% since we set the exact degree of a vertex to d, substitute d for \text{deg}(v)
+% so the formula becomes 2e=\sum_{v \in V} d
 \begin{solution}
+
+	a) By the Handshaking Theorem, we know that the sum of the degrees of all the vertices in a graph is equal to twice the number of edges in the graph. That is, $\sum_{v \in V} \text{deg}(v) = 2|E|$. We can use this fact to prove the two inequalities.
+	Since $m$ is the minimum degree of the vertices of $G$, we know that $m \leq \text{deg}(v) \leq M$ for all $v \in V$. Then, we have the following:
+	\begin{align*}
+		2|E|              & \geq \sum_{v \in V} m \\
+		2|E|              & \geq m|V|             \\
+		2|E|              & \geq m|V|             \\
+		\dfrac{2|E|}{|V|} & \geq m
+	\end{align*}
+	\\b)
+	\begin{align*}
+		2|E|              & \leq \sum_{v \in V} M \\
+		2|E|              & \leq M|V|             \\
+		2|E|              & \leq M|V|             \\
+		\dfrac{2|E|}{|V|} & \leq M
+	\end{align*}
+	This proves the second inequality. Thus, we have shown that $\dfrac{2e}{v} \geq m$ and $\dfrac{2e}{v} \leq M$.
+	Therefore, $\dfrac{2e}{v} \geq m$ and $\dfrac{2e}{v} \leq M$.
 \end{solution}
 
 \subsection*{\probnum The Forest Beyond the Trees [15 points]}
@@ -122,7 +144,20 @@ Determine which of the following graphs is/are a tree. Additionally, determine w
 	\item ~\\\includegraphics[scale = 0.4]{Homework/Images/treebipartite.png}
 \end{qparts}
 
+% for this, write out tree, and bipartite definitions respectively
 \begin{solution}
+	a) A tree is a connected graph with no cycles. Since $C_4$ is a cycle of length 4, it is not a tree.\\
+	It is bipartite because the graph can be divided into two disjoint sets such that no two vertices within the same set are adjacent.\\
+	b) It is not a tree because $(1,4,2,1)$ is a simple circuit.\\
+	It is not bipartite because 1 is adjacent to both 2 and 4, it is impossible to color those with two colors such that the graph is bipartite.\\
+	c) It is not a tree nor bipartite.\\
+	This is because $K_6$ has multiple cycles, and it is not possible to divide the vertices into two disjoint sets such that no two vertices within the same set are adjacent.\\
+	d) A tree is a connected graph with no cycles. Since the graph is connected and has no cycles, it is a tree.\\
+	A bipartite graph is a graph whose vertices can be divided into two disjoint sets such that no two vertices within the same set are adjacent. Since the graph can be divided into two disjoint sets such that no two vertices within the same set are adjacent, it is bipartite.\\
+	e) It is not a tree because$c$ is not connected with the rest of the graph.\\
+	It is bipartite because the graph can be divided into two disjoint sets such that no two vertices within the same set are adjacent.\\
+	i.e. $(a,c,e,g,i)$ and $(b,d,f,h)$ can be the two disjoint sets.
+
 \end{solution}
 
 \newpage
@@ -141,6 +176,13 @@ For each pair of cities below, (i) find the shortest path in distance, and (ii) 
 \end{qparts}
 
 \begin{solution}
+	a) i) Newark to Camden\\
+	The shortest path in distance from Newark to Camden is Newark $\rightarrow$ Woodbridge $\rightarrow$ Camden. The total distance is 80 miles.\\
+	ii)
+	The least expensive route from Newark to Camden is Newark $\rightarrow$ Woodbridge $\rightarrow$ Camden. The total cost is $0.60+0=0.60$ dollars.\\
+	\\b) i) Trenton to Atlantic City\\
+	The shortest path in distance from Trenton to Atlantic City is Trenton $\rightarrow$ Camden $\rightarrow$ Atlantic City. The total distance is 86 miles.\\
+	ii) The least expensive route from Trenton to Atlantic City is Trenton $\rightarrow$ Asbury Park $\rightarrow$ Atlantic City. The total cost is $0+1.25=1.25$ dollars.
 \end{solution}
 
 \newpage
@@ -152,6 +194,19 @@ Determine whether or not each of the following pairs of graphs are isomorphic. I
 \end{qparts}
 
 \begin{solution}
+	a) The two graphs are isomorphic. The isomorphism is as follows:
+	Let $f$ be\\
+	$f(a) = 1$\\
+	$f(b) = 4$\\
+	$f(c) = 0$\\
+	$f(d) = 3$\\
+	$f(e) = 2$\\
+	b) The two graphs are not isomorphic. \\
+	The first graph has 1 vertex of degree 5, 2 vertices of degree 4, 1 vertex of degree 3, and 3 vertices of degree 2.\\
+	The second graph has 2 vertices of degree 5, 2 vertices of degree 4, and 3 vertices of degree 2.\\
+	To make them isomorphic, we can remove an edge between $a$ and $c$ in the second graph. This will make the second graph have 1 vertex of degree 5, 2 vertices of degree 4, 1 vertex of degree 3, and 3 vertices of degree 2.\\
+
+
 \end{solution}
 
 \newpage
@@ -166,6 +221,11 @@ State whether each of the following contains, or is guaranteed to contain a Hami
 \end{qparts}
 
 \begin{solution}
+	a) The graph contains a Hamiltonian Cycle. The Hamiltonian Cycle is as follows: $a \rightarrow b \rightarrow c \rightarrow d \rightarrow e \rightarrow a$.\\
+	It is not guaranteed to contain a Hamiltonian Cycle because to get from $a$ to $e$, we can go $a\rightarrow e$.
+	\\b) The graph does not contain a Hamiltonian Cycle because there is only one way to go from $a,b$ side to $c,d$ side and back.\\
+	c) It is guaranteed to contain a Hamiltonian Cycle. Since it is a simple graph with 4 vertices that contains one cycle, the Hamiltonian Cycle is as follows: $a \rightarrow b \rightarrow c \rightarrow d \rightarrow a$.\\
+	d) It is not guaranteed to contain a Hamiltonian Cycle. The graph is a 4-vertex graph where each vertex has even degree, including $0$. However, the graph is not guaranteed to be connected, so it does not contain a Hamiltonian Cycle.
 \end{solution}
 
 \newpage
@@ -186,6 +246,12 @@ Let $G=(V,E)$ be a graph of the continental U.S. where $V$ is the set of the fir
 \end{qparts}
 
 \begin{solution}
+	a) Disproof:\\
+	The Euler Theorem states that a connected graph has an Euler path if and only if it has exactly 0 or 2 vertices of odd degree. Since the graph of the continental U.S. has 48 vertices, and each state shares a border with at least one other state, each state has an even degree. However, there are at least $3$ states that have an odd degree, which are Nevada, Louisiana. and Kentucky. Therefore, the graph does not have an Euler path.\\
+	b) $G$ is not 3-colorable.\\
+	Consider the odd wheel $W_3$. The odd wheel $W_3$ is a graph with 3 vertices, where each vertex is connected to the other two vertices. The odd wheel $W_3$ is not 3-colorable because each vertex is connected to the other two vertices, so each vertex must have a different color from the other two vertices. This is the same case for the graph of the continental U.S. because in a) we found that there are at least 3 states that have an odd degree. Therefore, the graph is not 3-colorable.\\
+	We can also use the Pigeonhole Principle. Let the Pigeons be any state with more than 2 neighbors, and the holes be the 3 colors. Since each state has at most 3 neighbors, we can color each state with 3 colors. However, since there are at least 3 states with more than 2 neighbors, we cannot color the graph with 3 colors. Therefore, the graph is not 3-colorable.
+
 \end{solution}
 
 \newpage
@@ -195,6 +261,12 @@ A Hamiltonian cycle is a cycle that traverses through every vertex in a graph ex
 \textbf{Note:} Two cycles are the same as long as the have the same vertices, and each vertex has the same left and right neighbors in the cycle. For instance the cycles $(a,b,c,a),$ $(b,c,a,b),$ and $(a,c,b,a)$ are all equivalent.
 
 \begin{solution}
+	For a complete graph $K_n$, there are $\frac{n!}{2n}=\frac{(n-1)!}{2}$ Hamiltonian cycles.\\
+	We start with $n$ vertices, and we can choose any of the $n$ vertices to start with.\\
+	Then, we have $n-1$ choices for the next vertex, $n-2$ choices for the next vertex, and so on.\\
+	However, we have to divide by $n$ because the cycle can start at any of the $n$ vertices with the same left and right neighbors, and we have to divide by $2$ because the cycle can be traversed in either direction (backward or forward).\\
+	Therefore, there are $\frac{n!}{2n}=\frac{(n-1)!}{2}$ Hamiltonian cycles in the complete graph $K_n$.
+
 \end{solution}
 
 \subsection*{\probnum Captivating Counts [14 points]}
@@ -207,6 +279,19 @@ How many positive integers between $1000$ and $9999$ inclusive
 Justify \textbf{and simplify} your answers. You may use a calculator to simplify.
 
 \begin{solution}
+	a) Since the digits have to be distinct, there are $9$ choices for the first digit, $9$ choices for the second digit, $8$ choices for the third digit, and $7$ choices for the fourth digit.\\
+	Therefore, there are $9*9*8*7=4536$ positive integers between $1000$ and $9999$ inclusive that have distinct digits.\\
+	b) We can start by finding the number of integers between $1$ and $9999$ that are divisible by $5$.
+	Consider $1$ to $5$, there is one number that is divisible by $5$.\\
+	Therefore, we can break down the $1$ to $9999$ into $5$-number blocks.\\
+	There are $2000$ blocks of $5$ numbers in $1$ to $9999$.\\
+	Therefore, there are $2000$ numbers between $1$ and $9999$ that are divisible by $5$.\\
+	Similarly, $1$ to $1000$ has $200$ numbers that are divisible by $5$.\\
+	Therefore, there are $2000-200=1800$ numbers between $1000$ and $9999$ that are divisible by $5$.\\
+	Similarly, $1$ to $1000$ has $142$ numbers that are divisible by $7$, $1$ to $9999$ has $1420$ numbers that are divisible by $7$.
+	$1$ to $1000$ has $28$ numbers that are divisible by $5$ and $7$, $1$ to $9999$ has $280$ numbers that are divisible by $5$ and $7$.\\
+	By the Principle of Inclusion-Exclusion, there are $(2000-200)+(1420-142)-(280)=1800+1278-280=1798$ numbers between $1000$ and $9999$ that are divisible by $5$ or $7$.\\
+	c) Using the numbers from part b, there are $1800-280=1520$ numbers between $1000$ and $9999$ that are divisible by $5$ but not by $7$.
 \end{solution}
 \end{document}
 

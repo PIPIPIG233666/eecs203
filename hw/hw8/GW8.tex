@@ -71,6 +71,19 @@ Two committees are having a meeting. If there are 12 people in each committee, h
 \end{qparts}
 
 \begin{solution}
+There are $24$ people in total and $2$ committees.\\
+a) No restrictions on seating.\\
+Therefore, it is a combination problem.\\
+$C(24, 12) = \frac{24!}{12!12!} = 2704156$ ways.\\
+b) Two people in the same committee cannot be neighbors.\\
+Therefore, it is a permutation problem.\\
+$P(24,2) = 24\cdot 23 = 552$ ways.\\
+c) Everybody must have exactly two neighbors from their committee.\\
+Therefore, it is a permutation problem.\\
+$P(24,3) = 24\cdot 23\cdot 22 = 12144$ ways.\\
+d) Everybody must have exactly one neighbor from their committee.\\
+Therefore, it is a permutation problem.\\
+$P(24,2) = 24\cdot 23 = 552$ ways.\\
 \end{solution}
 
 \subsection*{\probnum Hiking Extravaganza [15 points]}
@@ -79,6 +92,15 @@ Prove that every complete $n$-node weighted graph (with all possible edges) with
 \textbf{Hint:} Start by placing a hiker on each node. Try to show that the hikers can walk paths of \emph{total} length $n(n-1)$, each along increasing-weight paths.
 
 \begin{solution}
+Let $G$ be a complete $n$-node weighted graph with all distinct edge weights.\\
+Let $v_1, v_2, \ldots, v_n$ be the nodes of $G$.\\
+Let $w_{ij}$ be the weight of the edge between $v_i$ and $v_j$.\\
+Let $H$ be a complete $n$-node weighted graph with all distinct edge weights.\\
+Let $u_1, u_2, \ldots, u_n$ be the nodes of $H$.\\
+Let $x_{ij}$ be the weight of the edge between $u_i$ and $u_j$.\\
+Let $h_{ij}$ be the weight of the edge between $v_i$ and $u_j$.\\
+Let $h_{ij} = w_{ij} + \sum_{k=1}^{j-1} x_{k(k+1)}$ for $1 \le i \le n$ and $1 \le j \le n$.\\
+
 \end{solution}
 
 \end{document}
