@@ -1,0 +1,547 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{3}
+\newcommand{\hwnum}{4}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework 4}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, Feb. 15th}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $8 + 2$
+\hspace{3cm}
+Total Points: $100+20$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Even Just One [12 points]}
+
+Prove that if $n^3 + 4$ is even or $3n + 3$ is odd, then $n$ is even.
+
+\begin{solution}
+\textbf{Proof by Contrapositive}
+
+\noindent We will prove this statement using a proof by contrapositive. Thus, we want to show that if $n$ is odd, then $n^3 + 4$ is odd \textit{and} $3n + 3$ is even. By definition of odd, $n$ can be written as $n=2k+1$ for some integer $k.$
+\begin{align*}
+    n^3 + 4 &= (2k+1)^3 + 4\\
+        &= 8k^3 + 12k^2 + 6k + 1 + 4\\
+        &= 2(4k^3 + 6k^2 + 3k + 2) + 1
+\end{align*}
+Since $n^3+4$ is twice an integer plus one, it is odd.
+
+Additionally,
+\begin{align*}
+    3n + 3 &= 3(2k+1) + 3\\
+        &= 6k + 3 + 3\\
+        &= 2(3k + 3)
+\end{align*}
+Since $3n+3$ is twice an integer, it is even.
+
+\smallskip
+
+\smallskip
+
+\textbf{Alternate: Direct/Cases}
+
+We will use a proof by cases. Assume $n^3+4$ is even or $3n+3$ is odd.
+
+\textbf{Case 1:} $n^3+4$ is even
+
+Suppose $n^3+4$ is even. Within this case, we have two cases: either $n$ is odd or $n$ is even.
+
+\begin{itemize}
+    \item Suppose $n$ is odd. Then by the definition of odd, $n=2k+1$ for some integer $k$. 
+
+    Then $n^3+4=(2k+1)^3+4=8k^3+4k^2+2k+1+4=2(4n^3+2k^2+k+2)+1$
+
+    Therefore, since $4n^3+2k^2+k+2$ is an integer, $n^3+4$ is odd. However, $n^3+4$ is even; this is a contradiction. Therefore, $n$ is even.
+\item 
+    Suppose $n$ is even. Then $n$ is even.
+\end{itemize}
+
+\textbf{Case 2:} $3n+3$ is odd
+
+Suppose $3n+3$ is odd. Within this case, we have two cases: either $n$ is odd or $n$ is even. 
+
+\begin{itemize}
+    \item Suppose $n$ is odd. Then by the definition of odd, $n=2k+1$ for some integer $k$. 
+
+    Then $3n+3=3(2k+1)+3=6k+3+3=2(3k+3)$
+
+    Therefore, since $3k+3$ is an integer, $3n+3$ is even. However, $3n+3$ is odd; this is a contradiction. Therefore, $n$ is even.
+\item 
+    Suppose $n$ is even. Then $n$ is even.
+\end{itemize}
+
+We have shown that $n$ is even in all cases. Therefore, we have proved the statement.
+
+\smallskip
+\textbf{Grading Guidelines [12 points]}
+\begin{guidelines}
+    \item +3 makes correct assumption for proof method
+    \item +3 correctly applies definitions of even/odd
+    \item +3 correct algebra
+    \item +3 correct conclusion
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum $\text{Odd}^2$ [20 points]}
+
+Prove the following for all integers $x$ and $y$:
+\begin{qparts}
+    \item If $x + y$ is even, then ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
+    \item Using your answer from part (a), show that if $(x-y)^2$ is odd, then $x + y$ is odd.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item \textbf{Contrapositive}
+    
+    We will use a proof by contrapositive to prove this statement. Let $x$ and $y$ be arbitrary integers. We will prove ($x$ is odd or $y$ is odd) and ($x$ is even or $y$ is even) $\rightarrow$ $x + y$ is odd. Assume ($x$ is odd or $y$ is odd) and ($x$ is even or $y$ is even). Therefore, we have two cases:
+        \begin{itemize}
+            \item \underline{$x$ is odd and $y$ is even}: Since $x$ is odd and $y$ is even, $x = 2k + 1$ and $y = 2m$ where $k$ and $m$ are integers. Therefore, $x + y = 2k + 1 + 2m = 2(k + m) + 1 = 2j + 1$ where $j$ is an integer. Therefore, $x + y$ is odd.
+
+            \item \underline{$x$ is even and $y$ is odd}: Since $x$ is even and $y$ is odd, $x = 2k$ and $y = 2m + 1$ where $k$ and $m$ are integers. Therefore, $x + y = 2k + 2m + 1 = 2(k + m) + 1 = 2j + 1$ where $j$ is an integer. Therefore, $x + y$ is odd.
+        \end{itemize}
+        In both cases, $x + y$ is odd. Therefore, we have shown that for all integers $x$ and $y$, ($x$ is odd or $y$ is odd) and ($x$ is even or $y$ is even) $\rightarrow$ $x + y$ is odd. Therefore, since we have proven the contrapositive, we have also proven the original statement, for all integers $x$ and $y$, $x + y$ is even $\rightarrow$ ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
+        
+    \textbf{Alternate: Cases/Contradiction}
+
+    We will use a proof by cases to prove this statement. Let $x$ and $y$ be arbitrary integers. Assume $x + y$ is even. Consider 4 cases for $x$ and $y$:
+    \begin{itemize}
+        \item \underline{$x$ is even and $y$ is even}: Since $x$ and $y$ are even, $x = 2k$ and $y = 2m$ where $k$ and $m$. $x + y = 2m + 2k = 2(k + m) = 2j$ where $j$ is an integer. Therefore, $x + y$ is even and and this case is possible.
+
+        \item \underline{$x$ is even and $y$ is odd}: Since $x$ is even, $x = 2k$ where $k$ is an integer and since $y$ is odd, $y = 2m + 1$ where $m$ is an integer. Therefore, $x + y = 2k + 2m + 1 = 2(k + m) + 1 = 2j + 1$ where $j$ is an integer. Therefore, $x + y$ is odd, which is a contradiction because we assumed $x + y$ is even. Therefore, this case is not possible.
+
+        \item \underline{$x$ is odd and $y$ is even}: Since $x$ is odd, $x = 2k + 1$ where $k$ is some integer. Since $y$ is even, $y = 2m$ where $m$ is some integer. Therefore, $x + y = 2k + 1 + 2m = 2(k + m) + 1 = 2j + 1$ where $j$ is some integer. Therefore, $x + y$ is odd, which is a contradiction because we assumed $x + y$ is even. Therefore, this case is not possible.
+
+        \item \underline{$x$ is odd and $y$ is odd}: Since $x$ and $y$ are both odd, $x = 2k + 1$ where $k$ is some integer and $y = 2m + 1$ where $m$ is some integer. Therefore, $x + y = 2k + 1 + 2m + 1 = 2k + 2m + 2 = 2(k + m + 1) = 2j$ where $j$ is some integer. Therefore, $x + y$ is even and this case is possible.
+    \end{itemize}
+        Therefore, there are only two cases which are possible, ($x$ is even and $y$ is even) and ($x$ is odd and $y$ is odd). Therefore, we have shown that for all integers $x$ and $y$, $x + y$ is even $\rightarrow$ ($x$ is even and $y$ is even) or ($x$ is odd and $y$ is odd).
+
+    \item \textbf{Contrapositive/Cases}
+    
+    We will use a proof by contrapositive, so we will prove that for all integers $x$ and $y$,  $x + y$ is even $\rightarrow$ $(x-y)^2$ is even. Let $x$ and $y$ be arbitrary integers. Assume $x + y$ is even. Therefore by part (a) there are two cases in which $x + y$ is even, and in each case we will show that $(x-y)^2$ is even:
+        \begin{itemize}
+            \item \underline{$x$ is even, $y$ is even}: Since $x$ is even, $x = 2k$ where $k$ is some integer. Since $y$ is even, $y = 2m$ where $m$ is some integer. Therefore, $(x-y)^2 = (2k - 2m)^2 = 4k^2 + 4m^2 - 8km = 2(2k^2 + 2m^2 - 4km) = 2j$ where $j$ is some integer. Therefore, $(x-y)^2$ is even.
+
+            \item \underline{$x$ is odd, $y$ is odd}: Since $x$ is odd, $x = 2k + 1$ where $k$ is some integer. Since $y$ is odd, $y = 2m + 1$ where $m$ is some integer. Therefore, $(x - y)^2 = (2k + 1 - 2m - 1)^2 = (2k - 2m)^2 = 4k^2 + 4m^2 - 8km = 2(2k^2 + 2m^2 - 4km) = 2j$ where $j$ is some integer. Therefore, $(x-y)^2$ is even.
+        \end{itemize}
+            For every case, $(x-y)^2$ is even. From part (a), we know that these are the only two cases. Therefore, we have shown that for all integers $x$ and $y$, $x + y$ is even $\rightarrow (x-y)^2$ is even. Therefore, since we have proven the contrapositive, we have proved the original statement, for all integers $x$ and $y$, $(x - y)^2$ is odd $\rightarrow x + y$ is odd.
+        
+        
+\end{qparts}
+
+\noindent
+
+\smallskip
+\textbf{Grading Guidelines [20 points]}
+
+\textbf{Parts a and b:}
+\begin{guidelines}
+    \item +2 correctly outlines a particular proof method
+    \item +3 correct cases
+    \item +3 correct argument within each case
+    \item +2 correct conclusion
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Do you $\exists$xist...? [8 points]}
+\textbf{Prove or disprove} the following: There exist integers $x$ and $y$ so that $20x + 4y = 1$.
+
+\begin{solution}
+\textbf{Solution 1:} We will disprove this statement.\\ 
+Suppose for a contradiction that the statement is true, i.e., that there DO exists  integers $x$ and $y$ with $20x + 4y = 1$. 
+\begin{itemize}
+    \item Then $1 = 20x + 4y = 2(10x+2y)$ so 1 is even. (We know $(10x+2y)$ is an integer because $x$ and $y$ are integers.)
+    \item But we know 1 is odd because $1 = 2(0)+1$. 
+    \item Since 1 cannot be both even and odd, we've reached a contradiction, meaning our assumption that these integers exist is false.
+\end{itemize} 
+Therefore, these integers do not exist.\\\\
+
+\textbf{Solution 2: (same logic as solution 1 but with a slightly different write-up)}\\
+We will disprove this statement by proving its negation: 
+\begin{center} ``There do not exists integers $x$ and $y$ with $20x + 4y = 1$." \end{center}
+Proof of the negation: Seeking contradiction, assume the negation [of the above negation]: ``There exist integers $x$ and $y$ with $20x + 4y = 1$."
+\begin{itemize}
+    \item Then $1 = 20x + 4y = 2(10x+2y)$ so 1 is even. (We know $(10x+2y)$ is an integer because $x$ and $y$ are integers.)
+    \item But we know 1 is odd because $1 = 2(0)+1$. 
+    \item Since 1 cannot be both even and odd, we've reached a contradiction, meaning our assumption that these integers exist is false.
+\end{itemize} 
+Therefore, these integers do not exist.\\\\
+
+\textbf{Solution 3: Identical to Solution 2, but negation worded differently}\\
+We will disprove this statement by proving its negation: 
+\begin{center} ``For all integers $x$ and $y$,  $20x + 4y \neq 1$." \end{center}
+Proof of the negation: Seeking contradiction, assume the negation [of the above negation]: ``There exist integers $x$ and $y$ with $20x + 4y = 1$." \\
+ (The proof from here continues exactly as in Solution 2, above.)\\
+
+
+\textbf{Grading Guidelines [8 points]}
+\begin{guidelines}
+    \item +2 chooses to disprove
+    \item +3 assumes for contradiction that there are such an $x$ and $y$
+    \item +3 arrives at an appropriate contradiction
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum What's Nunya? Nunya Products are Negative. [12 points]}
+Given any three real numbers, prove that the product of two of them will always be non-negative.
+\begin{solution}
+
+\textbf{Solution 1:}
+Let $x$, $y$, and $z$ be arbitrary real numbers. We will prove the claim by cases:
+
+\textbf{Case 1:} At least one of $x$, $y$, or $z$ are equal to 0.
+Without loss of generality, say $x = 0$. Then $xy = 0$, which is non-negative.
+
+\textbf{Case 2:} $x$, $y$, and $z$ are all non-zero. In this case, each number is either strictly positive or strictly negative. Analyzing all possibilities, we see that it must be that case that two of the numbers share the same sign (i.e. they are both positive or both negative). Without loss of generality, suppose $x$ and $y$ have the same sign. Then, $xy$ will be positive no matter what.
+
+Since we have proved the claim in an exhaustive set of cases, we conclude that it is true in general.
+
+\textbf{Grading Guidelines [12 points]}
+
+\begin{guidelines}
+    \item +4 correct selection of cases (students can have any number of cases as long as they are exhaustive)
+    \item +4 correct argument in at least one case
+    \item +4 correct argument in each case
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Element or Subset? [8 points]}
+Let $A = \{1,2,\text{``a"}\}$. State whether each statement is true or false. Give a brief explanation if false (you do not need to justify why a statement is true).
+\begin{qparts}
+    \item $\text{``a"}\in A$ 
+    \item $\text{``a"}\subseteq A$ 
+    \item $\{1,2\} \in A$ 
+    \item $\{1,2\} \subseteq A$
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item True.
+    \item False. ``a" is not subset, it is an element. 
+    \item False. $\{1,2\}$ is a subset, not an element. 
+    \item True.
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [8 points]}
+
+\textbf{Parts a and d:}
+\begin{guidelines}
+    \item +2 states true
+\end{guidelines}
+\textbf{Part b and c:}
+\begin{guidelines}
+    \item +1 states false
+    \item +1 correct explanation
+\end{guidelines}
+\end{solution}
+
+\newpage
+
+
+\subsection*{\probnum Ready, $\{s,e,t\}$, go! [12 points]}
+Let $S = \{1,2,3,4,5\},\ A = \{1,2\},\ B =\{2,3\},$ and $C =\{4,5\}.$ Compute the following, where complements are taken within $S.$ Show intermediate steps as part of your justification.
+
+\begin{qparts}
+    \item $\mathcal{P}\left( (A \cap B) \cap \overline C ) \right)$ 
+    \item $\mathcal{P} \left( ( \overline{C} - B ) \cap A \right)$  
+    \item $\{A \times B\} \cap \{S \times B\}$
+    \item $(A \times B) \cap (S \times B)$
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item \begin{align*}
+        \mathcal{P}\left( (A \cap B) \cap \overline C ) \right) &= \mathcal{P}((\{1,2\} \cap \{2,3\})\cap \{1,2,3\}) \\
+        &= \mathcal{P}(\{2\} \cap \{1,2,3\}) \\
+        &= \mathcal{P}(\{2\}) \\
+        &= \{\emptyset, \{2\}\}.
+    \end{align*}
+
+    \item \begin{align*}
+        \mathcal{P} \left( ( \overline{C} - B ) \cap A \right) &= \mathcal{P}((\{1,2,3\} - \{2,3\}) \cap \{1,2\}) \\
+        &= \mathcal{P}(\{1\} \cap \{1,2\}) \\
+        &= \mathcal{P}(\{1\}) \\
+        &= \{\emptyset , \{1\} \}.
+    \end{align*}
+    
+    \item Let $X=A\times B=\{(1,2),(1,3),(2,2),(2,3)\}.$
+
+    Let $Y=S\times B = \{(1,2),(1,3), (2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,2),(5,3)\}.$
+
+    Then
+    $$\{A \times B\} \cap \{S \times B\} = \{X\} \cap \{Y\} = \emptyset$$
+    because $X\ne Y.$
+    
+    \item Using our work from part (c), we observe that the elements that $X$ and $Y$ have in common are exactly the elements of $X,$ so
+    $$(A\times B)\cap(S\times B) = X\cap Y = X = \{(1,2),(1,3),(2,2),(2,3)\}.$$
+\end{qparts}
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1 correct set
+    \item +2 correct justification (intermediate steps shown)
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Subset Proofs [16 points]}
+Prove that if $A$ and $B$ are sets, then $A\cup (A\cap B) =A$ by proving each side is a subset of the other. This set identity is known as an absorption law. Your answer should be a word proof, and not use any set equivalence laws.
+\begin{solution}
+We will show that these two sets are equal by showing that each is a subset of the other.
+
+First, we will show $A\cup (A\cap B) \subseteq A$:
+\begin{pflist}
+    \item Suppose $x\in A\cup(A\cap B)$ . 
+    \item By the definition of union, we have $x\in A$ or $x\in A\cap B$ 
+    \item We have two cases, $x\in A$ or $x\in A\cap B$ 
+    \item \textbf{Case 1:}  $x\in A$
+    
+    Thus as $x \in A$ as desired. 
+    
+    \item \textbf{Case 2:}  $x\in A\cap B$
+    
+    By the definition of intersection, we have $x\in A$ and $x \in B.$ Thus $x \in A$ as desired. 
+    
+    \item As we have shown that $x\in A$ for both these cases, we can conclude that $A\cup (A\cap B) \subseteq A$ 
+\end{pflist}
+
+Second, we will show $A \subseteq A \cup (A\cap B)$: 
+\begin{pflist}
+    \item Suppose that $x \in A$ 
+    \item So $x\in A$ or $x\in A\cap B.$
+    \item Thus by the definition of union, we have $x \in A \cup (A\cap B)$ 
+    \item Thus we have shown that $A \subseteq A \cup (A\cap B)$ 
+\end{pflist}
+Because both sides are subsets of each other, so we can conclude that $A \cup (A\cap B)=A$.
+
+\textbf{Draft Grading Guidelines [16 points]}
+\begin{guidelines}
+    \item +4 correct proof structure and setup to prove $A\cup(A \cap B) \subseteq A$
+    \item +4 correctly prove that $A\cup(A \cap B) \subseteq A$
+    \item +4 correct proof structure and setup to prove $A \subseteq A \cup (A \cap B)$
+    \item +4 correctly prove that $A \subseteq A \cup (A \cap B)$
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum IceCream-Exclusion [12 points]}
+Out of the 40 EECS 203 staff members, 21 like vanilla ice cream, 18 like chocolate ice cream, and 24 like strawberry ice cream. In addition, 13 like both strawberry and vanilla, and 7 like chocolate and vanilla.
+
+\begin{parts}
+    \item How many staff members like all three ice cream flavors if 9 staff members like both strawberry and chocolate ice cream, assuming everyone likes at least one type of ice cream?
+    \item 
+    How many staff members don't like any of the ice cream flavors if 14 staff members like both strawberry and chocolate ice cream and 3 staff members like all three ice cream flavors?
+\end{parts}
+
+\begin{solution}
+    Let $V$, $C$, and $S$ represent the set of staff that likes vanilla ice cream, chocolate ice cream, and strawberry ice cream. 
+    
+    \begin{parts}
+        \item 
+    
+        Using the inclusion-exclusion principle, assuming all 40 staff members like at least one ice cream flavor, we have:
+            \begin{align*}
+            |V \cup C \cup S| &= |V| + |C| + |S| - |S \cap V| - |C \cap V| - |S \cap C| + |V \cap C \cap S| \\
+            40 &= 21 + 18 + 24 - 13 - 7 - 9 + |V \cap C \cap S| \\
+            40 &= 34 + |V \cap C \cap S| \\
+            6 &= |V \cap C \cap S|
+            \end{align*}
+        6 staff members like all three ice cream
+        
+        
+        \item 
+    
+        Using the inclusion-exclusion principle, we can solve for the set of staff members that likes at least one type of ice cream flavor.
+            \begin{align*}
+            |V \cup C \cup S| &= |V| + |C| + |S| - |S \cap V| - |C \cap V| - |S \cap C| + |V \cap C \cap S| \\
+            &= 21 + 18 + 24 - 13 - 7 - 14 + 3 \\
+            &= 32
+            \end{align*}
+        Since $|V \cup C \cup S| = 32$, the set of staff members don't like any ice cream flavor is $40 - |V \cup C \cup S| = 8$
+        
+        8 staff members don't like any ice cream
+        
+    \end{parts}
+
+    \textbf{Draft Grading Guidelines [12 points]}
+
+    \textbf{Part a:}
+    \begin{guidelines}
+        \item +2 correctly applies/states the inclusion-exclusion principle
+        \item +2 correctly substitutes given values into corresponding sets
+        \item +1 correct final answer
+    \end{guidelines}
+    \textbf{Part b:}
+    \begin{guidelines}
+        \item +2 correctly identifies the unknown is all staff members minus those who like at least one ice cream flavor
+        \item +2 correctly applies/states the inclusion-exclusion principle
+        \item +2 correctly substitutes given values into corresponding sets
+        \item +1 correct final answer
+    \end{guidelines}
+\end{solution}
+
+
+
+
+\pagebreak
+\section*{Grading of Groupwork 3}
+Using the solutions and Grading Guidelines, grade your Groupwork 3 Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/30\\
+\hline
+\Xhline{1.25pt}
+Total: & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+
+\subsection*{\probnum Mostly Rational [12 points]}
+Show that if $r$ is an irrational number, there is a unique integer $n$ such that the distance between $r$ and $n$ is \textit{strictly} less than $\frac 12.$
+
+\begin{solution}
+Given an irrational number $r$ (note: because $r$ is irrational, $r$ is $not$ an integer), let $a$ be the closest integer to $r$ less than $r$, and let $b$ be the closest integer to $r$ greater than $r$. In fact, $b = a + 1$.
+
+The distance between $r$ and any integer other than $a$ or $b$ is greater than 1 so it cannot be less than $\frac 12$. Furthermore, since $r$ is irrational, it cannot be exactly halfway between $a$ and $b$, otherwise we'd have $r=\frac{a+b}2$ which is rational. So exactly one of $r - a < \frac 12$ and $b - r < \frac 12$ holds.
+
+\textbf{Grading Guidelines [12 points]}
+\begin{gwguidelines}
+    \item +3 identifies variables for the two integers directly surrounding the irrational $r$
+    \item +3 identifies $b=a+1$ (does not need to be written in an equation like this)
+    \item +6 states that $r$ cannot lie half way between since it is irrational
+\end{gwguidelines}
+\end{solution}
+
+
+\subsection*{\probnum Set in Stone [8 points]}
+Prove using set identities that
+$$(A \cap C) - (B \cap A) = (C - B) \cap A$$ 
+for any three sets $A,\ B$ and $C.$
+
+\begin{solution}
+\begin{align*}
+    (A \cap C) - (B \cap A) &= (A \cap C) \cap \overline{(B \cap A)} \tag{Definition of Set Difference} \\
+    &= (A \cap C) \cap (\overline{B} \cup \overline{A}) \tag{De Morgan's Law} \\
+    &= A \cap C \cap (\overline{B} \cup \overline{A}) \tag{Associative Law} \\
+    &= C \cap A \cap (\overline{B} \cup \overline{A}) \tag{Commutative Law} \\
+    &= C \cap [(A \cap \overline{B}) \cup (A \cap \overline{A})] \tag{Distributive Law} \\
+    &= C \cap [(A \cap \overline{B}) \cup \emptyset] \tag{Complement Law} \\
+    &= C \cap [A \cap \overline{B}] \tag{Identity Law} \\
+    &= C \cap A \cap \overline{B} \tag{Associative Law} \\
+    &= C \cap \overline{B} \cap A \tag{Commutative Law} \\
+    &= (C \cap \overline{B}) \cap A \tag{Associative Law} \\
+    &= (C - B) \cap A \tag{Definition of Set Difference}
+\end{align*}
+
+\textbf{Grading guidelines [8 points]}
+\begin{gwguidelines}
+    \item +1 applies Definition of Set Difference
+    \item +1 applies De Morgan's Law
+    \item +1 applies Commutative/Associative law
+    \item +1 applies Distributive law
+    \item +1 applies Compliment Law
+    \item +1 applies Identity Law
+    \item +1 proof concludes correct statement
+    \item +1 correct justifications for each step
+\end{gwguidelines}
+\end{solution}
+\end{document}

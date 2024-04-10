@@ -1,0 +1,380 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{0}
+\newcommand{\hwnum}{1}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, January 25th}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $7+1$
+\hspace{3cm}
+Total Points: $100+20$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Collaboration and Support [3 points]}
+\begin{qparts}
+    \item Give the names and uniqnames of 2 of your EECS 203 classmates (these could be members of your homework group or other classmates). 
+    \item When you have questions about the course content, where can you ask them? Where are \textit{you} most likely to ask questions?
+    \item Name one self-care action you plan to do this semester to maintain your overall well-being. 
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item Any 2 classmates' information. 
+    \item Options include: discussion, office hours, Piazza, lecture, and potentially the Admin Form (if it’s a personal/individual question).
+    \item Some great ideas we’ve heard: you could block time on your calendar to relax (read, take a walk, chat with friends, Netflix, etc.); set a bedtime and stick to it (at least on weekdays); set aside time every week to connect with the people you are close with (e.g., close friends, parents, siblings, other relatives); get a massage/manicure/pedi- cure; and lots of other ideas!
+\end{qparts}
+\textbf{Grading Guidelines [3 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1 adequate answer provided
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Rock the Vote [12 points]}
+Let $p$ and $q$ be the following propositions:
+\begin{itemize}
+    \item $p$: The election has been decided.
+    \item $q$: The votes have been counted.
+\end{itemize}
+Express each of these propositions as an English statement:
+\begin{qparts}
+    \item $\neg p\rightarrow\neg q$
+    \item $\neg q \lor (\neg p \land q)$
+\end{qparts}
+
+\begin{solution}
+\textbf{Note:} the wording does not have to be exact in order to achieve full points. 
+\begin{qparts}
+    \item If the election has not been decided, then the votes have not been counted. (Or, If the votes were counted, the election must have been decided, etc.)
+    \item The votes have not been counted, or they have been, but the election has not been decided. (Or, it is either the case the votes haven't been counted, or the election has not been decided but the votes have been counted, etc.)
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +6 correct translation
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Negation Station [16 points]}
+
+For each of the following propositions, give their negation in natural English. Your answer should not contain the original proposition. That is, you shouldn't negate it as ``It is not the case that ...'' or something similar.
+
+\textbf{Note:} You do not need to show work besides your translation, but you may earn partial credit if you do.
+
+\begin{qparts}
+    \item $a$ is greater than 6 or at most 2.
+    \item $b$ is a perfect square, odd, and not divisible by 7.
+    \item $c$ is odd whenever it is prime and greater than 3.
+    \item If $d$ is divisible by 2, then it is even.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item ``$a$ is at most 6 and greater than 2.'' Here we use De Morgan's Law to negate each of the inequalities and we switch the ``or'' to an ``and.'' Notice that the negation of ``less than'' is ``at least'' and vice versa.
+    
+    \textbf{Also acceptable:} ``$2 < a \leq 6$", or ``$a > 2$ and $a \leq 6$".
+    
+    \item ``$b$ is not a perfect square, it is even, or it is divisible by 7.'' Here we have three propositions joined by ``and,'' but De Morgan's works the same---it becomes three propositions joined by ``or.'' Keep in mind that, as is standard in logic, this is \textit{not} an exclusive or, so more than one of these can be true. We won't take off points because it's a little ambiguous, but we recommend \textbf{not} using the word ``either,'' because that tends to mean only one is true.
+    
+    \item ``$c$ is prime, greater than 3, and even.'' Recall that ``whenever'' is used to mean implication, so we have ``it is not the case that if $c$ is prime and greater than 3, then it is odd.'' Then, we use implication breakout and De Morgan's to simplify to our answer.
+    
+    \textbf{Note:} ``If is $c$ is prime, greater than 3, then it is even'' is not a correct answer.
+    
+    \item ``$d$ is divisible by 2 and/but it is odd.''
+    
+    \textbf{Note:} Again, ``If $d$ is divisible by 2, then it is odd" is not correct.  It is possible to make both this statement and the original true, e.g. if $d=3$.
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [16 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +2 correct negation/application of De Morgan's Law (change and/or to or/and and attempts to negate each sub-expression)
+    \item +2 correct negations of sub-expressions
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Lying and Politics [16 points]}
+Imagine a world with two kinds of people: knights and knaves, where knights always tell the truth and knaves always lie. There are three people A, B, and C, and one of them is the city mayor.
+\begin{itemize}
+    \item A says ``I am not the city mayor."
+    \item B says ``The city mayor is a knave."
+    \item C says ``All three of us are knaves."
+\end{itemize}
+Is the city mayor a knight or a knave? As part of your solution, determine everything you can about whether A, B, and C are knights or knaves.
+
+\begin{solution}
+C must be a knave. If they were a knight, then their statement would be false, but they cannot lie. Moreover since C \textit{cannot} tell the truth, at least one of A or B must be a knight otherwise C's statement would be true. Assume that B is a knave. Then A must be the city mayor and a knight, which is a contradiction. Then B must be a knight, so the city mayor is a knave.
+
+The city mayor is either A or C. If A is the mayor, they are a knave; and if they are not the mayor, then they are a knight and C is the mayor.  Either way, however, the mayor is a knave.
+
+\smallskip
+\textbf{Draft Grading Guidelines [16 points]}
+\begin{guidelines}
+    \item +5 concludes that C is a knave with explanation
+    \item +5 concludes that B is a knight with explanation
+    \item +6 concludes that the mayor is a knave with explanation
+    \item $-3$ states that one of the two possibilities is what happened.  E.g. ``Thus, A is the mayor" or ``Thus, A is a knave."  We cannot be sure which person is mayor or whether A is a knight or knave.
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Is Equivalence Equivalent to Equality? [15 points]}
+Show that $(b \rightarrow a) \land (c \rightarrow a)$ is logically equivalent to $\neg(b \lor c) \lor a$.  If you use a truth table, be sure to state why the table tells you what you claim.  If you use logical equivalences, be sure to cite each law you use.
+
+\begin{solution}
+\textbf{Solution 1:}
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c|c}
+$a$ & $b$ & $c$ & $b \rightarrow a$ & $c \rightarrow a$ & $(b \rightarrow a) \land (c \rightarrow a)$ & $\neg(b \lor c)$ & $\neg(b \lor c) \lor a$ \\ 
+\hline
+T & T & T & T & T & T & F & T\\
+T & T & F & T & T & T & F & T\\
+T & F & T & T & T & T & F & T\\
+T & F & F & T & T & T & T & T\\
+F & T & T & F & F & F & F & F\\
+F & T & F & F & T & F & F & F\\
+F & F & T & T & F & F & F & F\\
+F & F & F & T & T & T & T & T
+\end{tabular}
+\end{center}
+
+\textbf{Solution 2:}
+\begin{align*}
+    &\ \ \ \ (b \rightarrow a) \land (c \rightarrow a) \tag{Premise} \\
+    &\equiv (\neg b \lor a) \land (\neg c \lor a) \tag{Implication Breakout} \\
+    &\equiv (\neg b \land \neg c) \lor a \tag{Distributive Law} \\
+    &\equiv \neg(b \lor c) \lor a \tag{De Morgan's Law}
+\end{align*}
+
+
+\textbf{Draft Grading Guidelines [15 points]}
+
+\textbf{Solution 1:}
+\begin{guidelines}
+    \item +4 correct number of rows
+    \item +4 correct intermediate steps (columns)
+    \item +3 columns corresponding to original propositions match
+    \item +4 columns corresponding to original propositions have the correct truth values
+\end{guidelines}
+\textbf{Solution 2:}
+\begin{guidelines}
+    \item +5 correct use of implication breakout
+    \item +5 correct use of distributive law
+    \item +5 correct use of De Morgan's Law
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Deduce, Reuse, Recycle [20 points]}
+
+Given that the following statements are \textbf{true}:
+\[ (p \land r) \rightarrow q\hspace{0.5in}\: \neg q  \hspace{0.5in} \: r \lor s \hspace{0.5in} \: q \lor r \]
+For each of the propositions, $p,\ q,\ r,$ and $s$, state its truth value and explain. If it cannot be found, briefly explain why. 
+\begin{solution}
+$p$ is false, $q$ is false, $r$ is true, and $s$ is unknown.
+
+We have $\neg q$, so $q$ must be false. Because we know $q\vee r$, but $q$ is false, we know $r$ must be true.
+Because $r$ is true, if $p$ were also true, then $q$ would have to be true, but it is false. This means $p$ must be false.
+
+These assignments by definition make the first, second, and fourth propositions true.  The third proposition, $r\vee s$ is also already true, as $r$ being true is enough to guarantee that. This means we cannot determine whether $s$ is true.
+
+\smallskip
+\textbf{Draft Grading Guidelines [20 points]}
+
+\textbf{For each variable:}
+\begin{guidelines}
+    \item +2 correct assignment, or identifies it is unknown
+    \item +3 correct justification
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Preposterous Propositions [18 points]}
+
+Consider the following truth table, where $s$, $t$, and $w$ are unknown propositions.
+
+\begin{center}
+\begin{tabular}{|c c c|| c | c | c |}
+\hline
+$p$ & $q$ & $r$ & 
+\hspace{0.8cm}$s$\hspace{0.8cm} & \hspace{0.8cm}$t$\hspace{0.8cm} & \hspace{0.8cm}$w$\hspace*{0.8cm}\\\hline
+T & T & T  & F & T & F\\\hline
+T & T & F  & T & F & F\\\hline
+T & F & T  & F & T & T\\\hline
+T & F & F  & F & T & F\\\hline
+F & T & T  & F & T & T\\\hline
+F & T & F  & F & F & F\\\hline 
+F & F & T  & F & T & T\\\hline
+F & F & F  & F & T & F\\\hline
+\end{tabular}
+\end{center}
+
+Use the above truth table to answer the following questions. For each unknown proposition, $s$, $t$, and $w$: 
+\begin{itemize}
+    \item Find an equivalent compound proposition using $p$, $q$, and/or $r$. 
+    \item You may use \textbf{only} $\land$, $\lor$, $\neg$, and parentheses in each of your answers.  
+    \item You may use $p$, $q$, and $r$ \textbf{at most once} in each of your answers.
+\end{itemize}
+
+\begin{solution}
+
+\begin{itemize}
+    \item $s \equiv p \land q \land \neg r \equiv \neg(\neg p \lor \neg q \lor r)$
+    
+    $s$ is only true for one of the 8 rows. In this row, $p$ and $q$ are both true, while $r$ is false, leading to the expression $p \land q \land \neg r$. This expression holds for each of the remaining rows.
+
+    \item $t \equiv \neg q \lor r \equiv \neg(q \land \neg r)$
+    
+    $t$ is only false when $q$ is true and $r$ is false. There also is no clear pattern between the value of $p$ and $t$. We can also observe that $t$ is always true when $r$ is true, without depending on the value of $q$. Combining these insights gives $\neg q \lor r$ as the compound proposition.
+
+    \item $w \equiv (\neg p \lor \neg q) \land r \equiv \neg(p \land q) \land r$
+    
+    $w$ is never true when $p \land q$ is true. Beyond the top 2 rows, the value of $w$ alternates with the value of $r$, giving $(\neg p \lor \neg q) \land r$.
+\end{itemize}
+
+\smallskip
+\textbf{Draft Grading Guidelines [18 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +3 correct expression (or equivalent logical expression)
+    \item +3 justifies expression with a reasonable explanation
+\end{guidelines}
+\end{solution}
+
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+\subsection*{\probnum Caught Red-Handed! [24 points]}
+Four friends have been identified as suspects for a recent hack. They have made the follow statements to the authorities:
+\begin{itemize}
+    \item Redd says that ``Blu did it"
+    \item Violet says that ``I did not do it"
+    \item Blu says that ``Grey did it"
+    \item Grey says that ``Blu lied when they said that I did it"
+\end{itemize}
+\begin{qparts}
+    \item If the authorities know exactly one of the four suspects is telling the truth, who did it?
+    \item If the authorities know exactly one of the four suspects is lying, who did it?
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item There are four cases to consider, one for each suspect
+    \begin{enumerate}[label={(\arabic*)}]
+        \item \textbf{Redd is telling the truth}: If Redd is telling the truth, then Blu did it, but this means that Violet is telling the truth, and since we have two truth tellers, we reach a contradiction.
+        \item \textbf{Violet is telling the truth}: If Violet tells the truth, then Grey must be lying, since there can only be one truth teller. However, this means that Blu is telling the truth, meaning we two truth tellers and another contradiction.
+        \item \textbf{Blue is telling the truth}: If Blue tells the truth, then Grey hacked the system; however, this means that Violet is telling the truth, and since we have two truth tellers, we reach a contradiction.
+        \item \textbf{Grey is telling the truth}: If Grey is telling the truth, then Violet must be a liar (this is because Blu and Redd must also be lying). Since Violet is a liar, \textbf{Violet is the hacker.}
+    \end{enumerate}
+    Note there are other case breakdowns you could consider.  So long as it is clear that you covered every possibility, that will be sufficient.  For example, you could do 2 cases on whether Violet is telling the truth.  Or you could do 2 cases on whether Grey is telling the truth.
+    \item Since Blue and Grey make statements that directly contradict each other, and since we are limited to one liar, then one of them must be the liar. This means that Redd and Violet are telling the truth. Since Redd is telling the truth, \textbf{Blu is the hacker}.
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [24 points]}
+
+\textbf{Part a:}
+\begin{gwguidelines}
+    \item +4 attempts to isolate which subject is telling the truth
+    \item +4 identifies contradictions within the other subject's statements to figure out that they can not be telling the truth
+    \item +4 deduces which subject is telling the truth
+    \item +2 identifies Violet as the hacker
+\end{gwguidelines}
+\textbf{Part b:}
+\begin{gwguidelines}[resume]
+    \item +4 attempts to find contradictory statements to identify possible liars
+    \item +4 identifies Redd as being a truth teller
+    \item +2 identifies Blu as the hacker
+\end{gwguidelines}
+\end{solution}
+
+
+\end{document}

@@ -1,0 +1,486 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+\newcommand{\divides}{\,|\,}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{1}
+\newcommand{\hwnum}{2}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, Feb. 1st}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $8+2$
+\hspace{3cm}
+Total Points: $100+40$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Negation Transformation [12 points]}
+Find the negation of each statement below. If your thought process involves intermediate steps, show them. If not, simply writing the negation is sufficient.
+
+Your answer should not contain the original proposition. That is, you shouldn't negate it as ``It is not the case that ...'' or something similar.
+\begin{qparts}
+    \item Every student in this course is enrolled in exactly one Discussion section.
+    \item There is a student in this class who is not on Gradescope or not on Piazza.
+    \item For all integers $a$ and $b$, if $a+b > 0$, then $a-b < 0$.
+    \item For every irrational number $x$, there is a rational number $y$ such that $x^y$ is rational.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item There is a student in this course who is not enrolled in exactly one Discussion section.
+    
+    \textbf{Alternate Solution:} There is a student in this course who is enrolled in 0 Discussion sections or more than one Discussion sections.
+    \item Every student in this class is on Gradescope and Piazza.
+    \item There exist integers $a$ and $b$ with $a+b > 0$ and $a - b \geq 0$.
+    \item There is an irrational number $x$ such that for every rational number $y$, $x^y$ is irrational.
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1.5 correct negation of quantifier(s)
+    \item +1.5 correct negation of statement within the quantifier(s)
+\end{guidelines}
+
+\end{solution}
+
+
+\subsection*{\probnum Not It [12 points]}
+Negate the following statements so that all negation symbols immediately precede predicates. Make sure to show all intermediate steps.
+
+\textbf{Note:} $\lnot (P(x)\vee Q(x))$ would not be considered fully simplified since the negation ($\lnot$) does not immediately come before $P(x)$ or $Q(x).$ However, $\lnot P(x) \vee \lnot Q(x)$ is fully simplified, for example.
+
+\begin{qparts}
+    \item $\forall y [ \exists x P(x,y) \vee \forall x Q(x, y) ]$
+    \item $\exists x \forall y [ R(x,y) \rightarrow R(y, x) ]$
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item
+        \begin{align*}
+            \neg \forall y & [ \exists x P(x,y) \vee \forall x Q(x, y) ] \\
+            &\equiv \exists y \neg [ \exists x P(x,y) \vee \forall x Q(x, y) ] \\
+            &\equiv \exists y [\neg \exists x P(x,y) \wedge \neg \forall x Q(x,y)] \\
+            &\equiv \exists y [\forall x \neg P(x,y) \wedge \exists x \neg  Q(x,y)] 
+        \end{align*}
+    \item 
+        \begin{align*}
+            \neg \exists x & \forall y [ R(x,y) \rightarrow R(y, x) ] \\
+            &\equiv \forall x \neg \forall y [ R(x,y) \rightarrow R(y, x) ] \\
+            &\equiv \forall x \exists y \neg [ R(x,y) \rightarrow R(y, x) ] \\
+            &\equiv \forall x \exists  y \neg [\neg R(x,y) \vee R(y, x) ] \\
+            &\equiv \forall x \exists  y [ R(x,y) \wedge \neg R(y, x) ] \\
+        \end{align*}
+\end{qparts}
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1.5 correct negation of quantifiers
+    \item +1.5 correct use of De Morgans or applies negation to implies statement properly
+    \item +1.5 fully correct answer (all negations immediately precede predicates in the final expression and it is logically equivalent to the correct answer)
+    \item +1.5 correct justification (shows intermediate steps)
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Order's Up! [12 points]}
+Let $P(x,y)$ be the statement ``customer $x$ has ordered dish $y$," where the domain for $x$ consists of all customers and for $y$ consists of all dishes at a restaurant.  Express each of these propositions in logic.
+\begin{qparts}
+    \item Some customer has ordered some dish at this restaurant.
+    \item Some customer has ordered all of the dishes at this restaurant.
+    \item Each customer has ordered at least one dish at this restaurant.
+    \item Some dish at this restaurant has been ordered by all customers.
+    \item Each dish at this restaurant has been ordered by at least one customer.
+    \item All customers have ordered every dish at this restaurant.
+    \item Some dish at this restaurant has been ordered by a customer.
+    \item Every dish at this restaurant has been ordered by every customer.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item $\exists x\exists y\,P(x,y)$
+    \item $\exists x\forall y\,P(x,y)$
+    \item $\forall x\exists y\,P(x,y)$
+    \item $\exists y\forall x\,P(x,y)$
+    \item $\forall y\exists x\,P(x,y)$
+    \item $\forall x\forall y\,P(x,y)$
+    \item $\exists y\exists x\,P(x,y)$
+    \item $\forall y\forall x\,P(x,y)$
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1.5 correct translation
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Sports Statements  [12 points]}
+Let $I(x)$ be the statement ``$x$ has a favorite sport" and $C(x,y)$ be the statement ``$x$ and $y$ have the same favorite sport," where the domain for the variables $x$ and $y$ consists of all students in your class. Use quantifiers and the logical connectives you learned in lecture to express each of the statements below.
+
+\textbf{Hint:} You can use an $=$ sign to compare people.
+\begin{qparts}
+    \item Someone in your class does not have a favorite sport.
+    \item No one in the class has the same favorite sport as Chloe.
+    \item Everyone except one student in your class has a favorite sport.
+\end{qparts}
+
+
+\begin{solution}
+\begin{qparts}
+    \item $\exists x \neg I(x),$ or equivalently $\neg \forall x I(x).$
+    
+    \item $\neg\exists x (x\ne\text{Chloe} \wedge C(x,\text{Chloe})),$ or equivalently $\forall x (C(x,\text{Chloe})\to x=\text{Chloe}).$
+    
+    \textbf{Alternate:} Let $B(x)\colon \text{``$x$ is Chloe."}$ Then $\exists x (B(x) \wedge \neg \exists y(\neg B(y) \wedge C(x,y))),$ or equivalently $\exists x (B(x) \wedge  \forall y (C(x,y) \to B(y))).$
+    
+    \textbf{Addressing a misconception}: $\neg\exists x C(x,\text{Chloe}),$ or equivalently $\forall x \neg C(x,$ Chloe$)$ is wrong because $x$ could be equal to Chloe since it is in our domain, and we could interpret $C(\text{Chloe}, \text{Chloe})$ as being necessarily true.
+
+    \item $\exists x \forall y (I(y) \leftrightarrow x\ne y),$ or equivalently $\exists x\forall y (\neg I(y) \leftrightarrow x=y).$
+    
+    \textbf{Alternate:} $\exists x [\neg I(x) \wedge \forall y (\neg I(y) \to x=y)]$ \\
+    -or-\hspace{1.52cm} $\exists x [\neg I(x) \land \forall y ( x \neq y \to I(y))]$
+\end{qparts}
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +4 correct expression
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +1 includes $C(x,\text{Chloe})$ or some version of $C(x, y)$ where either $x$ or $y$ represents Chloe
+    \item +1.5 uses quantifiers to correctly represent ``No one" ($\forall y \neg$ or $\neg\exists y$, where $y$ is whatever letter the student is using to represent the other students in class)
+    \item +1.5 fully correct answer (must exclude the case that $x=\text{Chloe}$)
+\end{guidelines}
+\textbf{Part c (main solution):}
+\begin{guidelines}
+    \item +1 uses correct quantifiers (one $\exists$ and one $\forall$) such that $\exists$ appears first
+    \item +1 includes $x \neq y$
+    \item +1 includes $I(y)$
+    \item +1 uses if and only if ($\leftrightarrow$) correctly; does not get this point if $\rightarrow$ or $\leftarrow$ was used
+\end{guidelines}
+\textbf{Part c (alternate solution):}
+\begin{guidelines}
+    \item +1 uses correct quantifiers (one $\exists$ and one $\forall$) such that $\exists$ appears first
+    \item +1 includes $\neg I(x)$
+    \item +1 includes fully correct $\neg I(y) \to x=y$ (or the contrapositive)
+    \item +1 uses $\wedge$ to join the two terms
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Quantifier Quandary [12 points]}
+For each of the propositions below, write the negation, and determine whether the original proposition is true or if its negation is true. Your negation cannot contain the logical ``not" symbol ($\lnot$), but you may use the not-equals sign ($\ne$). The domain of discourse is all real numbers. \textbf{Briefly justify your answers.}
+\begin{qparts}
+    \item $\exists x (x^3 = -1)$
+    \item $\forall x (2x > x)$
+    \item $\exists x \forall y (x+y = 0)$
+    \item $\forall x \exists y (x+y = 0)$
+\end{qparts}
+\begin{solution}
+\begin{qparts}
+    \item Negation: $\forall x (x^3 \neq -1)$. Original is true, consider $x = -1.$
+    \item Negation: $\exists x (2x \le x)$. Negation is true, consider $x = 0$ (in fact, any $x\le 0$ is a valid example).
+    \item Negation: $\forall x \exists y (x+y \neq 0)$. Negation is true. There is no real number $x$ whose sum with every other real number is 0. If we think some specific $x$ might work, we could pick $y=1-x$, so $x+y=x+1-x=1$, which isn't 0.
+    \item Negation: $\exists x \forall y (x+y \neq 0)$. Original is true. For any real number $x$, $x+(-x)=0,$ so there does exist $y$ such that $x+y=0.$
+\end{qparts}
+\smallskip
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1 correct negation
+    \item +1 correctly determines whether the original is true, or the student's negation is true (can still receive this point if the student's negation is incorrect, as long as the student's negation has the opposite truth value of the original)
+    \item +1 correct justification (student does not need to exactly match provided witnesses for existential quantifiers)
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Even Stevens [8 points]}
+
+Prove that if $n$ is an even integer, then $\frac{n^2}{2}$ is also an even integer.
+
+\begin{solution}
+    \begin{pflist}
+        \item Let $n$ be an arbitrary integer.
+        \item Assume that $n$ is even.
+        \item Then $n=2k$ for some integer $k.$
+        \item So $\frac{n^2}{2}=\frac{(2k)^2}{2}=\frac{4k^2}{2}=2k^2,$ which is an integer since $2$ and $k$ are integers.
+        \item Then since $\frac{n^2}2 = 2(k^2),$ by the definition of even $\frac{n^2}2$ is even.
+    \end{pflist}
+
+    \textbf{Draft Grading Guidelines [8 points]}
+    \begin{guidelines}
+        \item +1 introduces arbitrary variable
+        \item +2 correct assumption
+        \item +2 correctly applies definition of even to $n$
+        \item +1 correctly simplifies $\frac{n^2}2$ to $2k^2$
+        \item +2 applies definition of even to conclude $\frac{n^2}{2}$ is even
+    \end{guidelines}
+
+    \textbf{Note to graders:} The first two rubric items can be combined into one line, for example ``Let $n$ be an arbitrary even integer" would receive the first two rubric items.
+\end{solution}
+
+\subsection*{\probnum To Prove or Not To Prove [16 points]}
+
+\textbf{Prove or disprove} each of the following statements where the domain of discourse is all real numbers.
+\begin{qparts}
+    \item For all $x,$ $x^2>0.$
+    \item There exists $x$ such that $x\le 0$ and $2x > x.$
+    \item There exists $x$ such that for all $y,$ $x^2+y^2>203.$
+    \item There exists $x$ such that for all $y,$ $(x+y)^2>203.$
+\end{qparts}
+
+\begin{solution}
+
+\begin{qparts}
+    \item \textbf{Disprove.} Take $x=0.$ Then $x^2=0^2=0,$ which is not greater than 0.
+
+    \item \textbf{Disprove.} The negation of this statement is ``for all $x,$ if $x \leq 0$ then $2x\leq x.$" Let $x$ be an arbitrary real number, and assume $x\leq 0.$ Then by adding $x$ to both sides we get $2x \leq x.$
+
+    \item \textbf{Prove.} Let $x=203.$ Then for any real number $y,$ $y^2\ge 0,$ so $x^2+y^2\ge 203^2+0>203.$
+
+    \item \textbf{Disprove.} Let $x$ be an arbitrary real number, and let $y=-x.$ Then $(x+y)^2=(x+(-x))^2=0^2=0,$ which is not greater than 203.
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [16 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1 correctly chooses prove/disprove
+    \item +3 correct proof/disproof
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Mixed Quantifiers Proof [16 points]}
+For this problem, let the domain of discourse be positive integers.
+\begin{qparts}
+    \item Consider the following predicate:
+    $$ P(x, z) := (z > x) \land (x \,|\, z) \land (4 \nmid z) $$
+    Let $x = 10$. Find the three smallest values of $z$ which satisfy $P(10, z).$
+
+    \item Now prove the following proposition:
+    $$ \forall x [ 4 \nmid x \to \exists z\, P(x, z) ]$$
+\end{qparts}
+
+\textbf{Note:} The statement $a\,|\, b$ means ``$a$ divides $b$," i.e. there exists some integer $q$ such that $b=aq.$ Similarly, $a\nmid b$ means ``$a$ does not divide $b.$"
+
+\begin{solution}
+    \begin{qparts}
+        \item We need to satisfy $z>x$ and $x\,|\,z,$ so $z$ must be a multiple of 10 that is greater than 10. Note however that $20=2\cdot 10$ is not a valid value of $z,$ because $4\,|\,20$ (in particular $20=4\cdot 5$). However, $z=30$ is valid because $30>10,$ $10\,|\,30,$ and $4\nmid 30.$ Continuing the pattern, 40 is not valid, 50 is valid, 60 is not valid, and 70 is valid.
+
+        So the three smallest values of $z$ that make the proposition true are $z=30,50,70.$
+
+        \item Let $x$ be an arbitrary positive integer, and assume $4\nmid x.$ Consider $z=3x.$ Since $x$ is positive, $z=3x>x,$ and by definition $x\,|\, z.$ Since $3$ and $4$ share no common positive factors (other than 1), and since $x$ is not a multiple of 4, $z=3x$ is also not a multiple of 4, so $4\nmid z.$ Thus the proposition holds.
+    \end{qparts}
+
+    \smallskip
+    \textbf{Draft Grading Guidelines [16 points]}
+
+    \textbf{Part a:}
+    \begin{guidelines}
+        \item +2 correctly identifies $z$ must be a multiple of 10
+        \item +4 correct list
+    \end{guidelines}
+    \textbf{Part b:}
+    \begin{guidelines}
+        \item +1 introduces an arbitrary variable
+        \item +2 correct assumption
+        \item +2 provides correct witness for $z$
+        \item +1.5 correctly argues $z>x$
+        \item +1.5 correctly argues $x\divides z$
+        \item +2 correctly argues $4\nmid z$
+    \end{guidelines}
+\end{solution}
+
+
+
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & & & &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/20\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+\subsection*{\probnum Bézout's Identity [20 points]}
+
+In number theory, there's a simple yet powerful theorem called Bézout's identity, which states that for any two integers $a$ and $b$ (with $a$ and $b$ not both zero) there exist two integers $r$ and $s$ such that $ar+bs=\gcd(a,b).$ Use Bézout's identity to prove the following statements (you may assume all variables are integers):
+
+\begin{qparts}
+    \item If $d\divides a$ and $d\divides b,$ then $d\divides \gcd(a,b).$
+    \item If $a\divides bc$ and $\gcd(a,b)=1,$ then $a\divides c.$
+\end{qparts}
+
+\noindent
+\textbf{Note:} $\gcd$ is short for ``greatest common divisor," so the value of $\gcd(a,b)$ is the largest integer that evenly divides $a$ and $b.$ You won't need to apply this definition, just know that $\gcd(a,b)$ is an integer.
+
+
+\begin{solution} 
+\begin{qparts}
+    \item Since $d\divides a$ and $d\divides b,$ $a=dq_1$ and $b=dq_2$ for integers $q_1$ and $q_2.$ By Bézout's identity, there exists integers $r$ and $s$ such that $ar+bs=\gcd(a,b).$ Substituting out $a$ and $b$ we have $dq_1r+dq_2s=\gcd(a,b).$ Factoring out $d$ we have $d(q_1r+q_2s)=\gcd(a,b).$ Since $q_1r+q_2s$ is an integer, $d\divides \gcd(a,b).$
+    \item Since $a\divides bc,$ $bc=aq$ for some integer $q.$ By Bézout's identity, there exist integers $r$ and $s$ such that $ar+bs=\gcd(a,b)=1.$ Multiplying both sides by $c$ we have $acr+bcs=c.$ Substituting in $bc=aq,$ we have $acr+aqs=c.$ Thus $a(cr+qs)=c.$ Since $cr+qs$ is an integer, $a\divides c.$
+\end{qparts}
+
+\noindent
+\textbf{Grading Guidelines [20 points]}
+
+\textbf{Part a:}
+\begin{gwguidelines}
+    \item +4 uses definition of divides to obtain $a=dq_1$ and $b=dq_2$
+    \item +4 substitutes previous equations into Bézout's identity
+    \item +2 factors out $d$ to conclude $d\divides \gcd(a,b)$
+\end{gwguidelines}
+\textbf{Part b:}
+\begin{gwguidelines}[resume]
+    \item +2 uses definition of divides to obtain $bc=aq$
+    \item +2 applies Bézout's identity to obtain $ar+bs=1$
+    \item +4 multiplies both sides by $c$ to get $acr+bcs=c$
+    \item +2 substitutes $bc=aq$ and factors out $a$ to conclude $a\divides c$
+\end{gwguidelines}
+\end{solution}
+
+
+\subsection*{\probnum Proposition Michigan [20 points]}
+Translate each of the following English statements into logic. You may define predicates as necessary.
+
+\textbf{Note:} Your predicates should not trivialize the problem.
+\begin{qparts}
+    \item Each pair of students at UMich has at least two mutual friends at UMich. The domain of discourse is all students at UMich.
+    \item Nobody knows everyone's Wolverine Access password except the Wolverine Access administrators, who know all passwords. The domain of discourse is all people who have a Wolverine Access account (the administrators have Wolverine Access accounts).
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item $P(x,y,p)$: Person $p$ is a mutual friend to person $x$ and person $y$.
+    $$\forall x \forall y (x \neq y \rightarrow \exists p \exists q (p \neq q \land P(x,y,p) \land P(x,y,q)))$$
+    
+    \item $P(x,y)$: $x$ knows the password of user $y$. $Q(x)$: $x$ is a Wolverine Access administrator.
+    $$\lnot \exists x(\lnot Q(x) \wedge \forall y P(x,y)) \wedge \forall x (Q(x)\rightarrow \forall y P(x,y))$$
+    We can bring the negation before the $\exists$ into the left expression to obtain the following equivalent proposition:
+    $$\forall x (\lnot Q(x) \rightarrow \lnot \forall y P(x,y)) \wedge \forall x (Q(x)\rightarrow \forall y P(x,y))$$
+    which is also the same as
+    $$\forall x \left[ (\lnot Q(x) \rightarrow \lnot \forall y P(x,y)) \wedge (Q(x)\rightarrow \forall y P(x,y)) \right].$$
+    Somewhat elegantly, the above is equivalent to:
+    $$\forall x (Q(x) \leftrightarrow \forall y P(x,y)).$$
+\end{qparts}
+\textbf{Grading Guidelines [20 points]}
+
+\textbf{Part a:}
+\begin{gwguidelines}
+    \item +5 statement is mostly correct, but does not enforce that the people and mutual friends are distinct
+    \item +5 statement is fully correct
+\end{gwguidelines}
+\textbf{Part b:}
+\begin{gwguidelines}[resume]
+    \item +5 statement enforces that the Wolverine Access administrator knows all passwords
+    \item +5 statement is fully correct
+\end{gwguidelines}
+\end{solution}
+
+\end{document}

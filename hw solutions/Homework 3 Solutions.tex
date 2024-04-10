@@ -1,0 +1,471 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{2}
+\newcommand{\hwnum}{3}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, Feb. 8}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $7+1$
+\hspace{3cm}
+Total Points: $100+30$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\subsection*{\probnum On the Contrary [12 points]}
+Let $n$ be an integer. Prove that if $4\,|\,(n^2-1),$ then $n$ is odd using
+\begin{qparts}
+    \item a proof by contraposition, and
+    \item a proof by contradiction.
+\end{qparts}
+Then,
+\begin{qparts}[resume]
+    \item compare your answers to parts (a) and (b). What is different? What is the same?
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+\item We want to show that if $n$ is even, then $4\nmid (n^2-1).$
+
+Let $n$ be an even integer, so $n = 2k$ for some integer $k.$
+\begin{align*}
+    n^2 - 1 &= (2k)^2 - 1 \\
+    &= 4k^2 - 1\\
+    &= 4(k^2 - 1) + 3
+\end{align*}
+So if we divide $n^2-1$ by 4 we obtain a remainder of 3, so $4$ does not divide $n^2-1.$
+
+\textbf{Alternate Solution:}
+
+Let $n$ be an even integer, so $n=2k$ for some integer $k.$
+\begin{align*}
+    n^2-1 &= (2k)^2 - 1 \\
+    &= 4k^2 - 1 \\
+    &= 2(2k^2-1) + 1
+\end{align*}
+So $n^2-1$ is odd, and thus $4\nmid (n^2-1).$ (Note that we can prove this last statement is true via another proof by contrapositive: if $4\,|\,(n^2-1),$ then $n^2-1=4q=2(2q)$ for some integer $q,$ so $n^2-1$ is even).
+
+\item Use the premise  ``$4\,|\,(n^2-1).$" Assume that  $n$ is also even, and derive a contradiction.
+
+Let $n$ be an arbitrary integer. Assume $4\,|\,(n^2-1)$ and that $n$ is even. So $n = 2k$ for some integer $k.$ Then,
+\begin{align*}
+    n^2 - 1 &= (2k)^2 - 1 \\
+    &= 4k^2 - 1\\
+    &= 4(k^2 - 1) + 3
+\end{align*}
+So if we divide $n^2-1$ by 4 we obtain a remainder of 3, so $4$ does not divide $n^2-1.$ But this contradicts our assertion that $4\,|\,(n^2-1).$ Because our assumption that $n$ is even led to a contradiction, we can conclude that $n$ is odd.
+
+\textbf{Note:} The algebra in the alternate solution from (a) also applies here.
+
+\item Note that the actual algebra we do in both proofs looks very similar, and we end up showing a similar result (4 does not evenly divide $n^2-1$). In (a), we use it to show the contrapositive is true, while in (b), we use it to derive a contradiction.
+\end{qparts}
+\textbf{Grading Guidelines [12 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +2 correct contrapositive statement
+    \item +1 correct definition of even for $n$
+    \item +1 correct arithmetic
+    \item +1 correctly argues that 4 does not divide $n^2-1$
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +1 correct assumption to set up contradiction
+    \item +1 correct definition of even
+    \item +1 correct arithmetic
+    \item +1 correctly argues that 4 does not divide $n^2-1$
+    \item +1 identifies contradiction
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +2 any reasonable response
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum An Even-Numbered Question about Even Numbers [16 points]} 
+
+\textbf{Prove or disprove} the following statements:
+
+\begin{qparts}
+    \item For all integers $x$, if $x$ is even, then $x^2$ is even.
+    \item For all integers $x$, if $x^2$ is even, then $x$ is even.
+    \item For all integers $x$, if $x$ is even, then $2x$ is even.
+    \item For all integers $x$, if $2x$ is even, then $x$ is even.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item This can be shown through a direct proof. Assume that $x$ is even. So, there exists an integer $k$ such that $x = 2k$. Thus, $x^2 = (2k)^2 = 4k^2 = 2(2k^2)$. Because $k$ is an integer, $2k^2$ is an integer. So, $x^2$ can be written as $2$ times an integer. Thus, if $x$ is even, then $x^2$ is even.
+    
+    \item This can be shown through a proof by contrapositive. The contrapositive of the given statement is: ``If $x$ is odd, then $x^2$ is odd." Assume that $x$ is odd. So, there exists an integer $k$ such that $x = 2k + 1$. Thus, $x^2 = (2k + 1)^2 = (2k + 1)(2k + 1) = 4k^2 + 2k + 2k + 1 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$. Because $k$ is an integer, $2k^2 + 2k$ is an integer. So if $x$ is odd, then $x^2$ can be written as $2$ times an integer plus $1$. Thus, if $x$ is odd, then $x^2$ is odd. This is the contrapositive of the original statement, so if $x^2$ is even, then $x$ is even.
+    
+    \item This can be done directly. Assume that $x$ is even. So, there exists and integer $k$ such that $x = 2k$. Then $2x = 2\cdot 2k = 4k$. Since we can write $4k$ as $2\cdot 2k$, $2x$ must also be even.
+
+    Alternatively, note that regardless of the value of $x,$ $2x$ is by definition always even. So the statement holds.
+    
+    \item This can be disproved by example. Consider $2x = 6$. By definition, $2x$ is even, as it can be written in the form $2 \cdot 3$. However, $x$, which equals $3$, is not even. Thus we have disproved the original statement.
+\end{qparts}
+
+\smallskip
+\textbf{Grading Guidelines [16 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +1 takes an even integer ($x$ in the solution)
+    \item +1 correctly applies the definition of ``even" to $x$
+    \item +1 correctly rewrites $x^2$ as $2$ times an integer to show that $x^2$ is even
+    \item +1 concludes $x^2$ is even
+    \item $-1$ does not mention that $k$ (or whatever variable name that is used to denote that $x$ is even) is an integer
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +2 attempts a proof by contrapositive
+    \item +1 takes an odd integer ($x$ in the solution)
+    \item +1 correctly applies the definition of ``odd" to $x$
+    \item +1 correctly rewrites $x^2$ as $2$ times an integer plus $1$ to show that $x^2$ is odd
+    \item +1 concludes $x^2$ is odd
+    \item $-1$ does not mention that $k$ (or whatever variable name that is used to denote that $x$ is even) is an integer
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +3 correct proof
+\end{guidelines}
+\textbf{Part d:}
+\begin{guidelines}
+    \item +3 correct counterexample
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Even Stevens [16 points]}
+\textbf{Prove or disprove} the following statement: ``There is a finite amount of even numbers."
+\begin{solution}
+The statement is false. We will disprove by contradiction.
+\begin{itemize}
+    \item Assume seeking a contradiction that there are a finite number of even numbers.
+    \item Then there exists some even number, call it $x,$ that is larger than all other even numbers (we know that such an integer exists since in particular 0 is even).
+    \item Note that $4$ is an even number, so by definition $x\ge 4,$ and thus $x>0.$
+    \item Let $y=2\cdot x = x+x.$
+    \item Since $x>0,$ $y>x.$
+    \item But $y$ is twice an integer (in particular $y=2x$), so $y$ is even, but larger than the largest even number, yielding a contradiction.
+    \item Therefore there cannot be a finite number of even numbers.
+\end{itemize}
+
+\textbf{Grading Guidelines [16 points]}
+\begin{guidelines}
+    \item +2 chooses to prove
+    \item +3 assumes for contradiction that there are a finite number of even numbers
+    \item +3 selects the largest even number $x$ in this hypothetical
+    \item +1 establishes that $x>0$ (if the student adds 2 to $x$ this assertion is not required, and they should get the rubric item anyway)
+    \item +3 considers an integer $y$ larger than $x$
+    \item +2 shows that $y$ is even and larger than $x$
+    \item +2 identifies the contradiction (we have an even number larger than the largest even number)
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Pay it Forward (Or Don't, It's Up To You) [12 points]}
+Consider a centipede game, where there are two players: Ka-chun and Zyaire. The game starts by Ka-chun's decision of take or wait.
+
+\begin{itemize}
+    \item If Ka-chun takes, Ka-chun earns \$1 while Zyaire earns nothing, and the game ends.
+    \item If Ka-chun waits, then Zyaire can choose between take or wait. If Zyaire takes, Zyaire earns \$2 while Ka-chun earns nothing and the game ends. If Zyaire waits it becomes Ka-chun's turn to choose again.
+    \item If they keep waiting the reward grows by \$1 each round, until Zyaire's choice of taking \$20 or waiting, when the game will end no matter what.
+\end{itemize} Both of Ka-chun and Zyaire want to maximize their rewards, and behave as perfect logicians.
+
+\begin{qparts}
+    \item Suppose Ka-chun and Zyaire made it to round 20. What happens in round 20? 
+    \item Using your answer to (a), what would happen if they made it to round 19?
+    \item Building off of parts (a) and (b), argue that Ka-chun should take \$1 in the very first round.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item Suppose the game ends at round 20. In the final round, Zyaire has the choice of taking and getting \$20, or waiting and getting \$0. So Zyaire should take in Round 20.
+    
+    \item In Round 19, Ka-chun has the choice of taking and getting \$19, or waiting. However, we know the game will enter Round 20 if Ka-chun waits, and Zyaire will take and get \$20 while Ka-chun will get nothing. So Ka-chun should take in Round 19.
+    
+    \item Knowing what would happen in round 19, in round 18, Zyaire has the choice of taking and getting \$18, or waiting. However, that we know the game will enter Round 19 and Ka-chun will take and get \$19 while Zyaire will get nothing. So Zyaire should take in round 18.
+    
+    Using the same reasoning and working all the way back to round 1, we can conclude that Ka-chun should take in rcound 1.
+    
+    The main concept to note is that regardless of how many rounds the game could \textit{potentially} go, one of the perfect logicians will note that they should take before that last round, creating a domino effect that works backwards all the way to the first round.
+\end{qparts}
+
+\textbf{Grading Guidelines [12 point]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +4 correctly identifies that Zyaire should take with justification
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +4 correctly identifies that Ka-chun should take
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +4 continues to work backwards to build a coherent argument that notes that ending at any round will always optimally start with Ka-chun picking 1 dollar
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Proofs to the Max [12 points]}
+
+Prove that for all real numbers $a$, $b$, and $c$, if $\max\left \{a^2(b-c), -a\right \}$ is non-negative, then $a\leq 0$ or $b\geq c$.
+
+\textbf{Note:} You can use the following facts in your proof:
+\begin{itemize}
+    \item If $x$ and $y$ are positive, then $x\cdot y$ is positive.
+    \item If $x$ is positive and $y$ is negative, then $x\cdot y$ is negative.
+    \item If $x$ and $y$ are negative, then $x\cdot y$ is positive.
+\end{itemize}
+
+\begin{solution}
+    Let's take the contrapositive. Note that when taking the negation of the conclusion, we must use De Morgan's law to convert the negation of an \textit{or} statement into an \textit{and} statement. When this is applied, we see that we must prove that if $a$ is positive and $b<c$, then $\max\left \{a^2(b-c), -a\right \}$ is negative.
+    
+    Assume $a$ is positive and $b<c$. We will prove that both $a^2(b-c)$ and $-a$ must be negative:
+    \begin{stmts}
+        \item From $b<c$, we see that $b-c<0$, so it is negative. $a^2$ must be positive because the square of any non-zero real number will be positive. Now we see that $a^2(b-c)$ is a negative multiplied by a positive, which must be negative.
+        
+        \item Because $a$ is positive, $-1\times a$ will be negative, as it is also a negative multiplied by a positive. 
+    \end{stmts}
+    We have proven that both $a^2(b-c)$ and $-a$ must be negative, which proves that $\max\left \{a^2(b-c), -a\right \}$ is negative. This proves the original claim by contrapositive.
+    
+    Note that the following statements are logically equivalent:
+    \begin{enumerate}
+        \item $\max\left \{a^2(b-c), -a\right \}\geq 0$
+        \item $a^2(b-c)\geq0$ or $-a\geq0$
+    \end{enumerate}
+    This is why when we apply the contrapositive to the original claim, we must prove that both $a^2(b-c)$ and $-a$ are negative. It is another application of De Morgan's.
+
+    \textbf{Grading Guidelines [12 points]}
+    \begin{guidelines}
+        \item +2 correctly states the contrapositive
+        \item +2 assumes $a$ is positive and $b<c$
+        \item +2 proves $a^2(b-c)$ must be negative 
+        \item +2 proves $-a$ must be negative
+        \item +2 justifies proof sufficiently
+        \item +2 reaches correct conclusion
+    \end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Let's All Be Rational [16 points]}
+
+Show that these statements about a real number $x$ are equivalent to each other:
+\begin{stmts}
+    \item $x$ is rational
+    \item $\frac{x}{2}$ is rational
+    \item $3x-1$ is rational.
+\end{stmts}
+
+\textbf{Hint:} One way to prove statements (i), (ii) and (iii) are equivalent is by proving (i) $\rightarrow$ (ii), (ii) $\rightarrow$ (iii), and (iii) $\rightarrow$ (i).
+
+\begin{solution}
+We follow the advice of the hint and do multiple direct proofs.
+\begin{itemize}
+    \item (i) $\rightarrow$ (ii)
+    
+    Assume $x = \frac{a}{b}$, where $a$ and $b$ are integers with $b \neq 0$. $\frac{x}{2} = \frac{a}{2b}$. Since $a$ and $2b$ are integers, with $2b \neq 0$, $\frac{x}{2}$ is rational.
+    
+    \item (ii) $\rightarrow$ (iii)
+    
+    Assume $\frac{x}{2} = \frac{c}{d}$, where $c$ and $d$ are integers with $d \neq 0$. Therefore $x = \frac{2c}{d}$. As a result $3x-1 = 3\cdot\frac{2c}{d}-1 = \frac{6c}{d}-\frac{d}{d} = \frac{6c-d}{d}$, which is rational since $6c-d$ and $d$ are both integers, with $d \neq 0$.
+
+    \item (iii) $\rightarrow$ (i)
+    
+    Assume $3x-1 = \frac{e}{f}$, where $e$ and $f$ are integers with $f \neq 0$. Therefore, $3x = \frac{e}{f} + 1$. Furthermore $x = \frac{e}{3f} + \frac 13 = \frac{e+f}{3f}$, which is rational since $e+f$ and $3f$ are both integers, with $3f \neq 0$.
+\end{itemize}
+\textbf{Grading Guidelines [16 points]}
+
+\begin{guidelines}
+    \item +1 correct proof strategy (see note below)
+\end{guidelines}
+\textbf{For each sub-proof:}
+\begin{guidelines}
+    \item +1 makes correct assumption
+    \item +1.5 observes that the numerator and denominator remain integers (and where applicable that the denominator is non-zero)
+    \item +1.5 uses the definition of rational and integer
+    \item +1 correct conclusion
+\end{guidelines}
+\textbf{Note to graders:} it is acceptable to prove different implications, as long as it is possible to say that given any one of the three statements, the other two are shown to be equivalent. For example, (i) $\to$ (ii), (ii) $\to$ (i), (ii) $\to$ (iii), and (iii) $\to$ (ii) would also be an acceptable answer, and graders should just grade the first 3 proofs.
+\end{solution}
+
+
+\subsection*{\probnum Irrational Pr00f [16 points]}
+Prove or disprove that the product of a nonzero rational number and an irrational number is irrational.
+
+\begin{solution}
+\textbf{Proof by Contradiction}
+
+Let $\frac{a}{b}$ be a nonzero rational number, where $a$ and $b$ are integers and $b\neq 0$. Let $x$ be an irrational number.
+
+Assume $\frac{a}{b}\cdot x$ is not an irrational number. Therefore, $\frac{a}{b}\cdot x$ is rational. Since $\frac{a}{b}\cdot x$ is rational, $\frac{a}{b}\cdot x = \frac{c}{d}$, for some integers $c, d$, where $d\neq 0$. Since $\frac{a}{b} \neq 0$, $a \neq 0$. Therefore, $x = \frac{c}{d}\frac{b}{a} = \frac{cb}{da}$. Since $a$, $b$, $c$, and $d$ are all integers, $cb$ and $da$ are also integers with $da$ not zero. Therefore, $x = \frac{cb}{da}$ is a rational number.
+
+However, this contradicts the fact that $x$ is an irrational number. Therefore, the assumption that $\frac{a}{b}\cdot x$ is not an irrational number is false. This implies that $\frac{a}{b}\cdot x$ is an irrational number, completing the proof.
+
+\textbf{Grading Guidelines [16 points]}
+\begin{guidelines}
+    \item +4 assumes the product of some rational number and some irrational number is rational
+    \item +4 correctly defines the rational numbers as fractions of integers
+    \item +4 shows the irrational number is rational
+    \item +4 states this is a contradiction, highlighting some specific contradiction (e.g. that some number is both rational and irrational)
+\end{guidelines}
+\end{solution}
+
+\pagebreak
+\section*{Grading of Groupwork 2}
+Using the solutions and Grading Guidelines, grade your Groupwork 2 Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & & & &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
+\hline 
+Problem 2 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/20\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/40\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork 3 Problems}
+
+\subsection*{\probnum $\forall$re These $\exists$quiv$\diamondsuit$lent? [30 points]}
+Let $P(x)$ and $Q(x)$ be arbitrary predicates.
+\begin{qparts}
+    \item Prove or disprove that for any domain of $x$, $\forall x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\forall x P(x) \leftrightarrow \forall x Q(x)$.
+    \item Prove or disprove that for any domain of $x$, $\exists x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\exists x P(x) \leftrightarrow \exists x Q(x)$.
+    \item Let $\diamondsuit x$ mean that ``there exists \textbf{at most one} $x.$" Prove or disprove that for any domain of $x$, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ must be logically equivalent to $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$.
+\end{qparts}
+
+\begin{solution}
+We will disprove each part. We can show this via counterexamples, so for each part, we only need to provide one example of the domain, $P(x)$, and $Q(x)$ such that the two statements are not logically equivalent to each other.
+
+\textbf{Note:} there are many possible solutions to these. We are only providing one per part.
+
+\begin{qparts}
+\item Consider the domain of $\mathbb{Z}$. Let $P(x)$ mean that $x = 1$, and let $Q(x)$ mean that $x$ is even.
+
+Since not all integers are equal to 1, $\forall x P(x)$ becomes False, and $\forall x Q(x)$ becomes False as there are odd integers too. Therefore $\forall x P(x) \leftrightarrow \forall x Q(x) \equiv F \leftrightarrow F \equiv T$.
+
+However, when $x = 1$, $P(x) \leftrightarrow Q(x) \equiv T \leftrightarrow F \equiv F$. Since the universal quantifier requires the expression to be true for all values of $x$, $\forall x(P(x) \leftrightarrow Q(x)) \equiv F$.
+
+Therefore, these two propositions are not necessarily logically equivalent.
+
+\item Consider the domain of the integers $1$ and $2$. Let $P(x)$ mean that $x = 1$, and let $Q(x)$ mean that $x = 2$.
+
+Note that $P(x) \leftrightarrow Q(x)$ evaluates to $T \leftrightarrow F \equiv F$ when $x = 1$, and it evaluates to $F \leftrightarrow T \equiv F$ when $x = 2$. Therefore, $\exists x(P(x) \leftrightarrow Q(x))$ is False in this scenario.
+
+However, $\exists x P(x)$ is True, since $P(1)$ is True. Also, $\exists x Q(x)$ is True, since $Q(1)$ is True. Therefore, $\exists x P(x) \leftrightarrow \exists x Q(x)$ evaluates to $T \leftrightarrow T \equiv T$. Therefore, $\exists x P(x) \leftrightarrow \exists x Q(x)$ is True in this scenario.
+
+Therefore, the two propositions are not necessarily logically equivalent.
+
+\item Consider the domain of the integers $1$ and $2$. Let $P(x)$ mean that $x = 1$, and let $Q(x)$ mean that $x \leq 2$.
+
+Note that $P(x) \leftrightarrow Q(x)$ evaluates to $T \leftrightarrow T \equiv T$ when $x = 1$, and it evaluates to $F \leftrightarrow T \equiv F$ when $x = 2$. Therefore, there is at most one $x$ such that $P(x) \leftrightarrow Q(x)$. Therefore, $\diamondsuit x(P(x) \leftrightarrow Q(x))$ is True in this scenario.
+
+However, $\diamondsuit x P(x)$ is True, since $P(1)$ is True and $P(2)$ is False, so there is at most one $x$ such that $P(x)$. Also, $\diamondsuit x Q(x)$ is False, since $Q(1)$ is True and $Q(2)$ is True, so there is more than one $x$ such that $Q(x)$. Therefore, $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$ evaluates to $T \leftrightarrow F \equiv F$. Therefore, $\diamondsuit x P(x) \leftrightarrow \diamondsuit x Q(x)$ is False in this scenario.
+
+Therefore, the two propositions are not necessarily logically equivalent.
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [30 points]}
+
+\textbf{For each part:}
+\begin{gwguidelines}
+    \item +3 chooses to disprove
+    \item +3 correct counterexample
+    \item +2 correctly shows truth value for $\forall x (P(x)\leftrightarrow Q(x))$ given specific example (similar for parts (b) and (c))
+    \item +2 correctly shows truth value for $\forall x P(x) \leftrightarrow \forall x Q(x)$ (similar for parts (b) and (c))
+\end{gwguidelines}
+\textbf{Note:} When filling out the grading table, put the sum of all points received for rubric item (i) across all parts in the column labeled (i), filling out the remaining columns in a similar manner.
+\end{solution}
+\end{document}
