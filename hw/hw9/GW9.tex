@@ -69,6 +69,11 @@
 Consider a new office building with $n$ floors and $k$ offices per floor in which you must assign $2nk$ people to work, each sharing an office with exactly one other person. Find a closed form solution for the number of ways there are to assign offices if from floor to floor the offices are distinguishable, but any two offices on a given floor are not.
 
 \begin{solution}
+	We start by overcounting, there are $2nk$ ways to assign offices for $2nk$ people.
+	Then we divide by the number of ways to assign offices for $2n$ people on each floor, which is $2n!$.
+	Finally, we divide by the number of ways to assign offices for $2$ people on each floor, which is $2!$.
+	Therefore, the number of ways to assign offices is $\frac{(2nk)!}{(2n!)^k \cdot 2^k}$.
+
 
 \end{solution}
 
@@ -82,7 +87,20 @@ Consider a new office building with $n$ floors and $k$ offices per floor in whic
 	\item Suppose someone selects a straight (5 cards in a row of possibly different suits) from the set of all possible straights. What is the probability this straight contains the queen or king (inclusive) of hearts? Note that for EECS 203 purposes, Aces can be high or low but not both simultaneously, so 10-J-Q-K-A and A-2-3-4-5 are valid straights but J-Q-K-A-2 is not a valid straight.
 \end{qparts}
 \begin{solution}
-
+	\begin{qparts}
+		\item There are $_52C_5$ ways to choose a 5-card hand.\\
+		We pick the two ranks for the full house, which can be done in $_{13}P_2$ ways.\\
+		We pick the suits for the full house, which can be done in $_4C_3$ ways.\\
+		We pick the suits for the remaining two cards, which can be done in $_4C_2$ ways.\\
+		So, the probability of getting a full house is $\frac{_{13}P_2 \cdot _4C_3 \cdot _4C_2}{_{52}C_5}$.
+		On the other hand, if we already have the queen of hearts, we need to consider the following cases:\\
+		\begin{itemize}
+			\item The full house is made up of 3 queens and 2 cards of the same rank. There are $_{12}C_1$ ways to choose the rank for the other two cards.
+			      So, I don't know where to go from here.
+			\item The full house is made up of 3 cards of the same rank and 2 queens. There are $_{12}C_1$ ways to choose the rank for the other three cards.
+			      So, I don't know where to go from here.
+		\end{itemize}
+	\end{qparts}
 \end{solution}
 
 \end{document}
