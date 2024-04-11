@@ -61,38 +61,32 @@
 
 \begin{document}
 %%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
-\title{EECS 203: Discrete Mathematics\\
-	Winter 2024\\
-	Homework \hwnum{}}
-\date{}
-\author{}
-\maketitle
-\vspace{-50pt}
-\begin{center}
-	\huge Due \textbf{Thursday, April. 11th}, 10:00 pm\\
-	\Large No late homework accepted past midnight.\\
-	\vspace{10pt}
-	\large Number of Problems: $8+2$
-	\hspace{3cm}
-	Total Points: $100+30$
-\end{center}
-\vspace{25pt}
-\begin{itemize}
-	\item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
-	\item Submit this assignment (and any regrade requests later) on Gradescope.
-	\item Justify your answers and show your work (unless a question says otherwise).
-	\item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
-	\item Check the syllabus for full details.
-\end{itemize}
-\newpage
-%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
-
 \section*{Individual Portion}
 
 \subsection*{\probnum How Many pa55words? [12 points]}
 A password consists of exactly 6 characters, where each character is either a lowercase letter (a-z) or a digit (0-9). However, the password must contain at least 2 digits and at least 2 lowercase letters. How many different passwords are possible?
 
 \begin{solution}
+	The total number of passwords is the total number of passwords minus the number of passwords that do not satisfy the conditions.\\
+	The total number of passwords is $36^6$ since there are 26 lowercase letters and 10 digits to choose from for each of the 6 characters.\\
+	Consider the following cases:
+	\begin{itemize}
+		\item Case 1: $<$ 2 digits\\
+		      subcase 1: 0 digits\\
+		      In the case where there are no digits, there must be 6 lowercase letters.\\
+		      $_{6}C_{6} \cdot 26^6$\\
+		      subcase 2: 1 digit\\
+		      In the case where there is 1 digit, there must be 5 lowercase letters.\\
+		      $_{6}C_{1} \cdot 26^5 \cdot 10$\\
+		\item Case 2: $<$ 2 lowercase letters\\
+		      subcase 1: 0 lowercase letters\\
+		      In the case where there are no lowercase letters, there must be 6 digits.\\
+		      $_{6}C_{6} \cdot 10^6$\\
+		      subcase 2: 1 lowercase letter\\
+		      In the case where there is 1 lowercase letter, there must be 5 digits.\\
+		      $_{6}C_{1} \cdot 10^5 \cdot 26$\\
+	\end{itemize}
+	Therefore, the answer is $36^6 - (_{6}C_{6} \cdot 26^6 + _{6}C_{1} \cdot 26^5 \cdot 10 + _{6}C_{6} \cdot 10^6 + _{6}C_{1} \cdot 10^5 \cdot 26)$.
 
 \end{solution}
 
@@ -101,6 +95,13 @@ A password consists of exactly 6 characters, where each character is either a lo
 Suppose we have a square-shaped table which seats 3 people on each side. How many ways are there to seat 12 people at the table where seatings are considered the same if everyone is in the same group of 3 on a side?
 
 \begin{solution}
+	We can start by overcounting the number of ways to seat 12 people at the table.\\
+	There are $12!$ ways to seat 12 people at the table without any restrictions.\\
+	However, seatings are considered the same if everyone is in the same group of 3 on a side.\\
+	Consider 4 groups of 3 people.\\
+	There are $4!$ ways to arrange the groups.\\
+	There are $3!$ ways to arrange the people within 4 groups.\\
+	Therefore, the answer is $\frac{12!}{4! \cdot 3! \cdot 3! \cdot 3! \cdot 3!}$.
 
 \end{solution}
 
@@ -115,7 +116,23 @@ How many ways are there to distribute seven textbooks into eleven backpacks if \
 \end{qparts}
 
 \begin{solution}
-	\
+	Unique means order matters. Identical means order does not matter.\\
+	\begin{qparts}
+		\item Since all of the textbooks and all of the backpacks are unique, order matters.\\
+		Therefore, it is a permutation problem.\\
+		% 11 P 7
+		The answer is $_{11}P_{7}$.
+		\item Since all of the backpacks are identical, no matter how the textbooks are distributed, the backpacks are the same.\\
+		Therefore, there is only one way to distribute the textbooks.\\
+		The answer is 1.
+		\item Order does not matter for the textbooks.\\
+		Therefore, it is a combination problem.\\
+		% 11 C 7
+		The answer is $_{11}C_{7}$.
+		\item Since all of the textbooks and all of the backpacks are identical, no matter how the textbooks are distributed, the backpacks are the same.\\
+		Therefore, there is only one way to distribute the textbooks.\\
+		The answer is 1.
+	\end{qparts}
 \end{solution}
 
 
@@ -123,6 +140,34 @@ How many ways are there to distribute seven textbooks into eleven backpacks if \
 How many strings with six or more characters can be formed from the letters in ``SEERESS"? \textbf{Simplify your answer.} You may use a calculator to help you simplify.
 
 \begin{solution}
+	We want to form 6 or more characters from the 7 letters in ``SEERESS".\\
+	The maximum number of characters we can form is 7.\\
+	Therefore, we can form 6, 7 characters with the 3Es, 3Ss, and 1R.\\
+	Consider the following cases:
+	\begin{itemize}
+		\item Case 1: 7 characters\\
+		      We use all 7 letters.\\
+		      We start by overcounting the number of ways to form 7 characters.\\
+		      There are $7!$ ways to form 7 characters.\\
+		      However, the 3Es and 3Ss are identical.\\
+		      There are $3!$ ways to arrange the 3Es and $3!$ ways to arrange the 3Ss.\\
+		      Therefore, the answer is $\frac{7!}{3! \cdot 3!\cdot 1!} = \frac{7!}{3! \cdot 3!}= \frac{7\cdot 6\cdot 5\cdot 4}{3\cdot 2\cdot 1} = 140$.\\\\
+		\item Case 2: 6 characters\\
+		      We use 6 letters.\\
+		      There are $6!$ ways to form 6 characters.\\
+		      subcase 1: 3Es, 2Ss, 1R\\
+		      The 3Es are identical.\\
+		      There are $3!$ ways to arrange the 3Es.\\
+		      Therefore, the answer is $\frac{6!}{3! \cdot 2!\cdot 1!} = 60$.\\
+		      subcase 2: 3Es, 3Ss\\
+		      The 3Es and 3Ss are identical.\\
+		      There are $3!$ ways to arrange the 3Es and $3!$ ways to arrange the 3Ss.\\
+		      Therefore, the answer is $\frac{6!}{3! \cdot 3!\cdot 1!} = 20$.\\
+		      subcase 3: 3Ss, 2Es, 1R\\
+		      The 3Ss are identical.\\
+		      There are $3!$ ways to arrange the 3Ss.\\
+		      Therefore, the answer is $\frac{6!}{3! \cdot 2!\cdot 1!} = 60$.\\
+	\end{itemize}
 
 \end{solution}
 
@@ -139,7 +184,21 @@ Suppose there is a lottery where the organizers pick a set of 11 distinct number
 \end{qparts}
 
 \begin{solution}
-
+	\begin{qparts}
+		\item There are 80 numbers to choose from.\\
+		Therefore, the answer is $_{80}C_{7}$.
+		\item There are 11 numbers to choose from.\\
+		Therefore, the answer is $_{11}C_{7}$.
+		\item The probability of winning is $\frac{|E|}{|S|} = \frac{_{11}C_{7}}{_{80}C_{7}}$.
+		\item There are 80 numbers to choose from.\\
+		Therefore, the answer is $_{80}C_{11}$.\\
+		The event $E'$ is the event that all the numbers the player chooses are in the winning set.\\
+		Since 7 of the 11 numbers are chosen by the player, the remaining 4 numbers must be chosen by the organizers.\\
+		The 4 numbers chosen by the organizers must be from the 73 numbers not chosen by the player.\\
+		Therefore, the answer is $_{80-7}C_{11-7} = _{73}C_{4}$.\\
+		\item The probability of winning is $\frac{|E'|}{|S'|} = \frac{_{73}C_{4}}{_{80}C_{11}}$.
+		This is the same as the probability of winning in part (c).
+	\end{qparts}
 \end{solution}
 
 
@@ -147,6 +206,18 @@ Suppose there is a lottery where the organizers pick a set of 11 distinct number
 You roll three, fair, 6-sided dice. What is the probability that the sum of the dice is less than 17?
 
 \begin{solution}
+	The probability that the sum of the dice is less than 17 is 1 minus the probability that the sum of the dice is 17 or more.\\
+	There are $6^3$ total outcomes when rolling 3 dice.\\
+	Consider the following cases:
+	\begin{itemize}
+		\item Case 1: The sum of the dice is 17.\\
+		      There are 3 ways to get a sum of 17: 6, 6, 5; 6, 5, 6; 5, 6, 6.\\
+		\item Case 2: The sum of the dice is 18.\\
+		      There is only 1 way to get a sum of 18: 6, 6, 6.\\
+	\end{itemize}
+	Therefore, there are 4 ways to get a sum of 17 or more.\\
+	Thus, the probability that the sum of the dice is less than 17 is $1 - \frac{4}{6^3} = \frac{212}{216}$.
+
 
 \end{solution}
 
@@ -157,6 +228,14 @@ A pair of six-sided dice is rolled, but you do not see the results. You ask your
 What is the probability that the sum of the numbers that came up on the two dice is seven, given the information provided by your friend?
 
 \begin{solution}
+	Let $A$ be the event that the sum of the numbers that came up on the two dice is seven.\\
+	Let $B$ be the event that at least one die came up six.\\
+	The probability that the sum of the numbers that came up on the two dice is seven given the information provided by your friend is $\frac{P(A \cap B)}{P(B)}$.\\
+	The sum of the numbers that came up on the two dice is seven and at least one die came up six.\\
+	There are 2 ways to get a sum of 7: 1, 6; 6, 1.\\
+	There are 11 ways to get at least one die to come up six. 6 ways to get a 6 on the first die and 5 ways to get a number other than 6 on the second die. 5 ways to get a number other than 6 on the first die and 6 ways to get a 6 on the second die:\\
+	$(6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6), (1, 6), (2, 6), (3, 6), (4, 6), (5, 6)$.\\
+	Therefore, the answer is $\frac{2}{11}$.
 
 \end{solution}
 
@@ -171,36 +250,19 @@ Suppose you put two dice in a bag: one of the dice has a 6 on every face, and th
 \end{qparts}
 
 \begin{solution}
+	The probability of getting a 6 with a standard 6-sided die is $\frac{1}{6}$.\\
+	The probability of getting a 6 with a die with a 6 on every face is 1.\\
+	\begin{qparts}
+		\item You either choose the die with a 6 on every face or the standard 6-sided die.\\
+		The probability of choosing the die with a 6 on every face is $\frac{1}{2}$.\\
+		The probability of choosing the standard 6-sided die is $\frac{1}{2}$.\\
+		Therefore, the probability of getting a 6 is either $\frac{1}{2}\cdot 1 + \frac{1}{2}\cdot \frac{1}{6} = \frac{7}{12}$.\\
 
-
-\end{solution}
-
-
-
-\pagebreak
-\pagebreak
-\setcounter{probnumcount}{1}
-\section*{Groupwork \hwnum{} Problems}
-
-
-\subsection*{\probnum The Office Allocation [15 points]}
-Consider a new office building with $n$ floors and $k$ offices per floor in which you must assign $2nk$ people to work, each sharing an office with exactly one other person. Find a closed form solution for the number of ways there are to assign offices if from floor to floor the offices are distinguishable, but any two offices on a given floor are not.
-
-\begin{solution}
+		\item Let $E$ be the event that you roll a 6 on the first roll and $F$ be the event that you roll a 6 on the second roll.\\
+		$P(F) = \frac{1}{2}\cdot 1 + \frac{1}{2}\cdot \frac{1}{6} = \frac{7}{12}$.\\
+		$P(F \mid E) = \frac{1}{2}\cdot \frac{1}{6} \cdot \frac{1}{6} + \frac{1}{2}\cdot 1 \cdot 1$\\
+		They are not equal, so the events are not independent.
+	\end{qparts}
 
 \end{solution}
-
-
-\subsection*{\probnum Poker Queen [15 points]}
-\begin{qparts}
-	\item You are dealt a five-card poker hand from a standard deck of 52 cards. What is the probability your hand has  full house (3 cards of the same rank and 2 other cards of the same rank) with the queen of hearts as one of your cards?
-
-	\item Suppose someone selects a flush at random from the set of all possible flushes (5 cards of the same suit). What is the probability this flush contains the queen of hearts?
-
-	\item Suppose someone selects a straight (5 cards in a row of possibly different suits) from the set of all possible straights. What is the probability this straight contains the queen or king (inclusive) of hearts? Note that for EECS 203 purposes, Aces can be high or low but not both simultaneously, so 10-J-Q-K-A and A-2-3-4-5 are valid straights but J-Q-K-A-2 is not a valid straight.
-\end{qparts}
-\begin{solution}
-
-\end{solution}
-
 \end{document}
