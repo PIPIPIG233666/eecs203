@@ -168,6 +168,7 @@ How many strings with six or more characters can be formed from the letters in `
 		      There are $3!$ ways to arrange the 3Ss.\\
 		      Therefore, the answer is $\frac{6!}{3! \cdot 2!\cdot 1!} = 60$.\\
 	\end{itemize}
+	Therefore, the answer is $140 + 60 + 20 + 60 = 280$.
 
 \end{solution}
 
@@ -187,7 +188,8 @@ Suppose there is a lottery where the organizers pick a set of 11 distinct number
 	\begin{qparts}
 		\item There are 80 numbers to choose from.\\
 		Therefore, the answer is $_{80}C_{7}$.
-		\item There are 11 numbers to choose from.\\
+		\item To win, the set of the 7 numbers the player chose has to be a subset of the 11 numbers chosen by the organizer. \\
+		There are 11 numbers to choose from.\\
 		Therefore, the answer is $_{11}C_{7}$.
 		\item The probability of winning is $\frac{|E|}{|S|} = \frac{_{11}C_{7}}{_{80}C_{7}}$.
 		\item There are 80 numbers to choose from.\\
