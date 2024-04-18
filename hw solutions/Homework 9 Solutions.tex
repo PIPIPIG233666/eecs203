@@ -1,0 +1,501 @@
+ \documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{8}
+\newcommand{\hwnum}{9}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, April. 11th}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $8+2$
+\hspace{3cm}
+Total Points: $100+30$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum How Many pa55words? [12 points]}
+A password consists of exactly 6 characters, where each character is either a lowercase letter (a-z) or a digit (0-9). However, the password must contain at least 2 digits and at least 2 lowercase letters. How many different passwords are possible?
+
+\begin{solution}
+We'll count the total number of passwords with no restrictions, and then subtract off the passwords with exactly 0 or 1 digit and the passwords with exactly 0 or 1 lowercase letter. Notice that these two events are mutually exclusive, so we do not have to account for their intersection. The number of passwords with no restrictions is $36^6.$ The number of passwords with no digits is $26^6,$ and the number with exactly one digit is $6\cdot 10\cdot 26^5$ (we choose where the digit goes, which digit to use, and then each of the letters for the remaining 5 spots). The number of passwords with no letters is $10^6$ and the number with exactly one letter is $6\cdot 26\cdot 10^5$ (we choose where the letter goes, which letter to use, and then each of the digits for the remaining 5 spots). In total we have
+$$36^6-26^6-6\cdot 10\cdot 26^5-10^6 - 6\cdot 26\cdot 10^5$$
+passwords.
+
+\textbf{Alternate Solution:}
+
+We can also break this down directly into cases.
+
+\textbf{Case 1: 2 digits and 4 lowercase letters}\\
+$\binom{6}{2} \cdot \binom{4}{4} \cdot 10^2 \cdot 26^4$ \\ \\
+
+\textbf{Case 2: 3 digits and 3 lowercase letters}\\
+$\binom{6}{3} \cdot \binom{3}{3} \cdot 10^3 \cdot 26^3$\\ \\
+
+\textbf{Case 3: 4 digits and 2 lowercase letters}\\
+$\binom{6}{4} \cdot \binom{2}{2} \cdot 10^4 \cdot 26^2$ \\ \\
+
+Finally, add up the totals from all cases:\\
+$\binom{6}{2} \cdot \binom{4}{4} \cdot 10^2 \cdot 26^4 + \binom{6}{3} \cdot \binom{3}{3} \cdot 10^3 \cdot 26^3 + \binom{6}{4} \cdot \binom{2}{2} \cdot 10^4 \cdot 26^2$
+
+
+\smallskip
+
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{Primary Solution:}
+\begin{guidelines}
+    \item +2 correct setup for applying difference rule
+    \item +2 correct total count: $36^6$
+    \item +2 correct count for zero digit case: $26^6$
+    \item +4 correct count for one digit case: $6\cdot 10\cdot 26^5$
+    \item +2 correct final answer
+\end{guidelines}
+\textbf{Alternate Solution:}
+\begin{guidelines}
+    \item +2 correct cases
+    \item +4 correct combinations within each case
+    \item +4 correct permutations within each case
+    \item +2 correct final answer
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum (Not So) Round and Round [12 points]}
+Suppose we have a square-shaped table which seats 3 people on each side. How many ways are there to seat 12 people at the table where seatings are considered the same if everyone is in the same group of 3 on a side?
+
+\begin{solution}
+There are $12!$ ways to order 12 people around the table. Then, we need to figure out how this is overcounting the number of orderings according to which seatings are considered the same. We are going to divide out the number of arrangements in which seatings are considered to be the same to account for this overcounting. If we rearrange 3 people on any given side, the seating will remain the same. Thus, we need to divide by $3!$ for each side of the table, which gives us $(3!)^4$. The positioning of groups relative to each other also does not affect the seating. Since there are 4 sides, we must also divide by $4!$. So, one final answer is: 
+$$\frac{12!}{(3!)^4\cdot 4!}.$$
+
+\textbf{Alternate Solution:}
+
+We only care about which people are sitting together on a side, so we can choose the 4 groups of 3 with $\binom{12}{3}\binom{9}{3}\binom{6}{3}\binom{3}{3}$. However, this implicitly assigns an order to the groups, which we don't want, because we don't care which side the groups sit on. Therefore, we need to divide this by $4!$. This gives us another final answer of:
+$$\frac{\binom{12}{3}\binom{9}{3}\binom{6}{3}\binom{3}{3}}{4!}.$$
+
+\textbf{Draft Grading Guidelines [12 points]}
+\begin{guidelines}
+    \item +4 has factor of $12!$
+    \item +4 divides by $(3!)^4$ (can be accomplished by explicitly dividing or selecting groups via combinations like in the alternate solution)
+    \item +4 divides by $4!$
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum My backpack is too heavy [12 points]}
+How many ways are there to distribute seven textbooks into eleven backpacks if \textbf{each backpack must have at most one textbook in it} and
+\begin{qparts}
+    \item all of the textbooks and all of the backpacks are unique?
+    \item all of the textbooks are unique, but all of the backpacks are identical?
+    \item all of the textbooks are identical, but the backpacks are all unique?
+    \item all of the textbooks and all of the backpacks are identical?
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item Since both of the textbooks and backpacks are distinct we can consider the \\order/position of placing the textbooks to matter, therefore from 11 backpacks, we can select 7 to place textbooks leading to an answer of $P(11, 7)$. 
+    
+    \item Since each textbook must be in a separate backpack and the backpacks are identical, there is only one way to do this.
+    
+    \item This is just a matter of choosing which seven backpacks to put textbooks into, so the answer is $\binom{11}7.$
+    
+    \item As noted in part (b), there is only one way to do this.
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +1 correct answer
+    \item +2 correct justification
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Seeressously? [12 points]}
+How many strings with six or more characters can be formed from the letters in ``SEERESS"? \textbf{Simplify your answer.} You may use a calculator to help you simplify.
+
+\begin{solution}
+
+\textit{NOTE: You do not need to simplify your answers to a single number. We give the final number in the solutions in case it's helpful for students, but you can feel free to leave your answers unsimplified (e.g., as a sum of fractions containing factorials.)}\\\\
+We need to calculate separately the number of strings of length 6 and 7. There are $\frac{7!}{3!3!1!} = 140$ strings of length 7, which we count using a multinomial coefficient.
+
+\textbf{Solution 1}\\
+For strings of length 6, we can: 
+\begin{itemize}
+    \item omit the R and form $\frac{6!}{3!3!} = 20$ strings.  
+    \item omit one E and form $\frac{6!}{3!2!1!} = 60$ strings. 
+    \item omit one S and form $\frac{6!}{3!2!1!} = 60$ strings.
+\end{itemize}
+resulting in 140 total strings of length 6. Summing this together with the number of 7-character strings, we get the total number of strings with six or more characters is $$\frac{7!}{3!3!1!} + \frac{6!}{3!3!} + \frac{6!}{3!2!1!} + \frac{6!}{3!2!1!} = 280.$$ 
+
+\textbf{Solution 2}\\
+For strings of length 7, we can:
+\begin{itemize}
+    \item first place the 3 S's: $\binom73$ ways; then place the 3 E's: $\binom43$ ways; then place the R: $\binom 11$ ways. Total number of strings of length 7 is $\binom73 \binom43 \binom11 = 140$.\\
+\end{itemize}
+For strings of length 6, we can: 
+\begin{itemize}
+    \item omit the R. Use 3 S's and 3 E's to form $\binom63 \binom33 = \binom 63 = 20$ strings.  
+    \item omit one E. Use 3 S's, 2 E's, and 1 R to form   $\binom63 \binom32 \binom11 = \binom 63 \binom32=  60$ strings. 
+    \item omit one S. Use 2 S's, 3 E's, and 1 R to form $\binom62 \binom43 \binom11 = \binom62 \binom43 = 60$ strings.
+\end{itemize}
+
+Combine all the cases to get the  total number of strings with six or more characters, we get $$ \binom73 \binom43 \binom11 + \binom63 \binom33 + \binom63 \binom32 \binom11 + \binom62 \binom43 \binom11 = 280.$$ 
+
+\textbf{Draft Grading Guidelines [12 points]}
+\begin{guidelines}
+    \item +3 correct number of strings of length 7
+    \item +3 correct cases for strings of length 6
+    \item +3 correct number of strings of length 6
+    \item +3 adds cases to get final answer (even if final answer is incorrect)
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Jackpot! [12 points]}
+Suppose there is a lottery where the organizers pick a set of 11 distinct numbers. A player then picks 7 distinct numbers and wins when all 7 are in the set chosen by the organizers. Numbers chosen by both the players and organizers come from the set $\{ 1, 2, ..., 80 \}$.
+
+\begin{qparts}
+    \item Let the sample space, $S$, be all the sets of 7 numbers the player can choose. What is $|S|$?
+    \item Let $E$ be the event that all the numbers the player chooses are in the winning set. What is $|E|$?
+    \item What is the probability of winning? As a reminder, you may leave your answer unsimplified.
+    \item Alternatively we can choose a different sample space $S'$ which is all the sets of 11 numbers that the organizers can choose. What is $|S'|$? What is the event $E'$ that the player has a winning set, and what is $|E'|$?
+    \item What is the probability of winning given your answer to (d)? Use a calculator to verify this is the same as your answer to (c).
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item There are 80 choices and the player picks 7. Thus, $|S| = \binom{80}{7}.$
+    \item We need that all 7 numbers come from the set of 11 that the organizers chose, so there are now $\binom{11}{7}$ posibilities.
+    \item Since the outcomes in the sample space are all equally likely, the probability is
+    $$\frac{|E|}{|S|} = \frac{\binom{11}{7}}{\binom{80}{7}}.$$
+    \item In this case $|S'| = \binom{80}{11}$ since there are 80 choices and the organizers choose 11. $E'$ is the subset of all collections of 11 numbers which contain the player's 7 numbers. Note that $|E'|$ doesn't depend on what those numbers are. Whatever the player's 7 numbers happen to be, they all need to be organizers' set of numbers: $\binom 77$, and then any 4 of the remaining 73 numbers (80 excluding the player's 7) can be in the organizers' set: $\binom{73}{4}$. So the overall count is $|E'|=\binom 77\cdot\binom{73}{4}=\binom{73}{4}.$
+    \item Using our answers from part (d),
+    $$\frac{|E'|}{|S'|} = \frac{\binom{73}{4}}{\binom{80}{11}}.$$
+    Using a calculator we can check that
+    $$\frac{|E|}{|S|} = \frac{|E'|}{|S'|} \approx 1.0388\cdot 10^{-7}.$$
+\end{qparts}
+
+\smallskip
+\textbf{Draft Grading Guidelines [12 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +2 correctly counts given sample space
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +2 correctly counts given event
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +1 divides answers from parts (a) and (b)
+\end{guidelines}
+\textbf{Part d:}
+\begin{guidelines}
+    \item +2 correctly counts given sample space
+    \item +2 correctly identifies event
+    \item +2 correctly counts event
+\end{guidelines}
+\textbf{Part e:}
+\begin{guidelines}
+    \item +1 asserts that answers are equal
+\end{guidelines}
+
+\end{solution}
+
+\subsection*{\probnum Rollin' in the Deep [12 points]}
+You roll three, fair, 6-sided dice. What is the probability that the sum of the dice is less than 17?
+
+\begin{solution}
+The event that the sum is \textit{not} less than 17 is easier to count than the event that the sum is less than 17. So we use event complements. 
+
+The sample space $S$ is all possible outcomes for the 3 dice. We can view these as ordered triples.
+$$|S|=6\cdot 6\cdot 6 = 6^3$$
+
+Let $E$ be the event that the sum of the dice is less than 17. Thus, $\overline{E}$ is the event that the sum of that dice is greater than or equal to 17.
+The only triples whose sum is greater than or equal to 17 are:
+$$(6,6,6), (5,6,6), (6,5,6), (6,6,5)$$
+We can also count this by counting the number of outcomes with sum 18 and 17. There is 1 with sum 18 (where all are sixes) and 3 with sum 17 (we have three choices for which die comes up five).
+
+Thus, $|\overline{E}| = 4.$ So
+$$P(E)= 1-P(\overline{E}) = 1 - \cfrac{|\overline{E}|}{|S|} = 1-\cfrac{4}{6^3}.$$
+
+\textbf{Draft Grading Guidelines [12 points]}
+
+\begin{guidelines}
+    \item +2 correct event complement formula: $P(E)= 1-P(\overline{E})$
+    \item +2 correct probability formula: $P(E)=\frac{|E|}{|S|}$
+    \item +3 computes $|\overline{E}|$ correctly
+    \item +3 computes $|S|$ correctly
+    \item +2 correct final answer
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Addition Condition [12 points]}
+A pair of six-sided dice is rolled, but you do not see the results. You ask your friend whether at least one die came up six, and they respond yes.
+
+What is the probability that the sum of the numbers that came up on the two dice is seven, given the information provided by your friend?
+
+\begin{solution}
+We use the notation $(i,j)$ to represent that the first die came up $i$ and the second die came up $j$. Note that there are 36 equally likely outcomes.
+
+Let $S$ be the event that at least one die came up 6, and let $T$ be the event that the sum of the dice is 7. We want $P(T\mid S) = \frac{P(S \cap T)}{P(S)}$.
+
+If we have $S \cap T$, then we are looking at the event that at least one die came up a 6 and the sum of the two dice is 7. The only way the two dice can sum to 7 if one of them is a 6 is if we rolled either $(6,1)$ or $(1,6)$, so $p(S \cap T)$ is $\frac{2}{36}$.
+
+We now want to find $P(S)$. The easiest way to do so is to find $1 - P(\overline{S})$. $\overline{S}$ means that no 6s were rolled, meaning we have 5 choices for the first roll and 5 choices for the second roll, totaling 25 different ways to roll two dice without rolling a 6. $P(S) = 1 - P(\overline{S}) = 1 - \frac{25}{36} = \frac{11}{36}$. Alternatively we can use inclusion-exclusion, noting that the probability that the first/second die is six is $\frac 6{36},$ and the probability that both are six is $\frac 1{36},$ to arrive at $P(S)=\frac{6}{36} +\frac{6}{36}-\frac{1}{36} = \frac{11}{36}.$
+
+Plugging the two values in, we have
+$$P(T\mid S) = \frac{\frac{2}{36}}{\frac{11}{36}} = \frac{2}{11}.$$
+
+\textbf{Draft Grading Guidelines [12 points]}
+\begin{guidelines}
+    \item +3 recognizes that this problem involves conditional probability
+    \item +3 uses the correct formula for conditional probability
+    \item +3 finds $P(S \cap T)$ correctly
+    \item +3 finds $P(S)$ correctly
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum Conditional probability \& Independence [16 points]}
+
+Suppose you put two dice in a bag: one of the dice has a 6 on every face, and the other is a standard 6-sided die. You choose one die at random, roll it, and get a 6.
+
+\begin{qparts}
+    \item If you roll the same die, what is the probability that the next roll is also a 6?
+    \item If you roll the same die both times, are rolling a 6 on the first roll and rolling a 6 on the second roll independent events?
+\end{qparts}
+
+\begin{solution}
+
+\begin{qparts} 
+    \item Let $F$ be the event that the first roll was a 6 and let $S$ be the event that the second roll was a 6. Using conditional probability:
+    $$P(S \mid F) = \frac{P(S \cap F)}{P(F)}.$$
+    To find $P(F)$, we must find the probability of rolling a 6 on the first roll (given that there is no other information, this is the probability of rolling a 6 in general). If the cheater die was chosen, the probability of rolling a 6 is $1$. If the standard die was chosen, the probability of rolling a 6 is $\frac{1}{6}$. Since each scenario was equally likely, $$P(F) = \frac{1}{2} \cdot 1 + \frac{1}{2} \cdot \frac{1}{6} = \frac{7}{12}$$
+    by the law of total probability.
+    
+    To find $P(S \cap F)$, we find the probability of rolling two consecutive 6's. For the cheater die, the probability of this is 1. For the standard die, the probability is $\frac{1}{36}$. Therefore: $$P(S\cap F) = \frac{1}{2} \cdot 1 + \frac{1}{2} \cdot \frac{1}{36} = \frac{37}{72}.$$
+    We can plug these into our conditional probability formula and obtain $$P(S\mid F) = \frac{\frac{37}{72}}{\frac{7}{12}} = \frac{444}{504} = \frac{37}{42}.$$
+
+    \item Using the same setup as above, let $F$ be the event that the first roll was a 6 and let $S$ be the event that the second roll was a 6.
+
+    We have already calculated $P(S | F) = \frac{37}{42}$. Now, we must calculates $P(S)$, or the probability that the second roll was a 6 if we do not have any prior information about the first roll. In this case, either die is equally likely, and the probability that the cheater dies rolls a 6 is 1, while the probability that the standard die rolls a 6 is $\frac{1}{6}$. Thus, $$P(S) = \frac{1}{2} \cdot 1 + \frac{1}{2} \cdot \frac{1}{6} = \frac{7}{12}$$ by the law of total probability. Note that P(S) = P(F) because we do not have any knowledge about the outcome of the first roll, so both dice are still equally likely.
+
+    Since $P(S) = \frac{7}{12} \neq \frac{37}{42} = P(S | F)$, these events are not independent.
+
+    Alternatively, since $P(S \cap F) = \frac{37}{42} \neq \frac{49}{144} = \frac{7}{12} \cdot \frac{7}{12} = P(S)P(F)$, these events are not independent.
+
+\end{qparts}
+
+
+\smallskip
+\textbf{Draft Grading Guidelines [16 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +2 identifies correct events (can be different from the solution's events)
+    \item +1 attempts to apply definition of conditional probability
+    \item +1 attempts to apply law of total probability to compute $P(F)$ and $P(S\cap F)$
+    \item +2 correct value for $P(F)$
+    \item +2 correct value for $P(S\cap F)$
+    \item +2 correct final answer $P(S|F)$
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +1 attempts to apply definition of independence ($P(S) = P(S|F)$ or $P(S \cap F) = P(S)P(F)$)
+    \item +1 recognizes that $P(S)$ should be computed without knowledge of the first roll
+    \item +2 correct value for $P(S)$
+    \item +2 correctly identifies that the two events are not independent
+\end{guidelines}
+\end{solution}
+
+
+
+
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & & & &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
+\hline 
+Problem 2 & & & & &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+\subsection*{\probnum The Office Allocation [15 points]}
+Consider a new office building with $n$ floors and $k$ offices per floor in which you must assign $2nk$ people to work, each sharing an office with exactly one other person. Find a closed form solution for the number of ways there are to assign offices if from floor to floor the offices are distinguishable, but any two offices on a given floor are not.
+
+\begin{solution}
+First, assign everyone a number $1,\dots, 2kn;$ there are $(2kn)!$ ways to do this. Then for odd $i$ assign $i+1$ and $i$ to be office partners. There is over counting by a factor of $2^{kn} (kn)!$: there are $(kn)!$ ways to order the $kn$ pairs and then there is a factor of $2^{kn}$ to account for swapping $i$ and $i+1$ in each pair. So there are $$\frac{(2kn)!}{2^{kn}(kn)!}$$ ways to form pairs.
+
+Now since offices on any given floor are indistinguishable, we need only assign the pairs to floors. Assign each pair a unique number $1,\dots, kn;$ there are $(kn)!$ ways to do this. Then numbers 1 through $k$ go on floor 1, numbers $k$ through $2k$ go on floor 2, etc. Using this construction, we over-count the number of possibilities for each floor by a factor of $k!,$ so since there are $n$ floors we over-count by $(k!)^n$ in total. So by the product rule there are
+$$\frac{(2kn)!}{2^{kn}(kn)!}\cdot\frac{(kn)!}{(k!)^n} = \frac{(2kn)!}{2^{kn}(k!)^n}$$
+ways to assign people to offices.
+
+\textbf{Grading Guidelines [15 points]}
+\begin{gwguidelines}
+    \item +3 solution contains the factor $(2kn)!$
+    \item +3 divides by $2^{kn}$ to account for swapping the office mates
+    \item +2 divides by $(kn)!$ to account for order not mattering when selecting office mates
+    \item +3 computes factor of $(kn)!$ to select floors for the pairs
+    \item +4 divides by $(k!)^n$ to account for indistinguishable offices
+\end{gwguidelines}
+\end{solution}
+
+\subsection*{\probnum Poker Queen [15 points]}
+\begin{qparts}
+    \item You are dealt a five-card poker hand from a standard deck of 52 cards. What is the probability your hand has  full house (3 cards of the same rank and 2 other cards of the same rank) with the queen of hearts as one of your cards?
+    
+    \item Suppose someone selects a flush at random from the set of all possible flushes (5 cards of the same suit). What is the probability this flush contains the queen of hearts?
+    
+    \item Suppose someone selects a straight (5 cards in a row of possibly different suits) from the set of all possible straights. What is the probability this straight contains the queen or king (inclusive) of hearts? Note that for EECS 203 purposes, Aces can be high or low but not both simultaneously, so 10-J-Q-K-A and A-2-3-4-5 are valid straights but J-Q-K-A-2 is not a valid straight.
+\end{qparts}
+\begin{solution}
+\begin{qparts}
+    \item Our denominator counts the number of possible poker hands: we are choosing 5 unordered cards from a deck of 52 possible ones, giving us $\binom{52}{5}$.
+    
+    Our numerator counts the number of hands with a full house containing a queen of hearts. The queen of hearts is either an element of the pair or of the three-of-a-kind.
+    
+    \textbf{Case 1:} $Q\heartsuit$ in the pair\\
+    We have 3 choices for the other queen in the pair, 12 choices for the rank of the three-of-a-kind, and $\binom{4}{3} = 4 $ choices for the suits in the three-of-a-kind, giving us $3 \cdot 12 \cdot 4$ total options.
+    
+    \textbf{Case 2:} $Q\heartsuit$ in the three-of-a-kind:\\
+    We have $\binom{3}{2} = 3$ choices for the other queens in the three-of-a-kind, 12 choices for the rank of the pair, and $6 = \binom{4}{2}$ choices for the suits in the pair, giving us $3 \cdot 12 \cdot 6$ total options.
+    
+    Summing these two cases together, we get $3 \cdot 12 \cdot 4 + 3 \cdot 12 \cdot 6 $ for the numerator. Thus we have a probability of
+    $$\frac{3 \cdot 12 \cdot 4 + 3 \cdot 12 \cdot 6}{\binom{52}{5}}.$$
+    
+    \item Our denominator counts the number of flushes: $4 \cdot \binom{13}{5}$. We first choose a suit ($\binom{4}{1} = 4$), then choose 5 cards from the possible 13 ($\binom{13}{5}$) to get 5 cards of the same suit.
+    
+    Our numerator counts the number of flushes with the queen of hearts, so we must have the $Q\heartsuit$ as one of our cards. Further, our flush has to be comprised of 5 heart cards, so we just need to pick the $Q\heartsuit$, then pick 4 other heart cards from the 12 remaining, totaling $1 \cdot \binom{12}{4}$.
+    
+    Thus, our probability is
+    $$\frac{\binom{12}{4}}{4 \cdot \binom{13}{5}}.$$
+    
+    Alternate way of counting the numerator: we can subtract the number of flushes with no queen of hearts ($3 \binom{13}{5} + \binom{12}{5})$ from the number of flushes to get $4 \binom{13}{5} - 3 \binom{13}{5} - \binom{12}{5}$ for our numerator.
+    
+    \item Our denominator counts the number of possible straights: $10 \cdot 4^5$ (10 choices for lowest card of the straight, then 4 choices for the suit of each card).
+    
+    Our numerator counts the number of straights with the $Q\heartsuit$ or $K\heartsuit$. We only have 3 possible lowest cards for our $Q\heartsuit$: 8, 9, and 10; and only 2 possible lowest cards for our $K\heartsuit$ straight: 9 and 10. We have $3 \cdot 4^4$ straights with the $Q\heartsuit$ and $2 \cdot 4^4$ straights with the $K\heartsuit$. We arrive at these values by first selecting what our lowest card is, and then by choosing suits for the remaining 4 cards in the straight. There are also $2 \cdot 4^3$ straights with both $Q\heartsuit$ and $K\heartsuit$ using similar logic. By the inclusion-exclusion principle, our numerator is $3\cdot 4^4 + 2 \cdot 4^4 - 2 \cdot 4^3.$
+    
+    Thus our probability is
+    $$\frac{3\cdot 4^4 + 2 \cdot 4^4 - 2 \cdot 4^3}{10 \cdot 4^5}.$$
+    
+    Alternate way of counting the numerator: we have $4^4$ flushes with $Q\heartsuit$ or $K\heartsuit$ (inclusive) with lowest card of 8; $4 \cdot 3 \cdot 4^3$ flushes with either $Q\heartsuit$ or $K\heartsuit$ but not both; and $2 \cdot 4^3$ with both $Q\heartsuit$ and $K\heartsuit.$ So in total our numerator is $4^4 + 4 \cdot 3 \cdot 4^3 + 2 \cdot 4^3.$ 
+\end{qparts}
+
+\textbf{Grading Guidelines [15 points]}
+
+\textbf{Part a:}
+\begin{gwguidelines}
+    \item +1 correct denominator
+    \item +2 divides numerator into cases
+    \item +2 correct numerator
+\end{gwguidelines}
+\textbf{Part b:}
+\begin{gwguidelines}[resume]
+    \item +2 correct denominator
+    \item +2 correct numerator
+\end{gwguidelines}
+\textbf{Part c:}
+\begin{gwguidelines}[resume]
+    \item +2 correct denominator
+    \item +2 attempts to apply inclusion-exclusion to numerator
+    \item +2 correct numerator
+\end{gwguidelines}
+\end{solution}
+
+\end{document}

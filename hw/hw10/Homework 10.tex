@@ -1,0 +1,263 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+\usepackage{tikz} % drawing graphs
+\usetikzlibrary{positioning}
+\usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{9}
+\newcommand{\hwnum}{10}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Thursday, April 18}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $8+2$
+\hspace{3cm}
+Total Points: $100+35$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Color Conundrum [14 points]}
+Each day Donovan Edwards either wears a T-shirt or a tank top. On a given day, there is a $70\%$ chance he wears a T-shirt and a $30\%$ chance he wears a tank top. If he wears a T-shirt, he randomly picks one of 4 pink T-shirts, 3 blue T-shirts, and 2 black T-shirts (he is equally likely to pick any particular shirt). If he wears a tank top, he randomly picks one of 2 pink tank tops, 3 white tank tops, or 2 blue tank tops.
+
+\begin{qparts}
+    \item What is the probability that he is wearing pink or white on a given day?
+    \item Given that Donovan is wearing pink or white on a given day, what is the probability that he is wearing a T-shirt?
+\end{qparts}
+
+You \textbf{do not} need to simplify your answers.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Bayes' $\times 3$ [8 points]}
+Suppose that $E$, $F_1$, $F_2$, and $F_3$ are events from a sample space $S.$ Furthermore, suppose that $F_1$, $F_2$, and $F_3$ are each mutually exclusive, and that their union is $S$. Find $P(F_2 \mid E)$ if
+\begin{align*}
+    P(E \mid F_2) &= \frac 38 & P(F_1) &= \frac 16 \\
+    P(E \mid F_3) &= \frac 12 & P(F_2) &= \frac 12 \\
+    P(E \mid F_1) &= \frac 27 & P(F_3) &= \frac 13
+\end{align*}
+Express your final answer as a \textbf{single, fully-simplified} number.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum There Snow Way I'm Running In This [12 points] }
+Ishaan likes to run, but he hates running in the snow. If it snows, the probability of Ishaan going for a run is $\frac 1{10}$. If it doesn't snow, the probability of Ishaan running is $\frac 8{10}$. If Ishaan goes for run, then the probability that it snowed is $\frac 19.$ What is the probability that it snows?
+
+Express your final answer as a \textbf{single, fully-simplified} number.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum What did you expect? [12 points]}
+
+The EECS 203 staff is going on a road trip! The 36 staff members have decided to split up into 6 different cars with 9, 8, 6, 6, 4, 3 people in each of the respective cars. 
+\begin{qparts}
+    \item Suppose we pick a car uniformly at random, and consider $X$ to be the random variable defined by the number of staff members in that car. What is the expected value of $X$?
+    \item Now suppose we pick one of the staff members uniformly at random. Let $Y$ be the random variable defined by the number of people in the car that staff member is in. What is the expected value of $Y$?
+\end{qparts}
+Express your final answers as \textbf{single, fully-simplified} numbers.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Zero-sum game...or is it? [12 points]}
+
+Your friend proposes to play the following game. You roll a fair, 6-sided dice twice and record the result. Let $X$ be the random variable defined as twice the value of the first roll, minus three times the value of the second roll. For example, if you rolled $3$ then $4,$ then $X$ would equal $2\cdot 3 - 3\cdot 4=-6.$ You win $X$ dollars if $X$ is positive, but have to give your friend $|X|$ dollars if $X$ is negative. If $X$ is zero then you neither win nor lose money. How much money do you expect to win or lose?
+
+Express your final answer as a \textbf{single, fully-simplified} number.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Rollie Pollie [15 points]}
+
+Rohit recently became super passionate about rolling dice. He decides to roll a single fair 6-sided die 100 times. What is the expected number of times he rolls a 5 followed by a 6?
+
+Express your final answer as a \textbf{single, fully-simplified} number.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection* {\probnum Bernoulli trials, binomial distribution [15 points]}
+
+You roll a fair six-sided die 12 times. Find:
+\begin{qparts}
+    \item The probability that exactly two rolls come up as a 6.
+    \item The probability that exactly two rolls come up as a 6, given that the first four rolls each came up as 3.
+    \item The probability that at least two rolls come up as a 6.
+    \item The expected number of rolls that come up as 6.
+\end{qparts}
+
+You \textbf{do not} need to simplify your answers.
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Fastest Draw in the Midwest [12 points]}
+
+Suppose Grace has a standard deck of 52 cards. Grace expects she can draw all 52 cards in order (defined below) in 1300 draws. Yunsoo expects 1600 draws. Explain why Yunsoo is further away from the real expected value.
+
+\textbf{Note:} The order of cards goes Ace, 2, 3, $\dots$, King and $\clubsuit, \diamondsuit, \heartsuit , \spadesuit$. If the next card in order is not drawn, then it is placed back into the deck at random. If the next card in order is drawn, then Grace sets it aside, removing it from the deck.
+
+\textbf{Note:} The cards do not have to be selected consecutively. For example, \underline{A$\clubsuit$}, $3\diamondsuit,$ J$\spadesuit,$ \underline{2$\clubsuit$} is a valid start, and there would only be 50 cards left in the deck at this point.
+
+\begin{solution}
+
+\end{solution}
+
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
+\hline 
+Problem 2 & & & & & & & & &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/30\\
+\hline
+\end{tabular}}
+\end{center}
+
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Groupwork \hwnum{} Problems}
+
+\subsection*{\probnum Circular Reasoning [15 points]}
+
+Suppose we select $2n$ distinct points independently and uniformly at random on the border of a circle, and label them $p_1$ through $p_{2n}$ counter-clockwise (i.e. point $p_2$ is counter-clockwise from point $p_1$).
+
+\begin{qparts}
+    \item In the case where $n=2$, we have four distinct points on the circle. If we select two of these points uniformly at random and draw a line segment between them, then draw a line segment between the remaining two points, what is the probability that these line segments intersect?
+    
+    \textbf{Hint:} Consider the different cases corresponding to the point $p_1$ is paired with.
+    
+    \item Suppose we repeat the procedure in (a) where we select two points at random and draw a line segment between them. We'll call this line segment $\ell_1.$ We repeat this again with the $2n-2$ remaining points, creating a line segment $\ell_2$, etc., until we have drawn $n$ line segments: $\ell_1,\dots,\ell_n.$ After this procedure is completed, what is the expected number of intersections? Your answer should be in terms of $n.$
+    
+    \textbf{Hint:} Create an indicator random variable for each possible intersection and apply linearity of expectation.
+    
+    \textit{Note:} The number of intersections is the number of pairs $(\ell_i,\ell_j)$ of distinct line segments where $\ell_i$ and $\ell_j$ intersect.
+\end{qparts}
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Open or Closed [20 points]}
+
+\textit{Online Bayseian Inference} is a process where we repeatedly apply Bayes
+rule to update our beliefs over time. Suppose we have a sensor that determines
+whether a door is open or closed. 
+If the door is open, the sensor reads it as open with probability 0.9. 
+If the door is closed, the sensor reads it as closed with probability 0.7. Suppose the door starts in an unknown position, and has equal probability of being open or closed.
+
+\begin{qparts}
+    \item After one reading that the door is closed, what is the probability that the  door is actually closed?
+    \item Before the second reading, we believe that the door is closed with the 
+    probability found in part (a) (that is, we consider the probability that the door
+    is closed to be the probability that we found the door is closed given our first reading). 
+    Suppose we make another reading that the door  is closed. Now what is 
+    the probability that the door is closed?
+    \item On the third reading, the sensor reads that the door is open. What is 
+    the probability that the door is actually closed, using the answer from part (b)
+    as our initial probability for the door being closed?
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+
+\end{document}
