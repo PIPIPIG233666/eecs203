@@ -78,17 +78,17 @@ You \textbf{do not} need to simplify your answers.
 	Let $T$ be the event that Donovan wears a T-shirt and $TT$ be the event that Donovan wears a tank top.
 	Let $P$, $W$, and $B$ be the events that Donovan wears pink, white, and black, respectively.
 	\begin{qparts}
-		\item $P(T) = 0.7, P(TT) =0.3$ \\
+		\item $P(T) = \frac{7}{10}, P(TT) =\frac{3}{10}$ \\
 		$P(P | T) = \frac{4}{9}, P(W | T) = \frac{3}{9}, P(B | T) = \frac{2}{9}$ \\
 		% dont use T^c, use TT
 		$P(P | TT) = \frac{2}{7}, P(W | TT) = \frac{3}{7}, P(B | TT) = \frac{2}{7}$ \\
 		% dont simplify
 		% basically P(P or W) = P(P) + P(W), 7/10*4/9 + 3/10*(2/7 + 3/7)
-		$P(P \cup W) = P(P) + P(W) = 0.7 \cdot \frac{4}{9} + 0.3 \cdot \left(\frac{2}{7} + \frac{3}{7}\right)$
+		$P(P \cup W) = P(P) + P(W) = \frac{7}{10} \cdot \frac{4}{9} + \frac{3}{10} \cdot \left(\frac{2}{7} + \frac{3}{7}\right)$
 		% use conditional probability formula
 		\item $P(T | P \cup W) = \frac{P(T \cap (P \cup W))}{P(P \cup W)} = \frac{P(T \cap P) + P(T \cap W)}{P(P) + P(W)}$
 		% dont simplify
-		$= \frac{0.7 \cdot \frac{4}{9} + 0}{0.7 \cdot \frac{4}{9} + 0.3 \cdot \left(\frac{2}{7} + \frac{3}{7}\right)}$
+		$= \frac{\frac{7}{10} \cdot \frac{4}{9} + 0}{\frac{7}{10} \cdot \frac{4}{9} + \frac{3}{10} \cdot \left(\frac{2}{7} + \frac{3}{7}\right)}$
 
 	\end{qparts}
 
@@ -213,6 +213,7 @@ You roll a fair six-sided die 12 times. Find:
 You \textbf{do not} need to simplify your answers.
 
 \begin{solution}
+	This problem satisfies the conditions for a binomial distribution because there are a fixed number of trials, each trial is independent, and each trial has the same probability of success.\\
 	Let $X$ be the random variable for the number of times a 6 is rolled.\\
 	$I_k$ be the indicator random variable for the event that the $k$th roll is a 6.\\
 	Since the die is fair, $E[I_k] = \frac{1}{6}$.
