@@ -68,41 +68,70 @@
 Suppose we select $2n$ distinct points independently and uniformly at random on the border of a circle, and label them $p_1$ through $p_{2n}$ counter-clockwise (i.e. point $p_2$ is counter-clockwise from point $p_1$).
 
 \begin{qparts}
-    \item In the case where $n=2$, we have four distinct points on the circle. If we select two of these points uniformly at random and draw a line segment between them, then draw a line segment between the remaining two points, what is the probability that these line segments intersect?
-    
-    \textbf{Hint:} Consider the different cases corresponding to the point $p_1$ is paired with.
-    
-    \item Suppose we repeat the procedure in (a) where we select two points at random and draw a line segment between them. We'll call this line segment $\ell_1.$ We repeat this again with the $2n-2$ remaining points, creating a line segment $\ell_2$, etc., until we have drawn $n$ line segments: $\ell_1,\dots,\ell_n.$ After this procedure is completed, what is the expected number of intersections? Your answer should be in terms of $n.$
-    
-    \textbf{Hint:} Create an indicator random variable for each possible intersection and apply linearity of expectation.
-    
-    \textit{Note:} The number of intersections is the number of pairs $(\ell_i,\ell_j)$ of distinct line segments where $\ell_i$ and $\ell_j$ intersect.
+	\item In the case where $n=2$, we have four distinct points on the circle. If we select two of these points uniformly at random and draw a line segment between them, then draw a line segment between the remaining two points, what is the probability that these line segments intersect?
+
+	\textbf{Hint:} Consider the different cases corresponding to the point $p_1$ is paired with.
+
+	\item Suppose we repeat the procedure in (a) where we select two points at random and draw a line segment between them. We'll call this line segment $\ell_1.$ We repeat this again with the $2n-2$ remaining points, creating a line segment $\ell_2$, etc., until we have drawn $n$ line segments: $\ell_1,\dots,\ell_n.$ After this procedure is completed, what is the expected number of intersections? Your answer should be in terms of $n.$
+
+	\textbf{Hint:} Create an indicator random variable for each possible intersection and apply linearity of expectation.
+
+	\textit{Note:} The number of intersections is the number of pairs $(\ell_i,\ell_j)$ of distinct line segments where $\ell_i$ and $\ell_j$ intersect.
 \end{qparts}
 \begin{solution}
-
+	\begin{qparts}
+		\item consider the different cases corresponding to the point $p_1$ is paired with.
+		there are 3 cases:
+		\begin{enumerate}
+			\item $p_1$ is paired with $p_3$ and $p_2$ is paired with $p_4$
+			      intersect
+			\item $p_1$ is paired with $p_4$ and $p_2$ is paired with $p_3$
+			      no intersect
+			\item $p_1$ is paired with $p_2$ and $p_3$ is paired with $p_4$
+			      no intersect
+		\end{enumerate}
+		so the probability is $\frac{1}{3}$
+		\item Let $X_{ij}$ be the indicator random variable for the event that line segments $\ell_i$ and $\ell_j$ intersect.
+		There are 2n points in total, since the starting point is $p_1$, the number of points that $\ell_1$ can intersect is $2n-3$.
+		The probability is uniform, so it is $\frac{2n-3}{2n-1}$.
+		So the expected number of intersections is $\binom{2n}{2} \cdot \frac{2n-3}{2n-1}$
+	\end{qparts}
 \end{solution}
 
 \subsection*{\probnum Open or Closed [20 points]}
 
 \textit{Online Bayseian Inference} is a process where we repeatedly apply Bayes
 rule to update our beliefs over time. Suppose we have a sensor that determines
-whether a door is open or closed. 
-If the door is open, the sensor reads it as open with probability 0.9. 
+whether a door is open or closed.
+If the door is open, the sensor reads it as open with probability 0.9.
 If the door is closed, the sensor reads it as closed with probability 0.7. Suppose the door starts in an unknown position, and has equal probability of being open or closed.
 
 \begin{qparts}
-    \item After one reading that the door is closed, what is the probability that the  door is actually closed?
-    \item Before the second reading, we believe that the door is closed with the 
-    probability found in part (a) (that is, we consider the probability that the door
-    is closed to be the probability that we found the door is closed given our first reading). 
-    Suppose we make another reading that the door  is closed. Now what is 
-    the probability that the door is closed?
-    \item On the third reading, the sensor reads that the door is open. What is 
-    the probability that the door is actually closed, using the answer from part (b)
-    as our initial probability for the door being closed?
+	\item After one reading that the door is closed, what is the probability that the  door is actually closed?
+	\item Before the second reading, we believe that the door is closed with the
+	probability found in part (a) (that is, we consider the probability that the door
+	is closed to be the probability that we found the door is closed given our first reading).
+	Suppose we make another reading that the door  is closed. Now what is
+	the probability that the door is closed?
+	\item On the third reading, the sensor reads that the door is open. What is
+	the probability that the door is actually closed, using the answer from part (b)
+	as our initial probability for the door being closed?
 \end{qparts}
 
 \begin{solution}
+	\begin{qparts}
+		\item We are given that the door is closed, and we want to find the probability that the door is actually closed. Let $C$ be the event that the door is closed, and $D$ be the event that the sensor reads the door as closed. We want to find $P(C|D)$. By Bayes' rule, we have
+		\begin{align*}
+			P(C|D) & = \frac{P(D|C)P(C)}{P(D)}                             \\
+			       & = \frac{P(D|C)P(C)}{P(D|C)P(C) + P(D|C^c)P(C^c)}      \\
+			       & = \frac{0.7 \cdot 0.5}{0.7 \cdot 0.5 + 0.1 \cdot 0.5} \\
+			       & = \frac{0.35}{0.35 + 0.05}                            \\
+			       & = \frac{0.35}{0.4}                                    \\
+			       & = 0.875.
+		\end{align*}
+		So the probability that the door is actually closed is 0.875.
+
+	\end{qparts}
 
 \end{solution}
 
