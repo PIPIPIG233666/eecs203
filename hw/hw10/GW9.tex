@@ -1,0 +1,148 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+% \usepackage{tikz} % drawing graphs
+% \usetikzlibrary{positioning}
+% \usepackage{multicol}
+% \usepackage{algpseudocode} % pseudocode
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+
+\newcommand{\commentsection}[1]{
+  \begin{mdframed}[roundcorner=10pt,leftmargin=1cm,%
+                     rightmargin=1cm,backgroundcolor=SkyBlue!20,%
+                     innertopmargin=\baselineskip,%
+                     skipabove=\baselineskip,%
+                     skipbelow=\baselineskip]
+  #1
+  \end{mdframed}
+}
+
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{9}
+\newcommand{\hwnum}{9}
+
+\begin{document}
+\pagebreak
+\setcounter{probnumcount}{1}
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+	\item Use the table below to grade your past groupwork submission and calculate scores.
+	\item While grading, mark up your past submission. Include this with the table when you submit your grading.
+	\item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+	\item For extra credit, write positive comment(s) about your work.
+	\item You don't have to redo problems correctly, but it is recommended!
+	\item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+	\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+			\hline
+			          & (i)    & (ii)   & (iii)  & (iv)   & (v)    & (vi)    & (vii)  & (viii) & (ix)   & (x)    & (xi)   & Total:           \\
+			\hline
+			Problem 1 & 3      & 0      & 0      & 0      & 0      & 0\filcl & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}3/15 \\
+			\hline
+			Problem 2 & 1      & 2      & 0      & 0      & 0      & 0       & 0      & 0      & \filcl & \filcl & \filcl & \hspace{1cm}3/15 \\
+			\Xhline{1.25pt}
+			Total:    & \filcl & \filcl & \filcl & \filcl & \filcl & \filcl  & \filcl & \filcl & \filcl & \filcl & \filcl & \hspace{1cm}6/30 \\
+			\hline
+		\end{tabular}}
+\end{center}
+
+
+\section*{Comments}
+\commentsection{I had no clue where to start with counting but I tried my best. I think I need to review the counting rules.}
+
+\subsection*{\probnum The Office Allocation [15 points]}
+Consider a new office building with $n$ floors and $k$ offices per floor in which you must assign $2nk$ people to work, each sharing an office with exactly one other person. Find a closed form solution for the number of ways there are to assign offices if from floor to floor the offices are distinguishable, but any two offices on a given floor are not.
+
+\begin{solution}
+	We start by overcounting, there are $2nk$ ways to assign offices for $2nk$ people.
+	Then we divide by the number of ways to assign offices for $2n$ people on each floor, which is $2n!$.
+	Finally, we divide by the number of ways to assign offices for $2$ people on each floor, which is $2!$.
+	Therefore, the number of ways to assign offices is $\frac{(2nk)!}{(2n!)^k \cdot 2^k}$.
+
+
+	\textcolor{red}{$$\frac{(2kn)!}{2^{kn}(kn)!}\cdot\frac{(kn)!}{(k!)^n} = \frac{(2kn)!}{2^{kn}(k!)^n}$$}
+
+\end{solution}
+
+
+\subsection*{\probnum Poker Queen [15 points]}
+\begin{qparts}
+	\item You are dealt a five-card poker hand from a standard deck of 52 cards. What is the probability your hand has  full house (3 cards of the same rank and 2 other cards of the same rank) with the queen of hearts as one of your cards?
+
+	\item Suppose someone selects a flush at random from the set of all possible flushes (5 cards of the same suit). What is the probability this flush contains the queen of hearts?
+
+	\item Suppose someone selects a straight (5 cards in a row of possibly different suits) from the set of all possible straights. What is the probability this straight contains the queen or king (inclusive) of hearts? Note that for EECS 203 purposes, Aces can be high or low but not both simultaneously, so 10-J-Q-K-A and A-2-3-4-5 are valid straights but J-Q-K-A-2 is not a valid straight.
+\end{qparts}
+\begin{solution}
+	\begin{qparts}
+		\item There are $_52C_5$ ways to choose a 5-card hand.\\
+		We pick the two ranks for the full house, which can be done in $_{13}P_2$ ways.\\
+		We pick the suits for the full house, which can be done in $_4C_3$ ways.\\
+		We pick the suits for the remaining two cards, which can be done in $_4C_2$ ways.\\
+		So, the probability of getting a full house is $\frac{_{13}P_2 \cdot _4C_3 \cdot _4C_2}{_{52}C_5}$.
+		On the other hand, if we already have the queen of hearts, we need to consider the following cases:\\
+		\begin{itemize}
+			\item The full house is made up of 3 queens and 2 cards of the same rank. There are $_{12}C_1$ ways to choose the rank for the other two cards.
+			      So, I don't know where to go from here.
+			\item The full house is made up of 3 cards of the same rank and 2 queens. There are $_{12}C_1$ ways to choose the rank for the other three cards.
+			      So, I don't know where to go from here.
+		\end{itemize}
+	\end{qparts}
+\end{solution}
+
+\end{document}
