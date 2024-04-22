@@ -1,0 +1,286 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+\usepackage{tikz} % drawing graphs
+\usetikzlibrary{positioning}
+\usepackage{multicol}
+\usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+\newcommand{\prevhwnum}{10}
+\newcommand{\hwnum}{11}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Tuesday, April 23}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $6+0$
+\hspace{3cm}
+Total Points: $100+0$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Big-$O$reo [15 points]}
+Give the tightest big-O estimate for each of the following functions. Justify your answers.
+\begin{qparts}
+    \item $f(n) = (2^n + n^n)\cdot (n^3 + n \log n^n)$
+    \item $g(n) = (n^n + n!)\cdot (n + 1)\hspace{0.1in} + \hspace{0.1in}(n^3 + 3^n)\cdot(\sqrt{n} + \log n)$
+    \item $h(n) = (n^n + n^2)\cdot(n^n + n)\hspace{0.1in} + \hspace{0.1in}(\log 3 + n^n)\cdot(n^2 + n^n)$
+\end{qparts}
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum On the Run [20 points]}
+Give the tightest big-O estimate for the number of operations (where an operation is arithmetic, a comparison, or an assignment) used in each of the following algorithms. \textbf{Explain your reasoning.}
+
+\begin{qparts}
+
+    \item \begin{algorithmic}
+        \Function{doubleTrouble}{$a_1,\dots,a_N\in\mathbb{R}, j\in\mathbb{R}$}
+            \State{$j \gets 1$}
+            \For{$i\coloneqq 1\text{ to }N$}
+                \If{$i = j$}
+                    \State{$j \gets 2j$}
+                \EndIf
+            \EndFor
+            \State\Return{$j$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{sumSquares}{$N \in \mathbb{Z}^+$}
+            \If{$N = 1$}
+                \State\Return{$1$}
+            \EndIf
+            \State{$value \gets \textsc{sumSquares}(N - 1) + N^2$}
+            \State\Return{$value$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{findLTMinProduct}{$a_1,\dots,a_N\in\mathbb{R}$}
+            \State{$p\gets 203$}
+            \For{$i\coloneqq 1\text{ to }N$}
+                \For{$j\coloneqq 1\text{ to }N$}
+                    \If{$a_ia_j < p$}
+                        \State{$p\gets a_ia_j$}
+                    \EndIf
+                \EndFor
+            \EndFor 
+            \State{$numLTMinProduct\gets 0$}
+            \For{$k\coloneqq 1\text{ to }N$}
+                \If{$a_k < p$}
+                    \State{$numLTMinProduct \gets numLTMinProduct + 1$}
+                \EndIf
+            \EndFor
+        \State\Return{$numLTMinProduct$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{subtractAndAdd}{$N\in\mathbb{Z}$}
+            \While{$N > 0$}
+                \If{$N$ is even}
+                    \State{$N \gets N - 3$}
+                \EndIf
+                \If{$N$ is odd}
+                    \State{$N \gets N + 1$}
+                \EndIf
+            \EndWhile
+            \State\Return{$N$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{search}{$a_1,\dots,a_N \in \mathbb{R}, target \in \mathbb{R}$}
+            \State{$left\gets 1$}
+            \State{$right\gets N$}
+            \While{$\text{True}$}
+                \State{$mid\gets \lfloor \frac{left + right}{2} \rfloor$}
+                \If{$a_{mid} = target$}
+                    \State\Return{$mid$}
+                \EndIf
+                \If{$right \leq left$}
+                    \State\Return{$-1$}
+                \EndIf
+                \If{$a_{mid} < target$}
+                    \State{$left\gets mid + 1$}
+                \EndIf
+                \If{$a_{mid} > target$}
+                    \State{$right\gets mid - 1$}
+                \EndIf
+            \EndWhile
+        \EndFunction
+    \end{algorithmic}
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum This one's bound to be fun! [18 points]}
+You are given the following bounds on functions $f$ and $g$:
+\begin{itemize}
+    \item $f(x)$ is $O(203^xx^2)$ and $\Omega(3^x\log x)$
+    \item $g(x)$ is $O(\frac{x!}{2^x})$ and $\Omega(4^x)$
+\end{itemize}
+Find the following, simplify your answer as much as possible.
+\begin{qparts}
+    \item Find the tightest big-O and big-$\Omega$ estimates that can be \textit{guaranteed} of $f(x)(g(x))^2$. 
+    \item Find the tightest big-O and big-$\Omega$ estimates that can be \textit{guaranteed} of $f(x)+g(x)$.
+    \item Let $h(x)=f(x)-g(x)$. Prove or disprove that $h(x)$ is $\Omega(4^x)$.
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+\subsection*{\probnum Big Function Fun [16 points]}
+Prove or disprove the following: 
+\begin{qparts}
+    \item If $f(x)$ is $O(g(x))$ then $2^{f (x)}$ is $O(2^{g(x)}).$
+    \item If $f(x)$ is $O(g(x))$ then $(f(x))^2$ is $O\big((g(x))^2\big).$
+\end{qparts}
+Note that in these proofs you do not need to use the definition of big-O, but can use the properties for combining mathematical functions covered in lecture.
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum Roots and Shoots [16 points]}
+Suppose $f$ satisfies $f(n) = 2f(\sqrt{n}) + \log_2 n$, whenever $n$ is a perfect square greater than 1, and additionally satisfies $f(2) = 1$.
+\begin{qparts}
+    \item Find $f(16)$.
+    \item Find a big-O estimate for $g(m)$ where $g(m) = f(2^m).$
+    
+    \textbf{Hint:} Make the substitution $m = \log_2 n.$
+    \item Find a big-O estimate for $f(n)$. 
+\end{qparts}
+
+\begin{solution}
+
+\end{solution}
+
+
+\subsection*{\probnum GG Brown Laboratory [15 points]}
+What is the tightest big-O bound on the runtime complexity of the following algorithm?
+\begin{algorithmic}
+\Function{badsearch}{$n$}
+    \If{$n\geq 1$}
+        \State{$\textsc{badsearch}(\lfloor \frac n3\rfloor)$}
+        \For{$i\coloneqq 1\text{ to }n$}
+            \For{$j\coloneqq 1\text{ to }\lfloor \frac n2\rfloor$}
+                \State{\textbf{print} ``Hello I am lost"}
+            \EndFor
+        \EndFor
+        \State{$\textsc{badsearch}(\lfloor \frac n3\rfloor)$}
+        \State{\textbf{print} ``Nevermind I got it"}
+    \EndIf
+\EndFunction
+\end{algorithmic}
+
+\begin{solution}
+
+\end{solution}
+
+
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
+\hline 
+Problem 2 & & & & & & & & & & & \filcl& \hspace{1cm}/20\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/35\\
+\hline
+\end{tabular}}
+\end{center}
+
+
+\end{document}
