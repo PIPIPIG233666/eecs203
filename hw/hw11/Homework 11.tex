@@ -199,20 +199,19 @@ Find the following, simplify your answer as much as possible.
 		\item Let $h_2(x)$ be $f(x)+g(x)$.\\
 		Since $f(x)$ is $O(203^xx^2)$ and $g(x)$ is $O(\frac{x!}{2^x})$, we have that $h_2(x)$ is $O(203^xx^2+\frac{x!}{2^x})$.\\
 		Since $f(x)$ is $\Omega(3^x\log x)$ and $g(x)$ is $\Omega(4^x)$, we have that $h_2(x)$ is $\Omega(3^x\log x+4^x)$.\\
-		Thus, the tightest big-O estimate for $h_2(x)$ is $O(203^xx^2+\frac{x!}{2^x})$ and the tightest big-$\Omega$ estimate for $h_2(x)$ is $\Omega(3^x\log x+4^x)$.
+		Thus, the tightest big-O estimate for $h_2(x)$ is $O(203^xx^2)$ and the tightest big-$\Omega$ estimate for $h_2(x)$ is $\Omega(4^x)$.
 
-		\item		Disproof by contradiction:\\
+		\item		Disproof by counterexample:\\
 		\begin{tabular}{ll}
-			Consider $f(x) = 3^x$ and $g(x) = 4^x$.                                                         \\
-			Then $h(x) = f(x) - g(x) = 3^x - 4^x$.                                                          \\
-			Assume $h(x)$ is $\Omega(4^x)$.                                                                 \\
-			Then there exists $c > 0$ and $x_0 > 0$ such that $h(x) \geq c \cdot 4^x$ for all $x \geq x_0$. \\
-			However, $3^x - 4^x < 0$ for all $x > 0$.                                                       \\
-			Thus, $h(x)$ is not $\Omega(4^x)$.
+			Consider $f(x) = 4^x\log x + 2x$ and $g(x) = 4^x\log x$.                   \\
+			Then $h(x) = f(x) - g(x) = 2x$.                                            \\
+			Since $h(x) = 2x$ is $O(x)$, $h(x)$ is not guaranteed to be $\Omega(4^x)$. \\
+			Therefore, $h(x)$ is not $\Omega(4^x)$.
 		\end{tabular}
 	\end{qparts}
 \end{solution}
 
+\pagebreak
 \subsection*{\probnum Big Function Fun [16 points]}
 Prove or disprove the following:
 \begin{qparts}
@@ -224,7 +223,24 @@ Note that in these proofs you do not need to use the definition of big-O, but ca
 \begin{solution}
 	\begin{qparts}
 		\item
+		\begin{tabular}{ll}
+			Disproof by counterexample:                                                             \\
+			% consider fx = 10x, gx = x
+			Consider $f(x) = 10x$ and $g(x) = x$.                                                   \\
+			Then $f(x)$ is $O(g(x))$ since $10x$ is $O(x)$.                                         \\
+			However, $2^{f(x)} = 2^{10x}$ is not $O(2^{g(x)}) = O(2^x)$.                            \\
+			Since $2^{10x}$ grows exponentially faster than $2^x$, $2^{f(x)}$ is not $O(2^{g(x)})$. \\
+			Therefore, the statement is false.
+		\end{tabular}
 		\item
+		\begin{tabular}{ll}
+			Proof by direct proof:                                                                    \\
+			Assume $f(x)$ is $O(g(x))$.                                                               \\
+			Then there exists a constant $c$ such that $f(x) \leq c \cdot g(x)$ for all $x \geq x_0$. \\
+			Squaring both sides, we get $(f(x))^2 \leq c^2 \cdot (g(x))^2$ for all $x \geq x_0$.      \\
+			Thus, $(f(x))^2$ is $O\big((g(x))^2\big)$.                                                \\
+			Therefore, the statement is true.
+		\end{tabular}
 	\end{qparts}
 
 \end{solution}
@@ -242,7 +258,7 @@ Suppose $f$ satisfies $f(n) = 2f(\sqrt{n}) + \log_2 n$, whenever $n$ is a perfec
 
 \begin{solution}
 	\begin{qparts}
-		\item We can divide the recurance relation into smaller parts:
+		\item We can divide the recurrence relation into smaller parts:
 		\begin{align*}
 			f(16) & = 2f(\sqrt{16}) + \log_2 16 \\
 			      & = 2f(4) + 4                 \\
@@ -294,8 +310,7 @@ What is the tightest big-O bound on the runtime complexity of the following algo
 	The print statement runs $\frac{n^2}{2}$ times.
 	Thus, we can write this as a recurrence relation:
 	\[T(n) = 2T\left(\frac{n}{3}\right) + \frac{n^2}{2}\]
-	Using the Master Theorem, we can see that $a = 2$, $b = 3$, and $f(n) = \frac{n^2}{2}$.
-	Since $\log_b a = \log_3 2 \approx 0.63$ and $f(n) = O(n^c)$ where $c = 2$, we have that $T(n) = O(n^2)$.
-	The runtime complexity of this algorithm is $O(n^2)$.
+	Using the Master Theorem, we can see that $a = 2$, $b = 3$, $d=2$, and $f(n) = \frac{n^2}{2} = O(n^2)$.
+	Since $\frac{a}{b^d} = \frac{2}{3^2} < 1$, we have that $T(n) = O(n^2)$.
 \end{solution}
 \end{document}
