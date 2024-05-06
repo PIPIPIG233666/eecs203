@@ -1,0 +1,431 @@
+\documentclass[12pt]{exam}
+
+% essential packages
+\usepackage{fullpage} % margin formatting
+\usepackage{enumitem} % configure enumerate and itemize
+\usepackage{amsmath, amsfonts, amssymb, mathtools} % math symbols
+\usepackage{xcolor, colortbl} % colors, including in tables
+\usepackage{makecell} % thicker \Xhline in table
+\usepackage{graphicx} % images, resizing
+
+% sometimes needed packages
+\usepackage{hyperref} % hyperlinks
+% \hypersetup{colorlinks=true, urlcolor=blue}
+% \usepackage{logicproof} % natural deduction
+\usepackage{tikz} % drawing graphs
+\usetikzlibrary{positioning}
+\usepackage{multicol}
+\usepackage{algpseudocode} % pseudocode
+
+% paragraph formatting
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0cm}
+
+% newline after Solution:
+\renewcommand{\solutiontitle}{\noindent\textbf{Solution:}\par\noindent}
+
+% less space before itemize/enumerate
+\setlist{topsep=0pt}
+
+% creates \filcl to grey out cells for groupwork grading
+\newcommand{\filcl}{\cellcolor{gray!25}}
+
+% creates \probnum to get the problem number
+\newcounter{probnumcount}
+\setcounter{probnumcount}{1}
+\newcommand{\probnum}{\arabic{probnumcount}. \addtocounter{probnumcount}{1}}
+
+% use roman numerals by default
+\setlist[enumerate]{label={(\roman*)}}
+
+% creates custom list environments for grading guidelines, question parts
+\newlist{guidelines}{itemize}{1}
+\setlist[guidelines]{label={}, left=0pt .. \parindent, nosep}
+\newlist{gwguidelines}{enumerate}{1}
+\setlist[gwguidelines]{label={(\roman*)}, nosep}
+\newlist{qparts}{enumerate}{2}
+\setlist[qparts]{label={(\alph*)}}
+\newlist{qsubparts}{enumerate}{2}
+\setlist[qsubparts]{label={(\roman*)}}
+\newlist{stmts}{enumerate}{1}
+\setlist[stmts]{label={(\roman*)}, nosep}
+\newlist{pflist}{itemize}{4}
+\setlist[pflist]{label={$\bullet$}, nosep}
+\newlist{enumpflist}{enumerate}{4}
+\setlist[enumpflist]{label={(\arabic*)}, nosep}
+
+\printanswers
+
+
+\newcommand{\prevhwnum}{10}
+\newcommand{\hwnum}{11}
+
+\begin{document}
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%
+\title{EECS 203: Discrete Mathematics\\
+  Winter 2024\\
+  Homework \hwnum{}}
+\date{}
+\author{}
+\maketitle
+\vspace{-50pt}
+\begin{center}
+  \huge Due \textbf{Tuesday, April 23}, 10:00 pm\\
+\Large No late homework accepted past midnight.\\
+\vspace{10pt}
+\large Number of Problems: $6+0$
+\hspace{3cm}
+Total Points: $100+0$
+\end{center}
+\vspace{25pt}
+\begin{itemize}
+    \item \textbf{Match your pages!} Your submission time is when you upload the file, so the time you take to match pages doesn't count against you.
+    \item Submit this assignment (and any regrade requests later) on Gradescope. 
+    \item Justify your answers and show your work (unless a question says otherwise).
+    \item By submitting this homework, you agree that you are in compliance with the Engineering Honor Code and the Course Policies for 203, and that you are submitting your own work.
+    \item Check the syllabus for full details.
+\end{itemize}
+\newpage
+%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%% 
+
+\section*{Individual Portion}
+
+\subsection*{\probnum Big-$O$reo [15 points]}
+Give the tightest big-O estimate for each of the following functions. Justify your answers.
+\begin{qparts}
+    \item $f(n) = (2^n + n^n)\cdot (n^3 + n \log n^n)$
+    \item $g(n) = (n^n + n!)\cdot (n + 1)\hspace{0.1in} + \hspace{0.1in}(n^3 + 3^n)\cdot(\sqrt{n} + \log n)$
+    \item $h(n) = (n^n + n^2)\cdot(n^n + n)\hspace{0.1in} + \hspace{0.1in}(\log 3 + n^n)\cdot(n^2 + n^n)$
+\end{qparts}
+\begin{solution}
+For each of these, we can expand out the terms, or we can multiply the fastest-growing terms in each sub-expression, since these are the terms that will end up dominating the big-O estimate. This is an application of the sum rule (to the sub-expressions), and then the product rule.
+\begin{qparts}
+    \item For $f(n)$, the fastest growing term of the first expression is $n^n$. The fastest growing term of the second expression is $n^3$, which is greater than $n \log n^n = n^2 \log n$ (by log rules). So $f(n)$ is $O(n^nn^3)=O(n^{n+3})$.
+    \item  For $g(n)$, the product of the fastest growing terms in the first expression is $n^nn = n^{n+1}$, and the product of the fastest growing terms in the second expression is $3^n\sqrt{n}$. The two expressions are summed, so the faster growing product dominates the complexity, so $g(n)\in O(n^{n+1})$.
+    \item For $h(n)$, the product of the fastest growing terms in the first expression is $n^n(n^n) = n^{2n}$ and the product of the fastest growing terms in the second expression is also $n^n(n^n) = n^{2n}$. So $h(n)$ is $O(n^{2n}).$
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [15 points]}
+
+\textbf{For each part:}
+\begin{guidelines}
+    \item +2 correct answer
+    \item +3 correct justification
+\end{guidelines}
+\end{solution}
+
+\subsection*{\probnum On the Run [20 points]}
+Give the tightest big-O estimate for the number of operations (where an operation is arithmetic, a comparison, or an assignment) used in each of the following algorithms. \textbf{Explain your reasoning.}
+
+\begin{qparts}
+
+    \item \begin{algorithmic}
+        \Function{doubleTrouble}{$a_1,\dots,a_N\in\mathbb{R}, j\in\mathbb{R}$}
+        \State{$j \gets 1$}
+            \For{$i\coloneqq 1\text{ to }N$}
+                \If{$i = j$}
+                    \State{$j \gets 2j$}
+                \EndIf
+            \EndFor
+            \State\Return{$j$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{sumSquares}{$N \in \mathbb{Z}^+$}
+            \If{$N = 1$}
+                \State\Return{$1$}
+            \EndIf
+            \State{$value \gets \textsc{sumSquares}(N - 1) + N^2$}
+            \State\Return{$value$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{findLTMinProduct}{$a_1,\dots,a_N\in\mathbb{R}$}
+            \State{$p\gets 203$}
+            \For{$i\coloneqq 1\text{ to }N$}
+                \For{$j\coloneqq 1\text{ to }N$}
+                    \If{$a_ia_j < p$}
+                        \State{$p\gets a_ia_j$}
+                    \EndIf
+                \EndFor
+            \EndFor 
+            \State{$numLTMinProduct\gets 0$}
+            \For{$k\coloneqq 1\text{ to }N$}
+                \If{$a_k < p$}
+                    \State{$numLTMinProduct \gets numLTMinProduct + 1$}
+                \EndIf
+            \EndFor
+        \State\Return{$numLTMinProduct$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{subtractAndAdd}{$N\in\mathbb{Z}$}
+            \While{$N > 0$}
+                \If{$N$ is even}
+                    \State{$N \gets N - 3$}
+                \EndIf
+                \If{$N$ is odd}
+                    \State{$N \gets N + 1$}
+                \EndIf
+            \EndWhile
+            \State\Return{$N$}
+        \EndFunction
+    \end{algorithmic}
+
+    \item \begin{algorithmic}
+        \Function{search}{$a_1,\dots,a_N \in \mathbb{R}, target \in \mathbb{R}$}
+            \State{$left\gets 1$}
+            \State{$right\gets N$}
+            \While{$\text{True}$}
+                \State{$mid\gets \lfloor \frac{left + right}{2} \rfloor$}
+                \If{$a_{mid} = target$}
+                    \State\Return{$mid$}
+                \EndIf
+                \If{$right \leq left$}
+                    \State\Return{$-1$}
+                \EndIf
+                \If{$a_{mid} < target$}
+                    \State{$left\gets mid + 1$}
+                \EndIf
+                \If{$a_{mid} > target$}
+                    \State{$right\gets mid - 1$}
+                \EndIf
+            \EndWhile
+        \EndFunction
+    \end{algorithmic}
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item $O(N)$. There is a constant amount of work done in each iteration of the loop. Since $i$ is incremented by $1$ with each iteration of the loop and does not change otherwise, the loop runs $N$ times. Therefore, the function's run time is $O(N)$.
+    \item $O(N)$. All operations except for the recursive call take constant time. Because the function keeps calling itself with an input that is decremented by $1$ until the input itself is $1$, the function is called $N$ times. Because the run time for each of these layers takes constant time, the overall function's run time is $O(N)$.
+    \item $O(N^2)$. There are three loops, the first two of which are nested. Within a single iteration of the outer loop, there is a constant amount of work done for each element of the list, so the outer loop does $O(N)$ work per iteration. Since the outer loop executes $N$ times, the overall complexity of the two nested loops is $O(N \cdot N) = O(N^2)$. The third loop also does a constant amount of work for each element in the list, so it is $O(N)$. Therefore, the total run time is $O(N^2 + N) = O(N^2)$.
+    \item $O(N)$. If $N$ is even entering the loop, the first conditional statement will decrement $N$ by $3$, making it odd, and then the second conditional statement will increment $N$ by $1$, meaning the loop iteration overall decrements $N$ by $2$. If $N$ is odd entering the loop, the second conditional statement will increment $N$ by $1$, making it even, but the next loop's iteration will decrement $N$ by $2$, so $N$ is decremented by $1$ overall. Regardless of whether $N$ is initially even or odd, it ends up being decremented by $1$ or $2$, so $N$ eventually becomes non-positive in $2N$ or less loop iterations, breaking out of the loop. Each iteration of the loop takes constant time, so the overall function's run time is $O(N)$.
+    \item $O(\log N)$. For each iteration of the loop, the search space is cut roughly in half. These iterations occur until the $target$ element is found or if it can be concluded that there is no valid element in the list with a value of $target$. Since there are $N$ elements to start with and roughly half of the list is eliminated from consideration in each iteration of the loop, the run time is $O(\log N)$.
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [20 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +2 reports $O(N)$ as runtime
+    \item +2 correct and complete explanation
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +2 reports $O(N)$ as runtime
+    \item +2 correct and complete explanation that does not cite the Master Theorem
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +2 reports $O(N^2)$ as runtime
+    \item +1 states that the nested loops are $O(N^2)$
+    \item +1 states that the other loop is $O(N)$
+\end{guidelines}
+\textbf{Part d:}
+\begin{guidelines}
+    \item +2 reports $O(N)$ as runtime
+    \item +2 correct and complete explanation
+\end{guidelines}
+\textbf{Part e:}
+\begin{guidelines}
+    \item +2 reports $O(\log N)$ as runtime
+    \item +2 correct explanation, does not need to be a formal proof
+\end{guidelines}
+\end{solution}
+
+\newpage
+
+\subsection*{\probnum This One's Bound to be Fun! [18 points]}
+You are given the following bounds on functions $f$ and $g$:
+\begin{itemize}
+    \item $f(x)$ is $O(203^xx^2)$ and $\Omega(3^x\log x)$
+    \item $g(x)$ is $O(\frac{x!}{2^x})$ and $\Omega(4^x)$
+\end{itemize}
+Find the following, simplify your answer as much as possible.
+\begin{qparts}
+    \item Find the tightest big-O and big-$\Omega$ estimates that can be \textit{guaranteed} of $f(x)(g(x))^2$. 
+    \item Find the tightest big-O and big-$\Omega$ estimates that can be \textit{guaranteed} of $f(x)+g(x)$.
+    \item Let $h(x)=f(x)-g(x)$. Prove or disprove that $h(x)$ is $\Omega(4^x)$.
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item $f(x)(g(x))^2=O(203^xx^2\cdot\frac{(x!)^2}{(2^x)^2})=O(x^2(x!)^2(\frac{203}{4})^x)$\\
+    $f(x)(g(x))^2=\Omega(3^x\log x\cdot(4^x)^2)=\Omega(48^x\log x)$
+
+    We should also check that these bounds are indeed tight. If $f(x)=203^x x^2,$ and $g(x)=\frac{x!}{2^x},$ then $f(x)(g(x))^2$ exactly equals our big-O estimate, so the upper bound is tight. Similarly if $f(x)=3^x\log x$ and $g(x)=4^x,$ then the lower bound is tight.
+    
+    \item $f(x)+g(x)=O(\frac{x!}{2^x})$\\
+    $f(x)+g(x)=\Omega(4^x)$
+
+    Using similar reasoning to the above, our big-O bound is tight when $g(x)=\frac{x!}{2^x},$ and our big-$\Omega$ bound is tight when $f(x)=g(x)=4^x.$
+    
+    \item Consider $f(x)=5^x+203$ and $g(x)=5^x$. Then $f(x)-g(x)=203=\Theta(1)\neq\Omega(4^x)$.
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [18 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +2 correct big-$O$
+    \item +2 correct big-$\Omega$
+    \item +2 correct justification
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +2 correct big-$O$
+    \item +2 correct big-$\Omega$
+    \item +2 correct justification
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +2 states intention to disprove
+    \item +2 $f(x)$ and $g(x)$ within the stated bounds
+    \item +2 shows $f(x)-g(x)$ are not $\Omega(4^x)$
+\end{guidelines}
+\end{solution}
+
+%Matthew 
+\subsection*{\probnum Big Function Fun [16 points]}
+% Section 3.2 Exercise 42 W19.11.6
+Prove or disprove the following: 
+\begin{qparts}
+    \item If $f(x)$ is $O(g(x))$ then $2^{f (x)}$ is $O(2^{g(x)}).$
+    \item If $f(x)$ is $O(g(x))$ then $(f(x))^2$ is $O\big((g(x))^2\big).$
+\end{qparts}
+Note that in these proofs you do not need to use the definition of big-O, but can use the properties for combining mathematical functions covered in lecture.
+
+\begin{solution}
+\begin{qparts}
+    \item This is not necessarily true. Let $f(x) = 2x$ and $g(x) = x$. Then $f(x)$ is $O(g(x))$. Now $2^{f(x)} = 2^{2x} = 4^x$, and $2^{g(x)} = 2^x$, but $4^x$ is not $O(2^x)$. Indeed, $\frac{4^x}{2^x} = 2^x$, so the ratio grows without bound as $x$ grows, so $4^x$ is not bounded by $2^x$ within a constant ratio.
+
+    \item We know that for two functions, $f(x)$ and $g(x)$, if $f(x) \in O(\tilde{f}(x))$ and $g(x) \in O(\tilde{g}(x))$ then $f(x) \cdot g(x) \in O(\tilde{f}(x) \cdot \tilde{g}(x))$. So in this case $(f(x))^2 = f(x) \cdot f(x) \in O(g(x) \cdot g(x)) = O\big((g(x))^2\big)$. 
+
+    \textbf{Alternate Solution:} Assume $f(x)$ is $O(g(x))$, then by definition there exists some $c \in \mathbb{R}$ where $f(x) \leq cg(x)$. So $(f(x))^{2} \leq (cg(x))^{2} = c^2(g(x))^2$. Since $c^2$ is just another constant, by definition, this means $(f(x))^{2}$ is $O((g(x))^2)$
+\end{qparts}
+\textbf{Draft Grading Guidelines [16 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +2 chooses to disprove
+    \item +3 correct counterexample
+    \item +3 correct justification
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +2 chooses to prove
+    \item +3 applies big-O multiplication rule
+    \item +3 correct justification
+\end{guidelines}
+\end{solution}
+
+
+\subsection*{\probnum Roots and Shoots [16 points]}
+Suppose $f$ satisfies $f(n) = 2f(\sqrt{n}) + \log_2 n$, whenever $n$ is a perfect square greater than 1, and additionally satisfies $f(2) = 1$.
+\begin{qparts}
+    \item Find $f(16)$.
+    \item Find a big-O estimate for $g(m)$ where $g(m) = f(2^m).$
+    
+    \textbf{Hint:} Make the substitution $m = \log_2 n.$
+    \item Find a big-O estimate for $f(n)$. 
+\end{qparts}
+
+\begin{solution}
+\begin{qparts}
+    \item \begin{align*}
+        f(2) &= 1 \\
+        f(4) = 2f(\sqrt{4}) + \log_2(4) &= 4 \\
+        f(16) = 2f(\sqrt{16}) + \log_2(16) &= 12
+    \end{align*}
+    
+    \item Let $m = \log_2 n$, so that $n = 2^m$. Then our recurrence becomes $f(2^m) = 2f(2^{\frac m2}) + m$, since $\sqrt{2^m} = (2^m)^{\frac 12} = 2^{\frac m2}$. 
+
+    Let $g(m) = f(2^m)$. Rewriting the above in terms of $g$ we have $g(m) = 2g(\frac m2) + m$. The Master Theorem (with $a=2$, $b=2$, and $d=1$) now tells us that $g(m)$ is $O(m\log m)$. 
+    
+    \item Since $m=\log n$, and $g(m)=f(n),$ this says that our function is $O(\log n\cdot \log \log n)$.
+\end{qparts}
+
+\textbf{Draft Grading Guidelines [16 points]}
+
+\textbf{Part a:}
+\begin{guidelines}
+    \item +3 correct value for $f(4)$
+    \item +3 correct value for $f(16)$
+\end{guidelines}
+\textbf{Part b:}
+\begin{guidelines}
+    \item +2 correct substitution of $m$ yielding $f(2^m)=2f(2^{\frac m2})+m.$
+    \item +2 identifies correct values for $a,\ b$ and $d$ from student's $g(m)$ (recurrence does not need to be correct, just applicable to the master theorem, and this does not need to be explicit)
+    \item +2 correctly applies master theorem to $g(m)$
+\end{guidelines}
+\textbf{Part c:}
+\begin{guidelines}
+    \item +4 correct answer based on part (b)
+\end{guidelines}
+\end{solution}
+
+\newpage
+
+\subsection*{\probnum GG Brown Laboratory [15 points]}
+What is the tightest big-O bound on the runtime complexity of the following algorithm?
+\begin{algorithmic}
+\Function{badsearch}{$n$}
+    \If{$n\geq 1$}
+        \State{$\textsc{badsearch}(\lfloor \frac n3\rfloor)$}
+        \For{$i\coloneqq 1\text{ to }n$}
+            \For{$j\coloneqq 1\text{ to }\lfloor \frac n2\rfloor$}
+                \State{\textbf{print} ``Hello I am lost"}
+            \EndFor
+        \EndFor
+        \State{$\textsc{badsearch}(\lfloor \frac n3\rfloor)$}
+        \State{\textbf{print} ``Nevermind I got it"}
+    \EndIf
+\EndFunction
+\end{algorithmic}
+
+\begin{solution}
+$O(n^2).$
+
+The recurrence is $T(n)=2T(\lfloor \frac{n}{3}\rfloor) + O(n^2)$. That means $a=2$, $b=3$, and $d=2$, so $\frac{a}{b^d} = \frac{2}{9}$. Then since $\frac{a}{b^d} = \frac{2}{9} < 1$, by the master theorem, this algorithm is $O(n^2).$
+
+\textbf{Grading Guidelines [15 points]}
+\begin{guidelines}
+    \item +5 identifies correct recurrence
+    \item +5 identifies correct coefficients from recurrence and attempts to use them to apply master theorem
+    \item +5 correctly applies master theorem
+\end{guidelines}
+\end{solution}
+
+
+\pagebreak
+\section*{Grading of Groupwork \prevhwnum{}}
+Using the solutions and Grading Guidelines, grade your Groupwork \prevhwnum{} Problems:
+\begin{itemize}
+    \item Use the table below to grade your past groupwork submission and calculate scores.
+    \item While grading, mark up your past submission. Include this with the table when you submit your grading.
+    \item Write whether your submission achieved each rubric item. If it didn't achieve one, say why not.
+    \item For extra credit, write positive comment(s) about your work.
+    \item You don't have to redo problems correctly, but it is recommended!
+    \item See ``All About Groupwork" on Canvas for more detailed guidance, and what to do if you change groups.
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+ & (i) & (ii) & (iii) & (iv) & (v) & (vi) & (vii) & (viii) & (ix) & (x) & (xi) & Total:\\
+\hline
+Problem 1 & & & & & & &\filcl &\filcl &\filcl & \filcl& \filcl& \hspace{1cm}/15\\
+\hline 
+Problem 2 & & & & & & & & & & & \filcl& \hspace{1cm}/20\\
+\Xhline{1.25pt}
+Total: &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl &\filcl & \filcl& \filcl& \filcl&\hspace{1cm}/35\\
+\hline
+\end{tabular}}
+\end{center}
+
+
+\end{document}
